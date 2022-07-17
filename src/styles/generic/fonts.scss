@@ -1,8 +1,19 @@
 @font-face {
-  font-family: 'ABC Monument Grotesk';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/abc-monument-grotesk-regular.woff2') format('woff2'),
-    url('/fonts/abc-monument-grotesk-regular.woff') format('woff');
-  font-display: swap;
+  font-family: 'System85';
+  src: url('/fonts/system85/system85-mono-regular-pro.woff2') format('woff2'),
+       url('/fonts/system85/system85-mono-regular-pro.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'System85';
+  font-weight: 700;
+  src: url('/fonts/system85/system85-mono-bold-pro.woff2') format('woff2'),
+       url('/fonts/system85/system85-mono-bold-pro.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'System85';
+  font-style: italic;
+  src: url('/fonts/system85/system85-mono-italic-pro.woff2') format('woff2'),
+       url('/fonts/system85/system85-mono-italic-pro.woff') format('woff');
 }

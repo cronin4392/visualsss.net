@@ -1,7 +1,7 @@
-import { NextSeo } from 'next-seo';
-import { useRouter } from 'next/router';
-import { Maybe } from '@/utils/types';
-import { removeNulls } from '@/utils/lists';
+import { NextSeo } from "next-seo";
+import { useRouter } from "next/router";
+import { Maybe } from "@/utils/types";
+import { removeNulls } from "@/utils/lists";
 
 export type ShareProps = {
   title?: Maybe<string>;
@@ -12,10 +12,10 @@ export type ShareProps = {
 
 const HeadTag: React.FC<ShareProps> = (props) => {
   const router = useRouter();
-  const title = props.title || 'The Post';
+  const title = props.title || "visualsssssssss.com";
   const pageTitle = props.pageTitle || null;
-  const fullTitle = removeNulls([title, pageTitle]).join(' | ');
-  const description = props.description || 'Being An Athlete Is Forever';
+  const fullTitle = removeNulls([title, pageTitle]).join(" | ");
+  const description = props.description || "";
   const image = props.image;
 
   return (
@@ -24,8 +24,8 @@ const HeadTag: React.FC<ShareProps> = (props) => {
       description={description}
       additionalLinkTags={[
         {
-          rel: 'icon',
-          href: '/favicon.png',
+          rel: "icon",
+          href: "/favicon.png",
         },
       ]}
       openGraph={{
@@ -36,7 +36,7 @@ const HeadTag: React.FC<ShareProps> = (props) => {
           ? [
               {
                 url: image,
-                alt: 'The Post',
+                alt: "visualsssssssss.com",
               },
             ]
           : undefined,

@@ -1,17 +1,14 @@
 import HeadTag from "@/components/HeadTag";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import styles from "./styles.module.scss";
 
 const Layout: React.FC<{
   children: React.ReactNode;
   title?: string;
-}> = ({ children, title = "Your Site" }) => {
+}> = ({ children, title = null }) => {
   return (
     <>
       <HeadTag pageTitle={title} />
-      <Nav />
-      <main>{children}</main>
-      <Footer />
+      <main className={styles.Container}>{children}</main>
     </>
   );
 };

@@ -7,15 +7,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "generate-component": "node ./scripts/generateComponent.js"
+    "generate-component": "node ./scripts/generateComponent.js",
+    "svgr": "npx @svgr/cli --no-dimensions --typescript -d ./src/icons/dist/ ./src/icons/src/"
   },
   "dependencies": {
-    "next": "12.1.6",
+    "next": "^12.2.2",
     "next-seo": "^5.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@svgr/cli": "^6.2.1",
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",

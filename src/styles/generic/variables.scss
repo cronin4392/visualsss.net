@@ -3,9 +3,8 @@
 :root {
   --site-padding: #{rem(16px)};
 
-  --color-white: #f4f4f4;
-  --color-black: #181818;
-  --color-gray: #999999;
+  --color-white: #ffffff;
+  --color-black: #000000;
 
   @include minWidth(desktop) {
     --site-padding: #{rem(40px)};

@@ -1,0 +1,21 @@
+@import "@/styles/tools/main.scss";
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(16px);
+    margin-top: rem(48px);
+}
+
+.MenuItem {
+    @include fontSize(92px);
+    font-weight: 700;
+    color: var(--color-white);
+    background-color: var(--color-black);
+    padding: rem(17px) rem(20px) rem(5px) rem(18px);
+
+    a {
+        @include resetLink;
+    }
+}
