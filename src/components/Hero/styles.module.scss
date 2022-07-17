@@ -1,0 +1,24 @@
+@import "@/styles/tools/main.scss";
+
+.Hero {
+    background-color: var(--color-gray);
+}
+
+.Container {
+    @include sitePadding;
+    @include container;
+    min-height: 50vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Title {
+    margin: 0;
+    margin-bottom: rem(16px);
+}
+
+.Text {
+    margin: 0;
+}

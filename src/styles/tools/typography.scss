@@ -1,0 +1,47 @@
+/**
+ * @usage fontSize(14px, 18px, 40)
+ * @usage fontSize(14px, 18px)
+ * @usage fontSize(14px)
+*/
+@use 'sass:math';
+
+@mixin fontSize($font-size: null, $line-height: null, $letter-spacing: null) {
+  @if ($font-size) {
+    font-size: #{rem($font-size)};
+  }
+
+  @if ($line-height) {
+    @include lineHeight($line-height, $font-size);
+  }
+}
+
+@mixin lineHeight($line-height, $font-size) {
+  line-height: #{math.div($line-height, $font-size)};
+}
+
+@function rem($pixelSize) {
+  @return #{math.div($pixelSize, 16px)}rem;
+}
+
+@function em($pixelSize, $baseSize) {
+  @return #{math.div($pixelSize, $baseSize)}em;
+}
+
+/*
+  $font-size: unitless number
+  $line-height: unitless number
+  $small-bp: the key of the small breakpoint
+  $large-bp: the key of the large breakpoint
+  $ref-bp: the breakpoint used in the division with font-size
+*/
+// @mixin responsiveFontSize(
+//   $font-size,
+//   $line-height,
+//   $small-bp,
+//   $large-bp,
+//   $base-bp
+// ) {
+//   --window-scale: clamp(#{breakpoint($small-bp)}, 100vw, #{breakpoint($large-bp)});
+//   font-size: calc(var(--window-scale) * math.div($font-size, breakpointUnitless($base-bp)));
+//   line-height: math.div($line-height, $font-size);
+// }

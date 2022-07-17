@@ -1,0 +1,13 @@
+@import '@/styles/tools/main.scss';
+
+.Nav {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.Inner {
+    @include sitePadding;
+    @include container;
+    padding-top: rem(16px);
+    padding-bottom: rem(16px);
+}

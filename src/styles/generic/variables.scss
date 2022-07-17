@@ -1,0 +1,13 @@
+@import '@/styles/tools/main.scss';
+
+:root {
+  --site-padding: #{rem(16px)};
+
+  --color-white: #f4f4f4;
+  --color-black: #181818;
+  --color-gray: #999999;
+
+  @include minWidth(desktop) {
+    --site-padding: #{rem(40px)};
+  }
+}

@@ -1,0 +1,8 @@
+@import "@/styles/tools/main.scss";
+
+.Footer {
+    @include sitePadding;
+    @include container;
+    padding-top: rem(16px);
+    padding-bottom: rem(16px);
+}

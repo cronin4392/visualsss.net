@@ -1,0 +1,22 @@
+// Hides on desktop
+.hide-desktop {
+  @include minWidth(desktop) {
+      display: none;
+  }
+}
+
+// Hides on mobile/tablet
+.hide-mobile {
+  @include maxWidth(desktop) {
+      display: none;
+  }
+}
+
+.sr-only {
+  @include srOnly;
+}
+
+.all-caps-shift {
+  display: inline-block;
+  margin-top: var(--all-caps-shift);
+}

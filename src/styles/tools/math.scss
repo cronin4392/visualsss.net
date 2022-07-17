@@ -1,0 +1,14 @@
+@use "sass:math";
+
+@function interpolate($factor, $inputRange: (0, 1), $outputRange: (0, 1)) {
+  $x1: nth($inputRange, 1);
+  $y1: nth($inputRange, 2);
+  $x2: nth($outputRange, 1);
+  $y2: nth($outputRange, 2);
+
+  @return calc(#{$x2} + (#{$factor} - #{$x1}) * (#{$y2} - #{$x2}) / (#{$y1} - #{$x1}));
+}
+
+@function percentOfWindow($value1, $value2) {
+  @return calc(#{math.div($value1, $value2)} * 100vw);
+}

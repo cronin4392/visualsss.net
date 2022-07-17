@@ -1,0 +1,90 @@
+@mixin container {
+  max-width: breakpoint(hires);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin sitePadding {
+  padding-left: var(--site-padding);
+  padding-right: var(--site-padding);
+}
+
+@mixin sitePaddingUndo {
+  margin-left: calc(-1 * var(--site-padding));
+  margin-right: calc(-1 * var(--site-padding));
+}
+
+@mixin sitePaddingUndoFullWidth {
+  margin-left: calc(-1 * var(--site-padding));
+  margin-right: calc(-1 * var(--site-padding));
+
+  @include minWidth(hires) {
+    margin-left: calc(-1 * (50vw + var(--site-padding) - (var(--site-max-width) / 2)));
+    margin-right: calc(-1 * (50vw + var(--site-padding) - (var(--site-max-width) / 2)));
+  }
+}
+
+@mixin textMaxWidth {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: rem(27px);
+
+  @include minWidth(tablet) {
+    max-width: rem(480px);
+    padding-top: rem(56px);
+  }
+
+  @include minWidth(desktop) {
+    max-width: rem(616px);
+  }
+
+  @include minWidth(largeDesktop) {
+    max-width: rem(786px);
+    padding-top: rem(71px);
+  }
+
+  @include minWidth(hires) {
+    max-width: rem(894px);
+    padding-top: rem(80px);
+  }
+}
+
+@mixin fill($position: absolute) {
+  position: $position;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin srOnly {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+@mixin clearMargin {
+  // border-top: 0.1px solid transparent;
+  // margin-top: -1px;
+  // border-bottom: 1px solid transparent;
+  // margin-bottom: -1px;
+}
+
+@function percentOfWindowNew($value1) {
+  @return calc((#{$value1} / var(--window-width)) * 100vw);
+}
+
+@mixin responsiveWindowHeight {
+  height: var(--windowHeightOnLoad, 100vh);
+
+  @include minWidth(tablet){
+    height: var(--windowHeight, 100vh);
+  }
+}
