@@ -11,12 +11,12 @@ type MenuItems = Array<MenuItem>;
 
 const menuItems: MenuItems = [
   {
-    text: "Contact",
-    link: "/contact",
-  },
-  {
     text: "About",
     link: "/about",
+  },
+  {
+    text: "Contact",
+    link: "/contact",
   },
   {
     text: "Youtube",

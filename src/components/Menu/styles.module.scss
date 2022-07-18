@@ -4,16 +4,24 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: rem(16px);
-    margin-top: rem(48px);
+    gap: rem(6px);
+
+    @include minWidth(desktop) {
+        gap: rem(16px);
+    }
 }
 
 .MenuItem {
-    @include fontSize(92px);
+    @include fontSize(38px);
     font-weight: 700;
     color: var(--color-white);
     background-color: var(--color-black);
-    padding: rem(17px) rem(20px) rem(5px) rem(18px);
+    padding: rem(7px) rem(12px) rem(3px) rem(8px);
+
+    @include minWidth(desktop) {
+        @include fontSize(92px);
+        padding: rem(17px) rem(20px) rem(5px) rem(18px);
+    }
 
     a {
         @include resetLink;

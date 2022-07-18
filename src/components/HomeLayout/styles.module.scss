@@ -1,0 +1,18 @@
+
+.Container {
+    padding: var(--site-padding);
+    display: grid;
+    grid-template-areas: "header header" "menu footer";
+    height: 100%;
+}
+
+.Header {
+    grid-area: header;
+}
+
+.Menu {
+    grid-area: menu;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}

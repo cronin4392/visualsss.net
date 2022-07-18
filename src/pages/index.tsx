@@ -1,19 +1,16 @@
 import { GetStaticProps, NextPage } from "next";
-import Layout from "@/components/Layout";
+import HeadTag from "@/components/HeadTag";
+import HomeLayout from "@/components/HomeLayout";
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
-import Background from "@/components/Background";
 
 type PageProps = {};
 
 const Page: NextPage<PageProps> = () => {
   return (
     <>
-      <Layout>
-        <Header />
-        <Menu />
-      </Layout>
-      <Background />
+      <HeadTag />
+      <HomeLayout header={<Header />} menu={<Menu />} />
     </>
   );
 };

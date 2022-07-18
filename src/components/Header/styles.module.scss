@@ -4,15 +4,27 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: rem(16px);
+    gap: rem(6px);
+
+    @include minWidth(desktop) {
+        gap: rem(16px);
+    }
 }
 
 .Logo {
     color: var(--color-white);
     background-color: var(--color-black);
-    padding: rem(32px) rem(35px) rem(32px) rem(25px);
+    padding: rem(16px) rem(17px) rem(16px) rem(12px);
+
+    @include minWidth(desktop) {
+        padding: rem(32px) rem(35px) rem(32px) rem(25px);
+        max-width: rem(1120px);
+    }
     
     svg {
+        width: 100%;
+        max-width: 100%;
+
         path {
             fill: currentColor;
         }
@@ -20,8 +32,13 @@
 }
 
 .Com {
-    @include fontSize(74px);
+    @include fontSize(40px);
     color: var(--color-white);
     background-color: var(--color-black);
-    padding: rem(18px) rem(20px) rem(9px) rem(0px);
+    padding: rem(10px) rem(11px) rem(4px) rem(0px);
+
+    @include minWidth(desktop) {
+        @include fontSize(74px);
+        padding: rem(18px) rem(20px) rem(9px) rem(0px);
+    }
 }
