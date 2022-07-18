@@ -7,7 +7,7 @@ export type PageType = {
 export type SectionType = {
   type: "section";
   title: string;
-  content: SectionContentType;
+  content: Array<SectionContentType>;
 };
 
 export type SectionContentType = SectionType | ContentType;
