@@ -1,0 +1,9 @@
+@import "@/styles/tools/main.scss";
+
+.Container {
+    padding: var(--site-padding);
+    display: flex;
+    flex-direction: column;
+    gap: rem(32px);
+    height: 100%;
+}

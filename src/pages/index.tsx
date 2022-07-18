@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from "next";
+import HomeLayout from "@/layouts/HomeLayout";
 import HeadTag from "@/components/HeadTag";
-import HomeLayout from "@/components/HomeLayout";
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
 

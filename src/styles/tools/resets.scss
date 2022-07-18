@@ -1,15 +1,12 @@
 /// Reset many styles set by default in browsers on buttons and inputs
 /// Useful for `<button>`s
 @mixin reset() {
+  @include resetText;
   background: none;
   color: inherit;
-  font: inherit;
-  text-decoration: inherit;
-  text-align: initial;
   border: 0;
   border-radius: 0;
   padding: 0;
-  margin: 0;
   appearance: none;
 }
 
@@ -45,6 +42,9 @@
   }
 }
 
-@mixin resetMargin {
+@mixin resetText {
+  font: inherit;
+  text-decoration: inherit;
+  text-align: initial;
   margin: 0;
 }

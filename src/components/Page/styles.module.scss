@@ -1,0 +1,19 @@
+@import "@/styles/tools/main.scss";
+
+.Container {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    padding: rem(32px);
+
+    p:first-child {
+        margin-top: 0;
+    }
+
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.SectionTitle {
+    @include resetText;
+}

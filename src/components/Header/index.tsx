@@ -1,15 +1,17 @@
 import Logo from "@/icons/dist/Logo";
 import styles from "./styles.module.scss";
 
-type HeaderProps = {};
+type HeaderProps = {
+  showCom?: boolean;
+};
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = ({ showCom = true }) => {
   return (
     <div className={styles.Container}>
       <div className={styles.Logo}>
         <Logo />
       </div>
-      <div className={styles.Com}>.com</div>
+      {showCom && <div className={styles.Com}>.com</div>}
     </div>
   );
 };
