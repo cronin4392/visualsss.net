@@ -6,7 +6,8 @@ const nextConfig = {
     images: {
       allowFutureImage: true
     }
-  }
+  },
+  distDir: 'out'
 }
 
 module.exports = nextConfig
