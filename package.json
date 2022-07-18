@@ -14,7 +14,8 @@
     "next": "^12.2.2",
     "next-seo": "^5.4.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hls-player": "^3.0.7"
   },
   "devDependencies": {
     "@svgr/cli": "^6.2.1",

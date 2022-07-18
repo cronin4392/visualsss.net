@@ -1,13 +1,26 @@
-import Image from "next/future/image";
+import dynamic from "next/dynamic";
+import { useRef } from "react";
+// import ReactHlsPlayer from "react-hls-player/dist";
 import styles from "./styles.module.scss";
-import backgroundImage from "../../../public/Background.jpg";
+
+const ReactHlsPlayer = dynamic(() => import("react-hls-player"), {
+  ssr: false,
+});
 
 type BackgroundProps = {};
 
 const Background: React.FC<BackgroundProps> = () => {
+  const playerRef = useRef<HTMLVideoElement | null>(null);
   return (
     <div className={styles.Container}>
-      <Image src={backgroundImage} alt="Background Image" />
+      <ReactHlsPlayer
+        className={styles.Video}
+        playerRef={playerRef}
+        src="https://visualsssssssss-site.s3.amazonaws.com/holy-mountain/playlist.m3u8"
+        autoPlay={true}
+        controls={false}
+        muted={true}
+      />
     </div>
   );
 };
