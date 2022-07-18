@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import { useRef } from "react";
-// import ReactHlsPlayer from "react-hls-player/dist";
 import styles from "./styles.module.scss";
 
 const ReactHlsPlayer = dynamic(() => import("react-hls-player"), {
