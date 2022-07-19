@@ -21,12 +21,12 @@ const Background: React.FC<BackgroundProps> = () => {
         autoPlay={true}
         controls={false}
         muted={true}
-        onLoadedData={(event) => {
+        playsInline={true}
+        onLoadedMetadata={(event) => {
           if (playerRef.current) {
             const video = playerRef.current;
             const { duration } = video;
             const randomTime = scale(Math.random(), 0, 1, 0, duration);
-            console.log(randomTime);
             video.currentTime = randomTime;
           }
         }}
