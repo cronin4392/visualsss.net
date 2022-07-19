@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Logo from "@/icons/dist/Logo";
 import styles from "./styles.module.scss";
 
@@ -9,7 +10,11 @@ const Header: React.FC<HeaderProps> = ({ showCom = true }) => {
   return (
     <div className={styles.Container}>
       <div className={styles.Logo}>
-        <Logo />
+        <Link href="/">
+          <a>
+            <Logo />
+          </a>
+        </Link>
       </div>
       {showCom && <div className={styles.Com}>.com</div>}
     </div>

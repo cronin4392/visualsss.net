@@ -7,13 +7,10 @@ const PageLayout: React.FC<{
   content: React.ReactNode;
 }> = ({ header, content }) => {
   return (
-    <>
-      <main className={styles.Container}>
-        <div className={styles.Header}>{header}</div>
-        <div className={styles.Content}>{content}</div>
-      </main>
-      <Background />
-    </>
+    <main className={styles.Container}>
+      <div className={styles.Header}>{header}</div>
+      <div className={styles.Content}>{content}</div>
+    </main>
   );
 };
 
