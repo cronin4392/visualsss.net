@@ -2,6 +2,10 @@
   font-family: 'System85';
   src: url('/fonts/system85/system85-mono-regular-pro.woff2') format('woff2'),
        url('/fonts/system85/system85-mono-regular-pro.woff') format('woff');
+  /* addressed a bug with webkit and firefox positioning text differently */
+  ascent-override: 97%;
+  descent-override: 25%;
+  line-gap-override: 0%;
 }
 
 @font-face {
@@ -9,6 +13,10 @@
   font-weight: 700;
   src: url('/fonts/system85/system85-mono-bold-pro.woff2') format('woff2'),
        url('/fonts/system85/system85-mono-bold-pro.woff') format('woff');
+  /* addressed a bug with webkit and firefox positioning text differently */
+  ascent-override: 97%;
+  descent-override: 25%;
+  line-gap-override: 0%;
 }
 
 @font-face {
@@ -16,4 +24,8 @@
   font-style: italic;
   src: url('/fonts/system85/system85-mono-italic-pro.woff2') format('woff2'),
        url('/fonts/system85/system85-mono-italic-pro.woff') format('woff');
+  /* addressed a bug with webkit and firefox positioning text differently */
+  ascent-override: 97%;
+  descent-override: 25%;
+  line-gap-override: 0%;
 }

@@ -16,11 +16,11 @@
     font-weight: 700;
     color: var(--color-white);
     background-color: var(--color-black);
-    padding: rem(7px) rem(12px) rem(3px) rem(8px);
+    padding: rem(9px);
 
     @include minWidth(desktop) {
         @include fontSize(92px);
-        padding: rem(17px) rem(20px) rem(5px) rem(18px);
+        padding: rem(20px);
     }
 
     a {

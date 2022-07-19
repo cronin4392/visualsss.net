@@ -39,7 +39,9 @@ const Menu: React.FC<MenuProps> = () => {
 
 const MenuItem: React.FC<MenuItem> = ({ text, link, external }) => (
   <div className={styles.MenuItem}>
-    <LinkWrapper href={link}>{text}</LinkWrapper>
+    <span className="all-caps-adjust">
+      <LinkWrapper href={link}>{text}</LinkWrapper>
+    </span>
   </div>
 );
 
