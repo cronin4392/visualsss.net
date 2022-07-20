@@ -4,6 +4,16 @@
     padding: var(--site-padding);
     display: flex;
     flex-direction: column;
-    gap: rem(32px);
+    gap: rem(12px);
     height: 100%;
+
+    @include minWidth(desktop) {
+        gap: rem(32px);
+    }
+}
+
+.Content {
+    height: 100%;
+    flex-shrink: 1;
+    overflow: hidden;
 }

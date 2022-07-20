@@ -1,10 +1,14 @@
 @import '@/styles/tools/main.scss';
 
 :root {
-  --site-padding: #{rem(16px)};
+  --site-padding: #{rem(12px)};
 
   --color-white: #ffffff;
   --color-black: #000000;
+
+  @include minWidth(tablet) {
+    --site-padding: #{rem(16px)};
+  }
 
   @include minWidth(desktop) {
     --site-padding: #{rem(40px)};

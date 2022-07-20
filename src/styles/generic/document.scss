@@ -1,3 +1,5 @@
+@import "@/styles/tools/main.scss";
+
 *,
 *:after,
 *:before {
@@ -15,13 +17,17 @@ html {
 }
 
 body {
+  @include fontSize(20px, 20px);
   margin: 0;
   background-color: var(--color-white);
   color: var(--color-black);
   font-family: 'System85', monospace;
-  font-size: 1.4rem;
-  line-height: 1;
   text-transform: uppercase;
+  -moz-osx-font-smoothing: grayscale;
+
+  @include minWidth(desktop) {
+    @include fontSize(28px);
+  }
 }
 
 h1,
