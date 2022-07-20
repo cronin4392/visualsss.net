@@ -27,7 +27,9 @@ const Page: React.FC<PageProps> = ({ content }) => {
   );
 };
 
-const SectionContent: React.FC<SectionContentType> = (content) => {
+const SectionContent: React.FC<SectionContentType> = (props) => {
+  const { ...content } = props;
+
   if (isSection(content)) {
     return <Section {...content} />;
   }
@@ -42,14 +44,12 @@ const Section: React.FC<SectionType> = ({ title, content }) => {
 
   return (
     <SectionDepth.Provider value={depth + 1}>
-      <div className={styles.Section}>
-        <div>
-          <SectionTitle>{title}</SectionTitle>
-        </div>
+      <>
+        <SectionTitle>{title}</SectionTitle>
         {content.map((c, index) => (
           <SectionContent {...c} key={index} />
         ))}
-      </div>
+      </>
     </SectionDepth.Provider>
   );
 };
@@ -61,7 +61,7 @@ const SectionTitle: React.FC<{
 
   return (
     <h2 className={styles.SectionTitle}>
-      <Lines count={depth} start={true} />
+      <Lines count={depth} />
       {children}
     </h2>
   );
@@ -76,44 +76,30 @@ const Content: React.FC<ContentType> = ({ content }) => {
   return (
     <div className={styles.Content}>
       <div className={styles.ContentLines}>
-        <Lines count={depth} start={true} />
+        <Lines count={depth} />
         {lines > 0 && (
           <>
             {[...Array(lines)].map((_, index) => (
-              <Lines
-                count={depth}
-                start={false}
-                isLast={index === lines - 1}
-                key={index}
-              />
+              <Lines count={depth} key={index} />
             ))}
-            <Lines count={depth - 1} start={false} />
+            <Lines count={depth - 1} />
           </>
         )}
       </div>
       <div>
         <div ref={ref}>{content}</div>
-        <br />
       </div>
     </div>
   );
 };
 
-const Lines: React.FC<{ count: number; start: boolean; isLast?: boolean }> = ({
-  count,
-  start,
-  isLast = false,
-}) => {
+const Lines: React.FC<{
+  count: number;
+}> = ({ count }) => {
   const mapCount = [...Array(count)];
-  const depth = useContext(SectionDepth);
 
   return (
-    <span
-      className={styles.Lines}
-      data-depth={depth}
-      data-is-last={isLast}
-      data-start={start}
-    >
+    <span className={styles.Lines}>
       {mapCount.map((_, index) => (
         <span className={styles.LineStart} key={index} />
       ))}
