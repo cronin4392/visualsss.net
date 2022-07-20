@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useElementSize } from "@mantine/hooks";
 import {
   PageType,
   SectionContentType,
@@ -7,24 +8,19 @@ import {
   isSection,
   isContent,
 } from "@/types/page";
+import { getFontSize, getLineCount } from "@/utils/text";
 import styles from "./styles.module.scss";
 
 type PageProps = PageType;
 
 const SectionDepth = React.createContext(-1);
-const SectionIsLast = React.createContext(false);
 
 const Page: React.FC<PageProps> = ({ content }) => {
   return (
     <div className={styles.Wrapper}>
       <div className={styles.Container}>
         {content.map((section, index) => (
-          <SectionIsLast.Provider
-            value={index === content.length - 1}
-            key={index}
-          >
-            <SectionContent {...section} />
-          </SectionIsLast.Provider>
+          <SectionContent {...section} key={index} />
         ))}
       </div>
     </div>
@@ -51,12 +47,7 @@ const Section: React.FC<SectionType> = ({ title, content }) => {
           <SectionTitle>{title}</SectionTitle>
         </div>
         {content.map((c, index) => (
-          <SectionIsLast.Provider
-            value={index === content.length - 1}
-            key={index}
-          >
-            <SectionContent {...c} />
-          </SectionIsLast.Provider>
+          <SectionContent {...c} key={index} />
         ))}
       </div>
     </SectionDepth.Provider>
@@ -70,35 +61,59 @@ const SectionTitle: React.FC<{
 
   return (
     <h2 className={styles.SectionTitle}>
-      <Lines count={depth} />
+      <Lines count={depth} start={true} />
       {children}
     </h2>
   );
 };
 
 const Content: React.FC<ContentType> = ({ content }) => {
+  const { ref, height } = useElementSize();
   const depth = useContext(SectionDepth) + 1;
+  const fontSize = getFontSize(ref);
+  const lines = getLineCount(height, fontSize) - 1;
 
   return (
     <div className={styles.Content}>
       <div className={styles.ContentLines}>
-        <Lines count={depth} />
+        <Lines count={depth} start={true} />
+        {lines > 0 && (
+          <>
+            {[...Array(lines)].map((_, index) => (
+              <Lines
+                count={depth}
+                start={false}
+                isLast={index === lines - 1}
+                key={index}
+              />
+            ))}
+            <Lines count={depth - 1} start={false} />
+          </>
+        )}
       </div>
       <div>
-        {content}
+        <div ref={ref}>{content}</div>
         <br />
       </div>
     </div>
   );
 };
 
-const Lines: React.FC<{ count: number }> = ({ count }) => {
+const Lines: React.FC<{ count: number; start: boolean; isLast?: boolean }> = ({
+  count,
+  start,
+  isLast = false,
+}) => {
   const mapCount = [...Array(count)];
-  const isLast = useContext(SectionIsLast);
   const depth = useContext(SectionDepth);
 
   return (
-    <span className={styles.Lines} data-depth={depth} data-is-last={isLast}>
+    <span
+      className={styles.Lines}
+      data-depth={depth}
+      data-is-last={isLast}
+      data-start={start}
+    >
       {mapCount.map((_, index) => (
         <span className={styles.LineStart} key={index} />
       ))}

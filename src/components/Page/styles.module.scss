@@ -5,6 +5,8 @@
     color: var(--color-white);
     padding: rem(16px);
     height: 100%;
+    max-width: rem(1120px);
+    width: 100%;
 
     p:first-child {
         margin-top: 0;
@@ -34,6 +36,11 @@
     display: flex;
 }
 
+.ContentLines {
+    display: flex;
+    flex-direction: column;
+}
+
 .Lines {
     font-weight: 400;
     white-space: pre;
@@ -50,11 +57,19 @@
 .LineEnd:before {
     content: "├ ";
 
-    // .Lines[data-is-last="true"]:not([data-depth="0"]) & {
-    //     content: "├ ";
-    // }
+    .Lines[data-start="false"] & {
+        content: "│ ";
+    }
+
+    .Lines[data-is-last="true"] & {
+        content: "└ ";
+    }
 
     @include minWidth(desktop) {
         content: "├─ ";
+
+        .Lines[data-start="false"] & {
+            content: "│";
+        }
     }
 }

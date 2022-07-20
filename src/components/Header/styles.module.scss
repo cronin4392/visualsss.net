@@ -15,11 +15,11 @@
     color: var(--color-white);
     background-color: var(--color-black);
     padding: rem(16px) rem(17px) rem(16px) rem(12px);
+    max-width: rem(1120px);
     width: 100%;
 
     @include minWidth(desktop) {
         padding: rem(32px) rem(35px) rem(32px) rem(25px);
-        max-width: rem(1120px);
     }
     
     svg {
