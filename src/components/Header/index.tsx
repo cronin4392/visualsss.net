@@ -16,7 +16,11 @@ const Header: React.FC<HeaderProps> = ({ showCom = true }) => {
           </a>
         </Link>
       </div>
-      {showCom && <div className={styles.Com}>.com</div>}
+      {showCom && (
+        <div className={styles.Com}>
+          <span className="all-caps-adjust">.net</span>
+        </div>
+      )}
     </div>
   );
 };

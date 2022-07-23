@@ -33,13 +33,14 @@
 }
 
 .Com {
+    --padding: #{rem(10px)};
     @include fontSize(40px);
     color: var(--color-white);
     background-color: var(--color-black);
-    padding: rem(10px) rem(11px) rem(4px) rem(0px);
+    padding: var(--padding) var(--padding) var(--padding) calc(var(--padding) * (2/5));
 
     @include minWidth(desktop) {
         @include fontSize(74px);
-        padding: rem(18px) rem(20px) rem(9px) rem(0px);
+        --padding: #{rem(18px)};
     }
 }
