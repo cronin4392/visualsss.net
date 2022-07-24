@@ -30,9 +30,9 @@ const Background: React.FC<BackgroundProps> = () => {
         controls={false}
         muted={true}
         playsInline={true}
-        hlsConfig={{
-          capLevelToPlayerSize: true,
-        }}
+        // hlsConfig={{
+        //   capLevelToPlayerSize: true,
+        // }}
         onLoadedMetadata={(_event) => {
           if (playerRef.current) {
             const video = playerRef.current;
