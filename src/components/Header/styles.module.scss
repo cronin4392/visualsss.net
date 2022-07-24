@@ -33,8 +33,9 @@
 }
 
 .Com {
-    --padding: #{rem(10px)};
+    @include reset;
     @include fontSize(40px);
+    --padding: #{rem(10px)};
     color: var(--color-white);
     background-color: var(--color-black);
     padding: var(--padding) var(--padding) var(--padding) calc(var(--padding) * (2/5));
