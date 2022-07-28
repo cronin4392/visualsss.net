@@ -26,16 +26,6 @@ export const aboutPageContent: PageType["content"] = [
               development and graphic design I began to make original content in
               it centered around typography.
             </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed
-              facilisis ipsum. Fusce in risus sit amet justo fringilla iaculis.
-              Phasellus tincidunt erat sit amet mi blandit tempor. Donec ut
-              hendrerit orci, sed egestas elit. Aenean fermentum dignissim mi,
-              et gravida nisl accumsan id. Suspendisse porta nisi non ante
-              iaculis posuere. Curabitur pretium turpis id facilisis lacinia.
-              Donec quis gravida mauris. Aliquam scelerisque urna vel metus
-              consequat euismod. Suspendisse aliquam ullamcorper ultricies.
-            </p>
           </>
         ),
       },
@@ -51,18 +41,20 @@ export const aboutPageContent: PageType["content"] = [
           <>
             <p>
               This site is built with{" "}
-              <LinkWrapper href="https://nextjs.org/">Next.js</LinkWrapper> yada
-              yada yada
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed
-              facilisis ipsum. Fusce in risus sit amet justo fringilla iaculis.
-              Phasellus tincidunt erat sit amet mi blandit tempor. Donec ut
-              hendrerit orci, sed egestas elit. Aenean fermentum dignissim mi,
-              et gravida nisl accumsan id. Suspendisse porta nisi non ante
-              iaculis posuere. Curabitur pretium turpis id facilisis lacinia.
-              Donec quis gravida mauris. Aliquam scelerisque urna vel metus
-              consequat euismod. Suspendisse aliquam ullamcorper ultricies.
+              <LinkWrapper href="https://nextjs.org/">Next.js</LinkWrapper>. You
+              can find the source code here on{" "}
+              <LinkWrapper href="https://github.com/cronin4392/visualsssssssss.com">
+                Github
+              </LinkWrapper>
+              . The primary font used is{" "}
+              <LinkWrapper href="https://www.colophon-foundry.org/typefaces/system85/">
+                System85 by Colophon Foundry
+              </LinkWrapper>
+              . The videos in the background are streamed using{" "}
+              <LinkWrapper href="https://en.wikipedia.org/wiki/HTTP_Live_Streaming">
+                HLS
+              </LinkWrapper>
+              .
             </p>
           </>
         ),

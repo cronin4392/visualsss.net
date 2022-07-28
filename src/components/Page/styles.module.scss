@@ -23,30 +23,6 @@
     p:last-child {
         margin-bottom: 0;
     }
-
-    a {
-        @include resetLink;
-        color: var(--color-black);
-        position: relative;
-        z-index: 1;
-
-        &:before {
-            content: "";
-            position: absolute;
-            background-color: var(--color-white);
-            inset: 0.1em -0.05em;
-            z-index: -1;
-        }
-    }
-
-    a:hover {
-        color: var(--color-white);
-
-        &:before {
-            background-color: transparent;
-            outline: 1px solid var(--color-white)
-        }
-    }
 }
 
 .Container {
