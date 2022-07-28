@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "@/icons/dist/Logo";
+import { useSssState } from "@/context/SssContextProvider";
 import styles from "./styles.module.scss";
 
 type HeaderProps = {
@@ -7,6 +8,8 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = ({ showCom = true }) => {
+  const { setSss } = useSssState();
+
   return (
     <div className={styles.Container}>
       <div className={styles.Logo}>
@@ -17,9 +20,14 @@ const Header: React.FC<HeaderProps> = ({ showCom = true }) => {
         </Link>
       </div>
       {showCom && (
-        <div className={styles.Com}>
+        <button
+          className={styles.Com}
+          onClick={() => {
+            setSss(true);
+          }}
+        >
           <span className="all-caps-adjust">.net</span>
-        </div>
+        </button>
       )}
     </div>
   );
