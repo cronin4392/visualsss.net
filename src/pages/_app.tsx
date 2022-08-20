@@ -1,12 +1,14 @@
 import { ReactNode, useEffect, useState } from "react";
 import { AppProps } from "next/app";
-import Background from "@/components/Background";
+import { useRandomInt } from "@/hooks/useRandomItem";
 import { SssContext } from "@/context/SssContextProvider";
-
+import { VideoIndexContext, videos } from "@/context/VideoIndexContextProvider";
+import Background from "@/components/Background";
 import "./_app.scss";
 
 function App({ Component, pageProps }: AppProps): ReactNode {
   const [sss, setSss] = useState(false);
+  const [videoIndex, setVideoIndex] = useState(useRandomInt(videos.length));
 
   useEffect(() => {
     if (!sss) {
@@ -23,8 +25,10 @@ function App({ Component, pageProps }: AppProps): ReactNode {
 
   return (
     <SssContext.Provider value={{ sss, setSss }}>
-      <Component {...pageProps} />
-      <Background />
+      <VideoIndexContext.Provider value={{ videoIndex, setVideoIndex }}>
+        <Component {...pageProps} />
+        <Background />
+      </VideoIndexContext.Provider>
     </SssContext.Provider>
   );
 }
