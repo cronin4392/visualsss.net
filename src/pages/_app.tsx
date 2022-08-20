@@ -12,6 +12,12 @@ function App({ Component, pageProps }: AppProps): ReactNode {
   const [videoIndex, setVideoIndex] = useState(useRandomInt(videos.length));
 
   useEffect(() => {
+    if (sClicks === 6) {
+      setSss(true);
+    }
+  }, [sClicks, setSss]);
+
+  useEffect(() => {
     if (!sss) {
       return;
     }
