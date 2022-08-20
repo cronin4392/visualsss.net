@@ -15,13 +15,16 @@ const menuItems: MenuItems = [
     link: "/about",
   },
   {
-    text: "Contact",
-    link: "/contact",
+    text: "Instagram",
+    link: "https://www.instagram.com/visualsssssssss/",
   },
   {
     text: "Youtube",
-    link: "https://youtube.com",
-    external: true,
+    link: "https://www.youtube.com/c/Visualsss",
+  },
+  {
+    text: "Contact",
+    link: "mailto:visualsssssssss@gmail.com",
   },
 ];
 
@@ -37,7 +40,7 @@ const Menu: React.FC<MenuProps> = () => {
   );
 };
 
-const MenuItem: React.FC<MenuItem> = ({ text, link, external }) => (
+const MenuItem: React.FC<MenuItem> = ({ text, link }) => (
   <div className={styles.MenuItem}>
     <span className="all-caps-adjust">
       <LinkWrapper href={link}>{text}</LinkWrapper>
