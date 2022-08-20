@@ -15,8 +15,3 @@
 .sr-only {
   @include srOnly;
 }
-
-.all-caps-shift {
-  display: inline-block;
-  margin-top: var(--all-caps-shift);
-}
