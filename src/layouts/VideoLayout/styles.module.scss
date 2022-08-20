@@ -1,0 +1,52 @@
+@import "@/styles/tools/main.scss";
+
+.Container {
+  padding: var(--site-padding);
+  display: grid;
+  grid-template-areas: "header header" "menu video-controls";
+  height: 100%;
+}
+
+.Header {
+  grid-area: header;
+}
+
+.Menu {
+  grid-area: menu;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.VideoLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: rem(6px);
+
+  @include minWidth(desktop) {
+    gap: rem(16px);
+  }
+}
+
+.VideoLink {
+  @include resetButton;
+  @include fontSize(28px);
+  font-weight: 700;
+  color: var(--color-white);
+  background-color: var(--color-black);
+  padding: rem(9px);
+  text-transform: none;
+  letter-spacing: 0;
+
+  @include minWidth(desktop) {
+    @include fontSize(38px);
+    padding: rem(16px);
+  }
+
+  &[data-active="true"] {
+    &:before {
+      content: "▶ ";
+    }
+  }
+}
