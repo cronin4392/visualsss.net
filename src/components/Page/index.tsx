@@ -71,7 +71,7 @@ const Content: React.FC<ContentType> = ({ content }) => {
   const { ref, height } = useElementSize();
   const depth = useContext(SectionDepth) + 1;
   const fontSize = getFontSize(ref);
-  const lines = getLineCount(height, fontSize) - 1;
+  const lines = getLineCount(height, fontSize);
 
   return (
     <div className={styles.Content}>
@@ -87,6 +87,7 @@ const Content: React.FC<ContentType> = ({ content }) => {
         )}
       </div>
       <div>
+        <br />
         <div ref={ref}>{content}</div>
       </div>
     </div>
