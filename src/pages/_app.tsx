@@ -21,13 +21,14 @@ function App({ Component, pageProps }: AppProps): ReactNode {
     if (!sss) {
       return;
     }
-    fetch("/api/sss").then(async (response) => {
-      const data = await response.json();
-      if (data.redirect) {
-        window.open(data.redirect);
-        setSss(false);
-      }
-    });
+    window.open("https://www.visualsssssssss.net/?sssecret=visualsssssssss");
+    // fetch("/api/sss").then(async (response) => {
+    //   const data = await response.json();
+    //   if (data.redirect) {
+    //     window.open(data.redirect);
+    //     setSss(false);
+    //   }
+    // });
   }, [sss]);
 
   return (
