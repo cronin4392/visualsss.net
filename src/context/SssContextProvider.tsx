@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { noop } from "@/utils/noop";
 
-export type SssContextType = {
+type SssContextType = {
   sss: boolean;
   setSss: (value: boolean) => void;
 };
