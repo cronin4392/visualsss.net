@@ -23,6 +23,7 @@ body {
   color: var(--color-black);
   font-family: "System85", monospace;
   text-transform: uppercase;
+  font-smooth: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   @include minWidth(desktop) {

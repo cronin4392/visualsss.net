@@ -31,13 +31,12 @@
 
 .VideoLink {
   @include resetButton;
-  @include fontSize(28px);
-  font-weight: 700;
+  @include fontSize(20px);
+  font-smooth: auto;
+  -moz-osx-font-smoothing: auto;
   color: var(--color-white);
   background-color: var(--color-black);
   padding: rem(9px);
-  text-transform: none;
-  letter-spacing: 0;
 
   @include minWidth(desktop) {
     @include fontSize(38px);
