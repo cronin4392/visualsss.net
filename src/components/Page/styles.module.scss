@@ -1,88 +1,88 @@
 @import "@/styles/tools/main.scss";
 
 @mixin line($char, $dChar) {
-    content: $char;
+  content: $char;
 
-    @include minWidth(desktop) {
-        content: $dChar;
-    }
+  @include minWidth(desktop) {
+    content: $dChar;
+  }
 }
 
 .Wrapper {
-    background-color: var(--color-black);
-    color: var(--color-white);
-    padding: rem(16px);
-    max-height: 100%;
-    max-width: rem(1120px);
-    width: 100%;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: rem(16px);
+  max-height: 100%;
+  max-width: rem(1120px);
+  width: 100%;
 
-    p:first-child {
-        margin-top: 0;
-    }
+  p:first-child {
+    margin-top: 0;
+  }
 
-    p:last-child {
-        margin-bottom: 0;
-    }
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .Container {
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-    height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
 }
 
 .SectionTitle {
-    @include resetText;
-    font-weight: 700;
-    position: sticky;
-    top: 0;
-    background-color: var(--color-black);
+  @include resetText;
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+  background-color: var(--color-black);
 
-    &:before {
-        content: var(--lines);
-        font-weight: 400;
-    }
+  &:before {
+    content: var(--lines);
+    font-weight: 400;
+  }
 }
 
 .Content {
-    display: flex;
-    min-height: 0;
+  display: flex;
+  min-height: 0;
 }
 
 .ContentLines {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .Lines {
-    font-weight: 400;
-    white-space: pre;
+  font-weight: 400;
+  white-space: pre;
 
-    .Content:last-child &:last-child {
-        display: none;
-    }
+  .Content:last-child &:last-child {
+    display: none;
+  }
 }
 
 .LineStart:before {
-    @include line("│", "│  ");
+  @include line("│", "│  ");
 
-    .Content:last-child .Lines:nth-last-child(2) & {
-        @include line("└", "└──");
-    }
+  .Content:last-child .Lines:nth-last-child(2) & {
+    @include line("└", "└──");
+  }
 }
 
 .LineEnd:before {
-    @include line("│", "│");
+  @include line("│", "│");
 
-    .Lines:first-child & {
-        @include line("├ ", "├─ ");
-    }
+  .Lines:first-child & {
+    @include line("├ ", "├─ ");
+  }
 
-    .Content .Lines:nth-last-child(2) & {
-        @include line("└ ", "└─ ");
-    }
+  .Content .Lines:nth-last-child(2) & {
+    @include line("└ ", "└─ ");
+  }
 
-    .Content:last-child .Lines:nth-last-child(2) & {
-        @include line("┴ ", "┴─ ");
-    }
+  .Content:last-child .Lines:nth-last-child(2) & {
+    @include line("┴ ", "┴─ ");
+  }
 }

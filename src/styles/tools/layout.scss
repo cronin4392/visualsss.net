@@ -19,8 +19,12 @@
   margin-right: calc(-1 * var(--site-padding));
 
   @include minWidth(hires) {
-    margin-left: calc(-1 * (50vw + var(--site-padding) - (var(--site-max-width) / 2)));
-    margin-right: calc(-1 * (50vw + var(--site-padding) - (var(--site-max-width) / 2)));
+    margin-left: calc(
+      -1 * (50vw + var(--site-padding) - (var(--site-max-width) / 2))
+    );
+    margin-right: calc(
+      -1 * (50vw + var(--site-padding) - (var(--site-max-width) / 2))
+    );
   }
 }
 
@@ -84,7 +88,7 @@
 @mixin responsiveWindowHeight {
   height: var(--windowHeightOnLoad, 100vh);
 
-  @include minWidth(tablet){
+  @include minWidth(tablet) {
     height: var(--windowHeight, 100vh);
   }
 }

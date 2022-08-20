@@ -6,7 +6,9 @@
   $x2: nth($outputRange, 1);
   $y2: nth($outputRange, 2);
 
-  @return calc(#{$x2} + (#{$factor} - #{$x1}) * (#{$y2} - #{$x2}) / (#{$y1} - #{$x1}));
+  @return calc(
+    #{$x2} + (#{$factor} - #{$x1}) * (#{$y2} - #{$x2}) / (#{$y1} - #{$x1})
+  );
 }
 
 @function percentOfWindow($value1, $value2) {

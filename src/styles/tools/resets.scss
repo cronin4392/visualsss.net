@@ -1,6 +1,6 @@
 /// Reset many styles set by default in browsers on buttons and inputs
 /// Useful for `<button>`s
-@mixin reset() {
+@mixin resetButton() {
   @include resetText;
   background: none;
   color: inherit;

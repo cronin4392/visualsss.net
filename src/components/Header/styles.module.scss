@@ -1,47 +1,48 @@
 @import "@/styles/tools/main.scss";
 
 .Container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: rem(6px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: rem(6px);
 
-    @include minWidth(desktop) {
-        gap: rem(16px);
-    }
+  @include minWidth(desktop) {
+    gap: rem(16px);
+  }
 }
 
 .Logo {
-    color: var(--color-white);
-    background-color: var(--color-black);
-    padding: rem(16px) rem(17px) rem(16px) rem(12px);
-    max-width: rem(1120px);
+  color: var(--color-white);
+  background-color: var(--color-black);
+  padding: rem(16px) rem(17px) rem(16px) rem(12px);
+  max-width: rem(1120px);
+  width: 100%;
+
+  @include minWidth(desktop) {
+    padding: rem(32px) rem(35px) rem(32px) rem(25px);
+  }
+
+  svg {
     width: 100%;
+    max-width: 100%;
 
-    @include minWidth(desktop) {
-        padding: rem(32px) rem(35px) rem(32px) rem(25px);
+    path {
+      fill: currentColor;
     }
-    
-    svg {
-        width: 100%;
-        max-width: 100%;
-
-        path {
-            fill: currentColor;
-        }
-    }
+  }
 }
 
 .Com {
-    @include reset;
-    @include fontSize(40px);
-    --padding: #{rem(10px)};
-    color: var(--color-white);
-    background-color: var(--color-black);
-    padding: var(--padding) var(--padding) var(--padding) calc(var(--padding) * (2/5));
+  @include resetButton;
+  @include fontSize(40px);
+  --padding: #{rem(10px)};
+  color: var(--color-white);
+  background-color: var(--color-black);
+  padding: var(--padding) var(--padding) var(--padding)
+    calc(var(--padding) * (2 / 5));
 
-    @include minWidth(desktop) {
-        @include fontSize(74px);
-        --padding: #{rem(18px)};
-    }
+  @include minWidth(desktop) {
+    @include fontSize(74px);
+    --padding: #{rem(18px)};
+  }
 }

@@ -1,5 +1,4 @@
 import { createContext, useContext } from "react";
-import {} from "@/content/videos";
 import { noop } from "@/utils/noop";
 
 type VideoIndexContextType = {

@@ -1,4 +1,4 @@
-import { ParsedUrlQuery } from 'querystring';
+import { ParsedUrlQuery } from "querystring";
 
 export const getParam = (
   params: ParsedUrlQuery | undefined,
@@ -17,4 +17,4 @@ export const getParam = (
   return null;
 };
 
-export const isLocalUrl = (url: string): boolean => url.slice(0, 1) === '/';
+export const isLocalUrl = (url: string): boolean => url.slice(0, 1) === "/";

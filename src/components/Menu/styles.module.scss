@@ -1,29 +1,29 @@
 @import "@/styles/tools/main.scss";
 
 .Container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: rem(6px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: rem(6px);
 
-    @include minWidth(desktop) {
-        gap: rem(16px);
-    }
+  @include minWidth(desktop) {
+    gap: rem(16px);
+  }
 }
 
 .MenuItem {
-    @include fontSize(38px);
-    font-weight: 700;
-    color: var(--color-white);
-    background-color: var(--color-black);
-    padding: rem(9px);
+  @include fontSize(38px);
+  font-weight: 700;
+  color: var(--color-white);
+  background-color: var(--color-black);
+  padding: rem(9px);
 
-    @include minWidth(desktop) {
-        @include fontSize(92px);
-        padding: rem(20px);
-    }
+  @include minWidth(desktop) {
+    @include fontSize(92px);
+    padding: rem(20px);
+  }
 
-    a {
-        @include resetLink;
-    }
+  a {
+    @include resetLink;
+  }
 }

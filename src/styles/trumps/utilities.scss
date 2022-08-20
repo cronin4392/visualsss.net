@@ -1,14 +1,14 @@
 // Hides on desktop
 .hide-desktop {
   @include minWidth(desktop) {
-      display: none;
+    display: none;
   }
 }
 
 // Hides on mobile/tablet
 .hide-mobile {
   @include maxWidth(desktop) {
-      display: none;
+    display: none;
   }
 }
 

@@ -1,14 +1,14 @@
 @import "@/styles/tools/main.scss";
 
 .Container {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
 }
 
 .Video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    image-rendering: crisp-edges;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: crisp-edges;
 }

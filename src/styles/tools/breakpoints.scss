@@ -15,52 +15,52 @@
 /// @param {String} $name - Name of breakpoint found in $breakpoints
 /// @return {Value}
 @function breakpointUnitless($name) {
-    @return math.div(breakpoint($name), 1px);
+  @return math.div(breakpoint($name), 1px);
 }
 
 /// Create a `min-width` media query from a `breakpoint()` value
 ///
 /// @param {String} $name - Name of breakpoint found in $breakpoints
 @mixin minWidth($breakpoint) {
-    @media (min-width: breakpoint($breakpoint)) {
-        @content;
-    }
+  @media (min-width: breakpoint($breakpoint)) {
+    @content;
+  }
 }
 
 /// Create a `max-width` media query from a `breakpoint()` value
 ///
 /// @param {String} $name - Name of breakpoint found in $breakpoints
 @mixin maxWidth($breakpoint) {
-    @media (max-width: (breakpoint($breakpoint) - 1)) {
-        @content;
-    }
+  @media (max-width: (breakpoint($breakpoint) - 1)) {
+    @content;
+  }
 }
 
 /// Create a `min-width` media query from a css unit value
 ///
 /// @param {Value} $name - Width value
 @mixin minWidthCustom($breakpoint) {
-    @media (min-width: $breakpoint) {
-        @content;
-    }
+  @media (min-width: $breakpoint) {
+    @content;
+  }
 }
 
 /// Create a `max-width` media query from a css unit value
 ///
 /// @param {Value} $name - Width value
 @mixin maxWidthCustom($breakpoint) {
-    @media (max-width: $breakpoint) {
-        @content;
-    }
+  @media (max-width: $breakpoint) {
+    @content;
+  }
 }
 
 /// Create a `min-height` media query from a css unit value
 ///
 /// @param {Value} $name - Height value
 @mixin minHeightCustom($breakpoint) {
-    @media (min-height: $breakpoint) {
-        @content;
-    }
+  @media (min-height: $breakpoint) {
+    @content;
+  }
 }
 
 /// Create a `min-width and max-width` media query from `breakpoint()` values
@@ -68,9 +68,9 @@
 /// @param {String} $breakpoint1 - `min-width` breakpoint
 /// @param {String} $breakpoint2 - `max-width` breakpoint
 @mixin minMaxWidth($breakpoint1, $breakpoint2) {
-    @media (min-width: breakpoint($breakpoint1)) and (max-width: (breakpoint($breakpoint2) - 1)) {
-        @content;
-    }
+  @media (min-width: breakpoint($breakpoint1)) and (max-width: (breakpoint($breakpoint2) - 1)) {
+    @content;
+  }
 }
 
 /// Create a `min-width and max-width` media query from `breakpoint()` values
@@ -78,7 +78,7 @@
 /// @param {Value} $breakpoint1 - `min-width` css value
 /// @param {Value} $breakpoint2 - `max-width` css value
 @mixin minMaxWidthCustom($breakpoint1, $breakpoint2) {
-    @media (min-width: $breakpoint1) and (max-width: #{($breakpoint2 - 1)}) {
-        @content;
-    }
+  @media (min-width: $breakpoint1) and (max-width: #{($breakpoint2 - 1)}) {
+    @content;
+  }
 }

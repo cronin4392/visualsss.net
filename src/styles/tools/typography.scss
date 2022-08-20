@@ -3,7 +3,7 @@
  * @usage fontSize(14px, 18px)
  * @usage fontSize(14px)
 */
-@use 'sass:math';
+@use "sass:math";
 
 @mixin fontSize($font-size: null, $line-height: null, $letter-spacing: null) {
   @if ($font-size) {
