@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Link from "next/link";
 import Logo from "@/icons/dist/Logo";
 import { useSssState } from "@/context/SssContextProvider";
@@ -8,26 +9,31 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = ({ showCom = true }) => {
-  const { setSss } = useSssState();
+  const { setSss, setSClicks, sClicks } = useSssState();
+
+  useEffect(() => {
+    if (sClicks === 6) {
+      setSss(true);
+    }
+  }, [sClicks, setSss]);
 
   return (
     <div className={styles.Container}>
-      <div className={styles.Logo}>
+      <div className={styles.Logo} data-s-clicks={sClicks}>
         <Link href="/">
-          <a>
+          <a
+            onClick={() => {
+              setSClicks(Math.min(sClicks + 1, 6));
+            }}
+          >
             <Logo />
           </a>
         </Link>
       </div>
       {showCom && (
-        <button
-          className={styles.Com}
-          onClick={() => {
-            setSss(true);
-          }}
-        >
+        <div className={styles.Com}>
           <span className="all-caps-adjust">.net</span>
-        </button>
+        </div>
       )}
     </div>
   );

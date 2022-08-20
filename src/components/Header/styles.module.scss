@@ -30,10 +30,19 @@
       fill: currentColor;
     }
   }
+
+  @for $i from 1 to 7 {
+    &[data-s-clicks="#{$i}"] {
+      g:nth-last-child(#{$i}) path,
+      g:nth-last-child(#{$i}) ~ g path {
+        fill: transparent !important;
+        stroke: currentColor;
+      }
+    }
+  }
 }
 
 .Com {
-  @include resetButton;
   @include fontSize(40px);
   --padding: #{rem(10px)};
   color: var(--color-white);

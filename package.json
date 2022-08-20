@@ -9,7 +9,7 @@
     "lint": "next lint",
     "format": "prettier --write --ignore-path .gitignore .",
     "generate-component": "node ./scripts/generateComponent.js",
-    "svgr": "npx @svgr/cli --no-dimensions --typescript -d ./src/icons/dist/ ./src/icons/src/"
+    "svgr": "npx @svgr/cli --no-dimensions --typescript --svgo-config ./svgo.config.js -d ./src/icons/dist/ ./src/icons/src/"
   },
   "dependencies": {
     "@mantine/hooks": "^4.2.12",

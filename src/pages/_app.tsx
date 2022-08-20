@@ -8,6 +8,7 @@ import "./_app.scss";
 
 function App({ Component, pageProps }: AppProps): ReactNode {
   const [sss, setSss] = useState(false);
+  const [sClicks, setSClicks] = useState(0);
   const [videoIndex, setVideoIndex] = useState(useRandomInt(videos.length));
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function App({ Component, pageProps }: AppProps): ReactNode {
   }, [sss]);
 
   return (
-    <SssContext.Provider value={{ sss, setSss }}>
+    <SssContext.Provider value={{ sss, setSss, sClicks, setSClicks }}>
       <VideoIndexContext.Provider value={{ videoIndex, setVideoIndex }}>
         <Component {...pageProps} />
         <Background />
