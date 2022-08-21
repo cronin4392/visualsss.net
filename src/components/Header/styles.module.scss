@@ -35,8 +35,7 @@
     &[data-s-clicks="#{$i}"] {
       g:nth-last-child(#{$i}) path,
       g:nth-last-child(#{$i}) ~ g path {
-        fill: transparent !important;
-        stroke: currentColor;
+        opacity: 0;
       }
     }
   }
