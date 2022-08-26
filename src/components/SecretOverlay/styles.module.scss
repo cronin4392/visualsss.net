@@ -1,0 +1,46 @@
+@import "@/styles/tools/main.scss";
+
+.Container {
+  --spacing: #{rem(16px)};
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: var(--spacing);
+  width: 100%;
+  max-width: rem(1120px);
+
+  @include minWidth(desktop) {
+    --spacing: #{rem(30px)};
+    padding: var(--spacing) rem(40px);
+  }
+}
+
+.Header {
+  @include fontSize(24px);
+  margin: 0;
+  margin-bottom: var(--spacing);
+
+  @include minWidth(desktop) {
+    @include fontSize(38px);
+    text-align: center;
+  }
+}
+
+.Text {
+  @include fontSize(24px);
+  margin: 0;
+  margin-bottom: var(--spacing);
+}
+
+.Buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: calc(var(--spacing) / 2);
+  margin-top: rem(20px);
+}
+
+.Button {
+  @include resetLink;
+  padding: rem(9px);
+  border: 2px solid var(--color-white);
+  text-align: center;
+}

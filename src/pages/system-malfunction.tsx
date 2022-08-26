@@ -3,17 +3,17 @@ import PageLayout from "@/layouts/PageLayout";
 import HeadTag from "@/components/HeadTag";
 import Header from "@/components/Header";
 import Page from "@/components/Page";
-import { aboutPageContent } from "@/content/about";
+import SecretOverlay from "@/components/SecretOverlay";
 
 type PageProps = {};
 
-const AboutPage: NextPage<PageProps> = () => {
+const SystemMalfunctionPage: NextPage<PageProps> = () => {
   return (
     <>
       <HeadTag />
       <PageLayout
-        header={<Header subLine="About" />}
-        content={<Page content={aboutPageContent} />}
+        header={<Header subLine={false} />}
+        content={<SecretOverlay />}
       />
     </>
   );
@@ -25,4 +25,4 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
   };
 };
 
-export default AboutPage;
+export default SystemMalfunctionPage;

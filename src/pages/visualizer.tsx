@@ -9,7 +9,7 @@ const VisualizerPage: NextPage<PageProps> = () => {
   return (
     <>
       <HeadTag />
-      <VideoLayout header={<Header showCom={false} />} />
+      <VideoLayout header={<Header subLine="visssualizer" />} />
     </>
   );
 };

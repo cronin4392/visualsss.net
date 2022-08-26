@@ -1,31 +1,32 @@
-import Link from "next/link";
 import Logo from "@/icons/dist/Logo";
 import { useSssState } from "@/context/SssContextProvider";
+import LinkWrapper from "@/components/LinkWrapper";
 import styles from "./styles.module.scss";
 
 type HeaderProps = {
-  showCom?: boolean;
+  subLine?: string | false;
 };
 
-const Header: React.FC<HeaderProps> = ({ showCom = true }) => {
-  const { setSClicks, sClicks } = useSssState();
+const Header: React.FC<HeaderProps> = ({ subLine = ".net" }) => {
+  const { sss, setSClicks, sClicks } = useSssState();
 
   return (
     <div className={styles.Container}>
       <div className={styles.Logo} data-s-clicks={sClicks}>
-        <Link href="/">
-          <a
-            onClick={() => {
+        <LinkWrapper
+          href={sss ? "/system-malfunction" : "/"}
+          linkProps={{
+            onClick: () => {
               setSClicks(Math.min(sClicks + 1, 6));
-            }}
-          >
-            <Logo />
-          </a>
-        </Link>
+            },
+          }}
+        >
+          <Logo />
+        </LinkWrapper>
       </div>
-      {showCom && (
-        <div className={styles.Com}>
-          <span className="all-caps-adjust">.net</span>
+      {subLine && (
+        <div className={styles.SubLine} data-text={subLine}>
+          <span className="all-caps-adjust">{subLine}</span>
         </div>
       )}
     </div>

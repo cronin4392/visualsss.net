@@ -6,7 +6,7 @@
   display: block;
   background-color: var(--color-black);
   color: var(--color-white);
-  padding: rem(24px);
+  padding: rem(18px) rem(20px);
 
   @include minWidth(desktop) {
     @include fontSize(40px, 40px);

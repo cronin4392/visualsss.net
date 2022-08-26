@@ -1,8 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-const sss = (_req: NextApiRequest, res: NextApiResponse): void => {
+const sss = (req: NextApiRequest, res: NextApiResponse): void => {
+  const { sssecret } = req.body;
+  if (sssecret === "ssssss") {
+    return res.status(200).json({
+      redirect: "https://www.visualsssssssss.net/?sssecret=visualsssssssss",
+    });
+  }
+
   return res.status(200).json({
-    redirect: "https://www.visualsssssssss.net/?sssecret=visualsssssssss",
+    status: "error",
+    message: "invalid request",
   });
 };
 

@@ -4,7 +4,7 @@ import { PageType } from "@/types/page";
 export const aboutPageContent: PageType["content"] = [
   {
     type: "section",
-    title: "About",
+    title: "Me",
     content: [
       {
         type: "content",

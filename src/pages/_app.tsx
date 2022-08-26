@@ -14,25 +14,15 @@ function App({ Component, pageProps }: AppProps): ReactNode {
   useEffect(() => {
     if (sClicks === 6) {
       setSss(true);
+    } else {
+      setSss(false);
     }
   }, [sClicks, setSss]);
 
-  useEffect(() => {
-    if (!sss) {
-      return;
-    }
-    window.open("https://www.visualsssssssss.net/?sssecret=visualsssssssss");
-    // fetch("/api/sss").then(async (response) => {
-    //   const data = await response.json();
-    //   if (data.redirect) {
-    //     window.open(data.redirect);
-    //     setSss(false);
-    //   }
-    // });
-  }, [sss]);
-
   return (
-    <SssContext.Provider value={{ sss, setSss, sClicks, setSClicks }}>
+    <SssContext.Provider
+      value={{ sss, setSss, sClicks, setSClicks, sLink: null }}
+    >
       <VideoIndexContext.Provider value={{ videoIndex, setVideoIndex }}>
         <Component {...pageProps} />
         <Background />

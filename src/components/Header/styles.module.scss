@@ -41,13 +41,16 @@
   }
 }
 
-.Com {
+.SubLine {
   @include fontSize(40px);
   --padding: #{rem(10px)};
   color: var(--color-white);
   background-color: var(--color-black);
-  padding: var(--padding) var(--padding) var(--padding)
-    calc(var(--padding) * (2 / 5));
+  padding: var(--padding);
+
+  &[data-text=".net"] {
+    padding-left: calc(var(--padding) * (2 / 5));
+  }
 
   @include minWidth(desktop) {
     @include fontSize(74px);
