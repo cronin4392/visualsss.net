@@ -12,3 +12,22 @@
   object-fit: cover;
   image-rendering: crisp-edges;
 }
+
+.LoadingContainer {
+  position: fixed;
+  z-index: -1;
+  background-color: var(--color-black);
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Loading {
+  background: var(--color-white);
+  padding: 1rem;
+
+  &:after {
+    content: "Initialisssing...";
+  }
+}

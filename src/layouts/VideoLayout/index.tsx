@@ -6,7 +6,7 @@ type VideoLayoutProps = {
 };
 
 const VideoLayout: React.FC<VideoLayoutProps> = ({ header }) => {
-  const { video, videoIndex, setVideoIndex } = useVideo();
+  const { videoIndex, setVideoIndex } = useVideo();
 
   return (
     <main className={styles.Container}>

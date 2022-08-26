@@ -34,6 +34,9 @@ const Background: React.FC<BackgroundProps> = () => {
           }
         }}
       />
+      <div className={styles.LoadingContainer}>
+        <div className={styles.Loading}></div>
+      </div>
     </div>
   );
 };
