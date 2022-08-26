@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ subLine = ".net" }) => {
     <div className={styles.Container}>
       <div className={styles.Logo} data-s-clicks={sClicks}>
         <LinkWrapper
-          href={sss ? "/system-malfunction" : "/"}
+          href={sClicks === 6 ? "/system-malfunction" : "/"}
           linkProps={{
             onClick: () => {
               setSClicks(Math.min(sClicks + 1, 6));

@@ -14,8 +14,6 @@ function App({ Component, pageProps }: AppProps): ReactNode {
   useEffect(() => {
     if (sClicks === 6) {
       setSss(true);
-    } else {
-      setSss(false);
     }
   }, [sClicks, setSss]);
 

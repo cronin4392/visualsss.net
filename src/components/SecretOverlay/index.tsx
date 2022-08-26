@@ -25,7 +25,10 @@ const SecretOverlay: React.FC<SecretOverlayProps> = () => {
         }
       });
     }
-    setSClicks(0);
+
+    if (sClicks === 6) {
+      setSClicks(0);
+    }
   }, [setSClicks, sClicks, sss]);
 
   return (
