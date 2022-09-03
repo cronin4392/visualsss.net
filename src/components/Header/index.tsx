@@ -2,13 +2,51 @@ import Logo from "@/icons/dist/Logo";
 import { useSssState } from "@/context/SssContextProvider";
 import LinkWrapper from "@/components/LinkWrapper";
 import styles from "./styles.module.scss";
+import { useTouchContext } from "@/context/TouchContextProvider";
+import { useEffect, useState } from "react";
+
+const warningMessages = [
+  "Don't do that",
+  "No scroll zone",
+  "Please stop",
+  "ok...",
+  "Getting out of hand",
+];
 
 type HeaderProps = {
   subLine?: string | false;
 };
 
+const subLineText = (text: string | false, count: number, warning: boolean) => {
+  if (text === false) {
+    return text;
+  }
+
+  if (warning) {
+    console.log(count);
+    return warningMessages[count % warningMessages.length];
+  }
+
+  return text;
+};
+
 const Header: React.FC<HeaderProps> = ({ subLine = ".net" }) => {
-  const { sss, setSClicks, sClicks } = useSssState();
+  const { setSClicks, sClicks } = useSssState();
+  const { warning, showWarning, setShowWarning } = useTouchContext();
+  const [warningTimeout, setWarningTimeout] = useState<NodeJS.Timeout | null>();
+
+  useEffect(() => {
+    if (showWarning && !warningTimeout) {
+      const timeout = setTimeout(() => {
+        setShowWarning(false);
+        setWarningTimeout(null);
+      }, 3000);
+
+      setWarningTimeout(timeout);
+    }
+  }, [showWarning, setShowWarning, warningTimeout]);
+
+  const subText = subLineText(subLine, warning, showWarning);
 
   return (
     <div className={styles.Container}>
@@ -24,9 +62,9 @@ const Header: React.FC<HeaderProps> = ({ subLine = ".net" }) => {
           <Logo />
         </LinkWrapper>
       </div>
-      {subLine && (
-        <div className={styles.SubLine} data-text={subLine}>
-          <span className="all-caps-adjust">{subLine}</span>
+      {subText && (
+        <div className={styles.SubLine} data-text={subText}>
+          <span className="all-caps-adjust">{subText}</span>
         </div>
       )}
     </div>
