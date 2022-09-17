@@ -1,8 +1,19 @@
+@import "@/styles/tools/main.scss";
+
 .Container {
   padding: var(--site-padding);
   display: grid;
   grid-template-areas: "header header" "menu video-controls";
+  column-gap: var(--site-padding);
   height: 100%;
+
+  @include minWidth(desktop) {
+    grid-template-columns: 3fr 1fr;
+  }
+
+  @include minWidth(hires) {
+    grid-template-columns: 2fr 1fr;
+  }
 }
 
 .Header {

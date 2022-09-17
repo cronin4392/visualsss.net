@@ -2,8 +2,7 @@
 
 .Container {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-wrap: wrap;
   gap: rem(6px);
 
   @include minWidth(desktop) {
@@ -17,6 +16,11 @@
   color: var(--color-white);
   background-color: var(--color-black);
   padding: rem(9px);
+
+  @include minWidth(tablet) {
+    @include fontSize(64px);
+    padding: rem(14px);
+  }
 
   @include minWidth(desktop) {
     @include fontSize(92px);
