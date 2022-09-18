@@ -3,7 +3,6 @@ import { useSssState } from "@/context/SssContextProvider";
 import LinkWrapper from "@/components/LinkWrapper";
 import styles from "./styles.module.scss";
 import { useTouchContext } from "@/context/TouchContextProvider";
-import { useEffect, useState } from "react";
 
 const warningMessages = [
   "Don't do that",
@@ -18,12 +17,7 @@ type HeaderProps = {
 };
 
 const subLineText = (text: string | false, count: number, warning: boolean) => {
-  if (text === false) {
-    return text;
-  }
-
-  if (warning) {
-    console.log(count);
+  if (text !== false && warning) {
     return warningMessages[count % warningMessages.length];
   }
 
@@ -32,27 +26,14 @@ const subLineText = (text: string | false, count: number, warning: boolean) => {
 
 const Header: React.FC<HeaderProps> = ({ subLine = ".net" }) => {
   const { setSClicks, sClicks } = useSssState();
-  const { warning, showWarning, setShowWarning } = useTouchContext();
-  const [warningTimeout, setWarningTimeout] = useState<NodeJS.Timeout | null>();
-
-  useEffect(() => {
-    if (showWarning && !warningTimeout) {
-      const timeout = setTimeout(() => {
-        setShowWarning(false);
-        setWarningTimeout(null);
-      }, 3000);
-
-      setWarningTimeout(timeout);
-    }
-  }, [showWarning, setShowWarning, warningTimeout]);
-
+  const { warning, showWarning } = useTouchContext();
   const subText = subLineText(subLine, warning, showWarning);
 
   return (
     <div className={styles.Container}>
       <div className={styles.Logo} data-s-clicks={sClicks}>
         <LinkWrapper
-          href={sClicks === 6 ? "/system-malfunction" : "/"}
+          href={sClicks === 5 ? "/system-malfunction" : "/"}
           linkProps={{
             onClick: () => {
               setSClicks(Math.min(sClicks + 1, 6));

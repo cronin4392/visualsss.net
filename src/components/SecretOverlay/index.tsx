@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 type SecretOverlayProps = {};
 
 const SecretOverlay: React.FC<SecretOverlayProps> = () => {
-  const { sClicks, setSClicks, sss } = useSssState();
+  const { sClicks, sss } = useSssState();
   const [sssLink, setSssLink] = useState<string | null>(null);
 
   useEffect(() => {
@@ -25,11 +25,7 @@ const SecretOverlay: React.FC<SecretOverlayProps> = () => {
         }
       });
     }
-
-    if (sClicks === 6) {
-      setSClicks(0);
-    }
-  }, [setSClicks, sClicks, sss]);
+  }, [sClicks, sss]);
 
   return (
     <div className={styles.Container}>
