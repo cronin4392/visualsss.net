@@ -37,6 +37,8 @@ function App({ Component, pageProps }: AppProps): ReactNode {
 
   useEffect(() => {
     const onRouteChange = (url: string) => {
+      setShowWarning(false);
+
       if (url === "/" && sClicks === 6) {
         setSClicks(0);
       }
