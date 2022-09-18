@@ -43,16 +43,13 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const preventScroll = (event: TouchEvent) => {
-    console.log("Prevent");
     event.preventDefault();
   };
 
   useEffect(() => {
     if (!pageIsScrollable(router.asPath)) {
-      console.log("Add");
       document.addEventListener("touchmove", preventScroll, { passive: false });
     } else {
-      console.log("Remove");
       document.removeEventListener("touchmove", preventScroll);
     }
 
