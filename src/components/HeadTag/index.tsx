@@ -12,7 +12,7 @@ export type ShareProps = {
 
 const HeadTag: React.FC<ShareProps> = (props) => {
   const router = useRouter();
-  const title = props.title || "visualsssssssss.com";
+  const title = props.title || "visualsss.net";
   const pageTitle = props.pageTitle || null;
   const fullTitle = removeNulls([title, pageTitle]).join(" | ");
   const description = props.description || "";
@@ -36,7 +36,7 @@ const HeadTag: React.FC<ShareProps> = (props) => {
           ? [
               {
                 url: image,
-                alt: "visualsssssssss.com",
+                alt: "visualsss.net",
               },
             ]
           : undefined,
