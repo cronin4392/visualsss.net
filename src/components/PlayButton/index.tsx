@@ -7,7 +7,7 @@ const PlayButton: React.FC<PlayButtonProps> = () => {
   return (
     <div className={styles.Container}>
       <LinkWrapper
-        href="/visualizer"
+        href="/video"
         linkProps={{ className: styles.PlayButton }}
       >
         <span className="all-caps-adjust">▶</span>

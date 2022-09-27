@@ -3,7 +3,7 @@ import HeadTag from "@/components/HeadTag";
 import Header from "@/components/Header";
 import VideoLayout from "@/layouts/VideoLayout";
 
-const VisualizerPage: NextPage = () => {
+const VideoPage: NextPage = () => {
   return (
     <>
       <HeadTag />
@@ -12,4 +12,4 @@ const VisualizerPage: NextPage = () => {
   );
 };
 
-export default VisualizerPage;
+export default VideoPage;
