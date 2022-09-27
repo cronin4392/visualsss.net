@@ -5,9 +5,7 @@ import Header from "@/components/Header";
 import Page from "@/components/Page";
 import { aboutPageContent } from "@/content/about";
 
-type PageProps = {};
-
-const AboutPage: NextPage<PageProps> = () => {
+const AboutPage: NextPage = () => {
   return (
     <>
       <HeadTag />
@@ -17,12 +15,6 @@ const AboutPage: NextPage<PageProps> = () => {
       />
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
-  return {
-    props: {},
-  };
 };
 
 export default AboutPage;

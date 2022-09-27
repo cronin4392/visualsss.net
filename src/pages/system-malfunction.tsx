@@ -1,17 +1,15 @@
+import { useEffect } from "react";
 import { GetStaticProps, NextPage } from "next";
+import { useRouter } from "next/router";
 import PageLayout from "@/layouts/PageLayout";
 import HeadTag from "@/components/HeadTag";
 import Header from "@/components/Header";
 import SecretOverlay from "@/components/SecretOverlay";
 import { useSssState } from "@/context/SssContextProvider";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 
-type PageProps = {};
-
-const SystemMalfunctionPage: NextPage<PageProps> = () => {
+const SystemMalfunctionPage = () => {
   const router = useRouter();
-  const { sClicks, sss } = useSssState();
+  const { sss } = useSssState();
 
   useEffect(() => {
     if (!sss) {
@@ -28,12 +26,6 @@ const SystemMalfunctionPage: NextPage<PageProps> = () => {
       />
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
-  return {
-    props: {},
-  };
 };
 
 export default SystemMalfunctionPage;

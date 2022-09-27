@@ -4,21 +4,13 @@ import HeadTag from "@/components/HeadTag";
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
 
-type PageProps = {};
-
-const Page: NextPage<PageProps> = () => {
+const Page: NextPage = () => {
   return (
     <>
       <HeadTag />
       <HomeLayout header={<Header />} menu={<Menu />} />
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
-  return {
-    props: {},
-  };
 };
 
 export default Page;
