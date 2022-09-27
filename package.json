@@ -12,7 +12,6 @@
     "svgr": "npx @svgr/cli --no-dimensions --typescript --svgo-config ./svgo.config.js -d ./src/icons/dist/ ./src/icons/src/"
   },
   "dependencies": {
-    "@mantine/hooks": "^4.2.12",
     "next": "^12.2.2",
     "next-seo": "^5.4.0",
     "react": "18.2.0",
