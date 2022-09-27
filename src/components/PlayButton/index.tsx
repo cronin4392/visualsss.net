@@ -10,7 +10,7 @@ const PlayButton: React.FC<PlayButtonProps> = () => {
         href="/video"
         linkProps={{ className: styles.PlayButton }}
       >
-        <span className="all-caps-adjust">▶</span>
+        <span className="caps">▶</span>
       </LinkWrapper>
     </div>
   );

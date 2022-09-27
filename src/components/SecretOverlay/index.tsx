@@ -38,15 +38,15 @@ const SecretOverlay: React.FC<SecretOverlayProps> = () => {
       </p>
       <div className={styles.Buttons}>
         <LinkWrapper href="/" linkProps={{ className: styles.Button }}>
-          <span className="all-caps-adjust">⬱ Abort</span>
+          <span className="caps">⬱ Abort</span>
         </LinkWrapper>
         {sssLink ? (
           <LinkWrapper href={sssLink} linkProps={{ className: styles.Button }}>
-            <span className="all-caps-adjust">Proceed ⇶</span>
+            <span className="caps">Proceed ⇶</span>
           </LinkWrapper>
         ) : (
           <div className={styles.Button}>
-            <span className="all-caps-adjust">Validating...</span>
+            <span className="caps">Validating...</span>
           </div>
         )}
       </div>

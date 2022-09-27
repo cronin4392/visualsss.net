@@ -42,7 +42,7 @@ const Menu: React.FC<MenuProps> = () => {
 
 const MenuItem: React.FC<MenuItem> = ({ text, link }) => (
   <div className={styles.MenuItem}>
-    <span className="all-caps-adjust">
+    <span className="caps">
       <LinkWrapper href={link}>{text}</LinkWrapper>
     </span>
   </div>

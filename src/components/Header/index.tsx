@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = ({ subLine = ".net" }) => {
       </div>
       {subText && (
         <div className={styles.SubLine} data-text={subText}>
-          <span className="all-caps-adjust">{subText}</span>
+          <span className="caps">{subText}</span>
         </div>
       )}
     </div>
