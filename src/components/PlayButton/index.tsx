@@ -1,9 +1,9 @@
 import LinkWrapper from "@/components/LinkWrapper";
 import styles from "./styles.module.scss";
 
-type VisualizerLinkProps = {};
+type PlayButtonProps = {};
 
-const VisualizerLink: React.FC<VisualizerLinkProps> = () => {
+const PlayButton: React.FC<PlayButtonProps> = () => {
   return (
     <div className={styles.Container}>
       <LinkWrapper
@@ -16,4 +16,4 @@ const VisualizerLink: React.FC<VisualizerLinkProps> = () => {
   );
 };
 
-export default VisualizerLink;
+export default PlayButton;
