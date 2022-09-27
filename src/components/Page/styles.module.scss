@@ -1,4 +1,5 @@
 @import "@/styles/tools/main.scss";
+@import "@/styles/templates/maxWidth.scss";
 
 @mixin line($char, $dChar) {
   content: $char;
@@ -9,12 +10,11 @@
 }
 
 .Wrapper {
+  @extend %MaxWidth;
   background-color: var(--color-black);
   color: var(--color-white);
   padding: rem(16px);
   max-height: 100%;
-  max-width: rem(1120px);
-  width: 100%;
 
   p:first-child {
     margin-top: 0;
