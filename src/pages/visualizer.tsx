@@ -1,23 +1,15 @@
-import { GetStaticProps, NextPage } from "next";
+import {  NextPage } from "next";
 import HeadTag from "@/components/HeadTag";
 import Header from "@/components/Header";
 import VideoLayout from "@/layouts/VideoLayout";
 
-type PageProps = {};
-
-const VisualizerPage: NextPage<PageProps> = () => {
+const VisualizerPage: NextPage = () => {
   return (
     <>
       <HeadTag />
       <VideoLayout header={<Header subLine="visssualizer" />} />
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps<PageProps> = async ({ params }) => {
-  return {
-    props: {},
-  };
 };
 
 export default VisualizerPage;
