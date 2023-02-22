@@ -68,7 +68,7 @@ const Video: React.FC<
         setPlaying(file !== playing ? file : null);
       }}
     >
-      <video autoPlay muted={false} loop ref={videoRef}>
+      <video autoPlay muted={false} loop playsInline ref={videoRef}>
         <source src={file} type="video/mp4"></source>
       </video>
       <div className={styles.Text}>
