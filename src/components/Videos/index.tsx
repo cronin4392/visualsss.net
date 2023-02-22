@@ -56,7 +56,6 @@ const Video: React.FC<
 
   useEffect(() => {
     if (videoRef.current) {
-      console.log("muted", muted);
       videoRef.current.muted = muted;
     }
   }, [muted]);
