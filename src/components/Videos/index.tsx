@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 
 type Video = {
@@ -52,15 +52,23 @@ const Video: React.FC<
   }
 > = ({ file, caption, date, playing, setPlaying }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const muted = playing !== file;
+
+  useEffect(() => {
+    if (videoRef.current) {
+      console.log("muted", muted);
+      videoRef.current.muted = muted;
+    }
+  }, [muted]);
 
   return (
     <div
       className={styles.Video}
       onClick={() => {
-        setPlaying(file);
+        setPlaying(file !== playing ? file : null);
       }}
     >
-      <video autoPlay muted={playing !== file} loop ref={videoRef}>
+      <video autoPlay muted={false} loop ref={videoRef}>
         <source src={file} type="video/mp4"></source>
       </video>
       <div className={styles.Text}>
