@@ -1,0 +1,37 @@
+@import "@/styles/tools/main.scss";
+
+.Videos {
+  display: grid;
+  gap: 1rem;
+  height: 100%;
+  overflow: auto;
+  font-size: 1.25rem;
+
+  @include minWidth(tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include minWidth(desktop) {
+    font-size: 2rem;
+  }
+}
+
+.Video {
+  background-color: var(--color-black);
+
+  video {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.Text {
+  padding: 1rem;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  margin-top: -1px;
+  display: flex;
+  justify-content: space-between;
+}

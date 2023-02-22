@@ -11,6 +11,10 @@ type MenuItems = Array<MenuItem>;
 
 const menuItems: MenuItems = [
   {
+    text: "Content",
+    link: "/content",
+  },
+  {
     text: "About",
     link: "/about",
   },

@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPage } from "next";
+import { NextPage } from "next";
 import PageLayout from "@/layouts/PageLayout";
 import HeadTag from "@/components/HeadTag";
 import Header from "@/components/Header";
