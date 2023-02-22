@@ -25,9 +25,10 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const onTouchMove: React.TouchEventHandler<HTMLElement> = (event) => {
-    if (router.asPath === "/about") {
+    if (!["/"].includes(router.asPath)) {
       return;
     }
+
     const { pageX, pageY } = event.touches[0];
     const { x, y } = touchStart;
     if (!x || !y) {
