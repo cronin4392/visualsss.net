@@ -30,8 +30,8 @@ const LinkWrapper: React.FC<LinkWrapperProps> = ({
   }
 
   return (
-    <Link href={href}>
-      <a {...linkProps}>{children}</a>
+    <Link href={href} {...linkProps}>
+      {children}
     </Link>
   );
 };

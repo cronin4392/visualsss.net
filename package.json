@@ -12,10 +12,10 @@
     "svgr": "npx @svgr/cli --no-dimensions --typescript --svgo-config ./svgo.config.js -d ./src/icons/dist/ ./src/icons/src/"
   },
   "dependencies": {
-    "next": "^12.2.2",
+    "next": "^13.1.6",
     "next-seo": "^5.4.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-hls-player": "^3.0.7"
   },
   "devDependencies": {
@@ -25,7 +25,7 @@
     "@types/react-dom": "18.0.5",
     "component-file-generator": "^0.5.2",
     "eslint": "8.18.0",
-    "eslint-config-next": "12.1.6",
+    "eslint-config-next": "^13.1.6",
     "eslint-config-prettier": "^8.5.0",
     "sass": "^1.53.0",
     "typescript": "4.7.4"
