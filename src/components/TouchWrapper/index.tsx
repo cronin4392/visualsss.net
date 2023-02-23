@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
+import { NextRouter, useRouter } from "next/router";
 import { useTouchContext } from "@/context/TouchContextProvider";
 import styles from "./styles.module.scss";
+
+const disableTouch = (router: NextRouter) => {
+  return !["/"].includes(router.asPath);
+};
 
 const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -21,7 +25,7 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const onTouchMove: React.TouchEventHandler<HTMLElement> = (event) => {
-    if (!["/"].includes(router.asPath)) {
+    if (disableTouch(router)) {
       return;
     }
 
@@ -38,6 +42,10 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
       setShowWarning(true);
     }
   };
+
+  if (disableTouch(router)) {
+    return <>{children}</>;
+  }
 
   return (
     <div

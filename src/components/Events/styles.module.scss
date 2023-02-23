@@ -3,8 +3,6 @@
 .Events {
   display: grid;
   gap: 1rem;
-  height: 100%;
-  overflow: auto;
   font-size: 1.25rem;
 
   @include minWidth(tablet) {

@@ -6,21 +6,6 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#__next {
-  height: 100%;
-}
-
-html {
-  scroll-behavior: smooth;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
 body {
   @include fontSize(20px, 20px);
   margin: 0;
