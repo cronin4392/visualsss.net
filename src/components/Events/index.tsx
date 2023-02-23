@@ -50,7 +50,7 @@ const Event: React.FC<Event> = ({ file, url }) => {
         <Image
           src={file}
           alt="Live generated projection"
-          layout="responsive"
+          sizes="30vw"
           width={640}
           height={640}
         />
