@@ -19,12 +19,14 @@
   display: flex;
   flex-direction: column;
 
-  &[data-size="tall"] {
-    grid-row: span 3;
-  }
+  @include minWidth(tablet) {
+    &[data-size="tall"] {
+      grid-row: span 3;
+    }
 
-  &[data-size="wide"] {
-    grid-column: span 2;
+    &[data-size="wide"] {
+      grid-column: span 2;
+    }
   }
 }
 
