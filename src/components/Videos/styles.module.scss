@@ -16,14 +16,32 @@
   }
 }
 
-.Video {
+.Container {
   background-color: var(--color-black);
+  display: flex;
+  flex-direction: column;
+
+  &[data-size="tall"] {
+    grid-row: span 3;
+  }
+
+  &[data-size="wide"] {
+    grid-column: span 2;
+  }
+}
+
+.Video {
+  flex-grow: 1;
 
   video {
     max-width: 100%;
     height: auto;
     vertical-align: top;
     aspect-ratio: 16 / 9;
+
+    .Container[data-size="tall"] & {
+      aspect-ratio: 9 / 16;
+    }
   }
 }
 
