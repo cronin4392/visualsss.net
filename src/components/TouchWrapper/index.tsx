@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NextRouter, useRouter } from "next/router";
 import { useTouchContext } from "@/context/TouchContextProvider";
+import { useWindowSize } from "usehooks-ts";
 import styles from "./styles.module.scss";
 
 const disableTouch = (router: NextRouter) => {
@@ -17,6 +18,7 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
     y: number | null;
   }>({ x: null, y: null });
   const [triggered, setTriggered] = useState(false);
+  const { height } = useWindowSize();
 
   const onTouchStart: React.TouchEventHandler<HTMLElement> = (event) => {
     const { pageX, pageY } = event.touches[0];
@@ -44,7 +46,7 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
   };
 
   if (disableTouch(router)) {
-    return <>{children}</>;
+    return <div>{children}</div>;
   }
 
   return (
@@ -52,6 +54,7 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
       className={styles.Container}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
+      style={{ "--window-height": `${height}px` } as React.CSSProperties}
     >
       {children}
     </div>
