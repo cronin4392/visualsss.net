@@ -46,7 +46,14 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
   };
 
   if (disableTouch(router)) {
-    return <div>{children}</div>;
+    return (
+      <div
+        className={styles.Container}
+        style={{ "--window-height": `${height}px` } as React.CSSProperties}
+      >
+        {children}
+      </div>
+    );
   }
 
   return (

@@ -4,7 +4,7 @@
   padding: var(--site-padding);
   display: grid;
   grid-template-areas: "header header" "menu video-controls";
-  height: 100%;
+  height: var(--window-height, 100vh);
 }
 
 .Header {
