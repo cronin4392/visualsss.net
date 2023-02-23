@@ -55,6 +55,9 @@ const content: Array<Video | Youtube> = [
   newVideo("IMG_0771.mp4", "Paplin Presents", "Oct 2022"),
   newVideo("IMG_0262.mp4", "Elements", "Jul 2022"),
   newVideo("IMG_9810.mp4", "Elements", "Apr 2022"),
+  newVideo("IMG_9544.mp4", "AFH x Kitauna Parker", "Mar 2022", {
+    size: "wide",
+  }),
   newYoutube("JbCZ4dFoG5s", "Sound Boy Ent", "Feb 2022", {
     size: "wide",
   }),
