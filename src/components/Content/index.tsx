@@ -2,7 +2,16 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 
 type Video = {
+  __type: "video";
   file: string;
+  caption: string;
+  date: string;
+  size?: "tall" | "wide";
+};
+
+type Youtube = {
+  __type: "youtube";
+  id: string;
   caption: string;
   date: string;
   size?: "tall" | "wide";
@@ -21,10 +30,19 @@ const newVideo = (
 
   const file = `${baseUrl}${relFile}`;
 
-  return { file, caption, date, size: options?.size };
+  return { __type: "video", file, caption, date, size: options?.size };
 };
 
-const videos = [
+const newYoutube = (
+  id: string,
+  caption: string,
+  date: string,
+  options?: { size?: "tall" | "wide" }
+): Youtube => {
+  return { __type: "youtube", id, caption, date, size: options?.size };
+};
+
+const content: Array<Video | Youtube> = [
   newVideo("IMG_1242.mp4", "Elements", "Feb 2023", {
     size: "wide",
   }),
@@ -37,6 +55,9 @@ const videos = [
   newVideo("IMG_0771.mp4", "Paplin Presents", "Oct 2022"),
   newVideo("IMG_0262.mp4", "Elements", "Jul 2022"),
   newVideo("IMG_9810.mp4", "Elements", "Apr 2022"),
+  newYoutube("JbCZ4dFoG5s", "Sound Boy Ent", "Feb 2022", {
+    size: "wide",
+  }),
   newVideo("IMG_8838.mp4", "House", "Oct 2021"),
   newVideo("IMG_8885.mp4", "House", "Oct 2021"),
   newVideo("IMG_8886.mp4", "House", "Oct 2021"),
@@ -46,21 +67,28 @@ const videos = [
   newVideo("IMG_8576.mp4", "AFH Nokia Snake", "Sep 2021", {
     size: "tall",
   }),
+  newYoutube("TeHW-T7uc4Q", "Sound Boy Ent", "Jun 2020", {
+    size: "wide",
+  }),
 ];
 
-const Videos = () => {
+const Content = () => {
   const [playing, setPlaying] = useState<string | null>(null);
 
   return (
     <div className={styles.Videos}>
-      {videos.map((video, index) => (
-        <Video
-          {...video}
-          playing={playing}
-          setPlaying={setPlaying}
-          key={index}
-        />
-      ))}
+      {content.map((video, index) =>
+        video.__type === "video" ? (
+          <Video
+            {...video}
+            playing={playing}
+            setPlaying={setPlaying}
+            key={video.file}
+          />
+        ) : (
+          <Youtube {...video} key={video.id} />
+        )
+      )}
     </div>
   );
 };
@@ -101,4 +129,25 @@ const Video: React.FC<
   );
 };
 
-export default Videos;
+const Youtube: React.FC<Youtube> = ({ id, caption, date, size }) => {
+  return (
+    <div className={styles.Container} data-size={size}>
+      <div className={styles.IFrame}>
+        <iframe
+          width="100%"
+          height="100%"
+          src={`https://www.youtube-nocookie.com/embed/${id}`}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      </div>
+      <div className={styles.Text}>
+        <span>{caption}</span>
+        <span>{date}</span>
+      </div>
+    </div>
+  );
+};
+
+export default Content;

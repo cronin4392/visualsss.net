@@ -31,6 +31,10 @@ const videos = [
     "312990571_1569187836831643_4117045235679569073_n.jpg",
     "https://www.instagram.com/p/CkMqy-wMA3d/"
   ),
+  newEvent(
+    "91777052_667198214043410_6738829918933772962_n.jpg",
+    "https://www.instagram.com/p/B-aUpGDhdg7/"
+  ),
 ];
 
 const Events = () => {
