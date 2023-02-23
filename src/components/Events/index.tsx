@@ -51,8 +51,8 @@ const Event: React.FC<Event> = ({ file, url }) => {
           src={file}
           alt="Live generated projection"
           layout="responsive"
-          width="100%"
-          height="100%"
+          width={640}
+          height={640}
         />
       </LinkWrapper>
     </div>
