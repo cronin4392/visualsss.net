@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import styles from "./styles.module.scss";
 
 type Video = {
@@ -105,11 +106,28 @@ const Video: React.FC<
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const muted = playing !== file;
 
+  const [scrollRef, inView, entry] = useInView({
+    threshold: 0,
+  });
+
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.muted = muted;
     }
   }, [muted]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (inView) {
+        videoRef.current.play();
+      } else {
+        videoRef.current.pause();
+        if (playing === file) {
+          setPlaying(null);
+        }
+      }
+    }
+  }, [inView]);
 
   return (
     <div
@@ -118,9 +136,10 @@ const Video: React.FC<
         setPlaying(file !== playing ? file : null);
       }}
       data-size={size}
+      ref={scrollRef}
     >
       <div className={styles.Video}>
-        <video autoPlay muted={muted} loop playsInline ref={videoRef}>
+        <video muted={muted} loop playsInline ref={videoRef}>
           <source src={file} type="video/mp4"></source>
         </video>
       </div>
