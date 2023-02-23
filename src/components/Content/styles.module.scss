@@ -53,7 +53,7 @@
   flex-grow: 1;
 
   video {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     vertical-align: top;
     aspect-ratio: 16 / 9;
@@ -73,8 +73,12 @@
 }
 
 .Text {
-  padding: 1rem 0rem;
+  padding-top: 1rem;
   margin-top: -1px;
   display: flex;
   justify-content: space-between;
+
+  span:nth-child(even) {
+    text-align: right;
+  }
 }

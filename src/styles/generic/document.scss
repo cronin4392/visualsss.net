@@ -15,6 +15,7 @@ body {
   text-transform: uppercase;
   font-smooth: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: rem(1400px);
 
   @include minWidth(desktop) {
     @include fontSize(28px);
