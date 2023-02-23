@@ -25,7 +25,8 @@ const videos = [
   newVideo("IMG_1168.mp4", "Flavours Above Ground", "Nov 2022"),
   newVideo("IMG_0885.mp4", "Flavours Above Ground", "Nov 2022"),
   newVideo("IMG_0771.mp4", "Paplin Presents", "Oct 2022"),
-  newVideo("IMG_0262.mp4", "Elements", "Jul 2020"),
+  newVideo("IMG_0262.mp4", "Elements", "Jul 2022"),
+  newVideo("IMG_9810.mp4", "Elements", "Apr 2022"),
 ];
 
 const Videos = () => {
