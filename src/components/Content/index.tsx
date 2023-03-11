@@ -24,7 +24,7 @@ const newVideo = (
   date: string,
   options?: { size?: "tall" | "wide" }
 ): Video => {
-  const useAws = true;
+  const useAws = false;
   const baseUrl = useAws
     ? "https://visualsssssssss-site.s3.amazonaws.com/content/social-50mb-720p/"
     : "/videos/";
@@ -54,6 +54,9 @@ const content: Array<Video | Youtube> = [
   }),
   newVideo("IMG_0885.mp4", "Flavours Above Ground", "Nov 2022"),
   newVideo("IMG_0771.mp4", "Paplin Presents", "Oct 2022"),
+  newVideo("IMG_0534.mp4", "Fraktal Fest", "Aug 2022", {
+    size: "tall",
+  }),
   newVideo("IMG_0262.mp4", "Elements", "Jul 2022"),
   newVideo("IMG_9810.mp4", "Elements", "Apr 2022"),
   newVideo("IMG_9544.mp4", "AFH x Kitauna Parker", "Mar 2022", {
