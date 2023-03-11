@@ -2,12 +2,14 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import styles from "./styles.module.scss";
 
+type Sizes = "tall" | "wide" | "long";
+
 type Video = {
   __type: "video";
   file: string;
   caption: string;
   date: string;
-  size?: "tall" | "wide";
+  size?: Sizes;
 };
 
 type Youtube = {
@@ -15,14 +17,14 @@ type Youtube = {
   id: string;
   caption: string;
   date: string;
-  size?: "tall" | "wide";
+  size?: Sizes;
 };
 
 const newVideo = (
   relFile: string,
   caption: string,
   date: string,
-  options?: { size?: "tall" | "wide" }
+  options?: { size?: Sizes }
 ): Video => {
   const useAws = true;
   const baseUrl = useAws
@@ -44,6 +46,9 @@ const newYoutube = (
 };
 
 const content: Array<Video | Youtube> = [
+  newVideo("IMG_1292-2.mp4", "Aversion", "Mar 2023", {
+    size: "long",
+  }),
   newVideo("IMG_1242.mp4", "Elements", "Feb 2023", {
     size: "wide",
   }),
@@ -55,7 +60,7 @@ const content: Array<Video | Youtube> = [
   newVideo("IMG_0885.mp4", "Flavours Above Ground", "Nov 2022"),
   newVideo("IMG_0771.mp4", "Paplin Presents", "Oct 2022"),
   newVideo("IMG_0534.mp4", "Fraktal Fest", "Aug 2022", {
-    size: "tall",
+    size: "long",
   }),
   newVideo("IMG_0262.mp4", "Elements", "Jul 2022"),
   newVideo("IMG_9810.mp4", "Elements", "Apr 2022"),
@@ -65,18 +70,18 @@ const content: Array<Video | Youtube> = [
   newYoutube("JbCZ4dFoG5s", "Sound Boy Ent", "Feb 2022", {
     size: "wide",
   }),
-  newVideo("IMG_8838.mp4", "House", "Oct 2021"),
-  newVideo("IMG_8885.mp4", "House", "Oct 2021"),
-  newVideo("IMG_8886.mp4", "House", "Oct 2021"),
+  newVideo("IMG_8838.mp4", "House Party", "Oct 2021"),
+  newVideo("IMG_8885.mp4", "House Party", "Oct 2021"),
+  newVideo("IMG_8886.mp4", "House Party", "Oct 2021", {
+    size: "wide",
+  }),
   newVideo("IMG_8578.mp4", "AFH Nokia Snake", "Sep 2021", {
     size: "tall",
   }),
   newVideo("IMG_8576.mp4", "AFH Nokia Snake", "Sep 2021", {
     size: "tall",
   }),
-  newYoutube("TeHW-T7uc4Q", "Sound Boy Ent", "Jun 2020", {
-    size: "wide",
-  }),
+  newYoutube("TeHW-T7uc4Q", "Sound Boy Ent", "Jun 2020"),
 ];
 
 const Content = () => {
