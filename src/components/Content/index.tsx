@@ -24,7 +24,7 @@ const newVideo = (
   date: string,
   options?: { size?: "tall" | "wide" }
 ): Video => {
-  const useAws = false;
+  const useAws = true;
   const baseUrl = useAws
     ? "https://visualsssssssss-site.s3.amazonaws.com/content/social-50mb-720p/"
     : "/videos/";
