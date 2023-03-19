@@ -10,7 +10,12 @@
   }
 
   @include minWidth(desktop) {
+    grid-template-columns: repeat(3, 1fr);
     font-size: 2rem;
+  }
+
+  @include minWidth(hires) {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

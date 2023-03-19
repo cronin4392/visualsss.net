@@ -16,6 +16,10 @@ const newEvent = (relFile: string, url: string): Event => {
 
 const videos = [
   newEvent(
+    "335938308_1360249064819368_788037827450957237_n.jpg",
+    "https://www.instagram.com/p/CpyR18Tv7wf/"
+  ),
+  newEvent(
     "332150038_1193741991331430_1674588406660028255_n.jpg",
     "https://www.instagram.com/p/CpVeWW5JNx9/"
   ),
