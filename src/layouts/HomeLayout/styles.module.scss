@@ -6,6 +6,7 @@
   grid-template-areas: "header header" "menu video-controls";
   column-gap: var(--site-padding);
   height: var(--window-height, 100%);
+  grid-template-columns: minmax(auto, 1320px) auto;
 }
 
 .Header {
