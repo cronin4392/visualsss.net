@@ -46,6 +46,9 @@ const newYoutube = (
 };
 
 const content: Array<Video | Youtube> = [
+  newVideo("HolyMountainNvidia.8.mp4", "The Holy Mountain", "v1.01", {
+    size: "long",
+  }),
   newVideo("IMG_1292-2.mp4", "Aversion", "Mar 2023", {
     size: "long",
   }),
