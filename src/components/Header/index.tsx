@@ -14,6 +14,11 @@ const warningMessages = [
 
 type HeaderProps = {
   subLine?: string | false;
+  link?: {
+    text: string;
+    href: string;
+    download?: boolean;
+  };
 };
 
 const subLineText = (text: string | false, count: number, warning: boolean) => {
@@ -24,7 +29,7 @@ const subLineText = (text: string | false, count: number, warning: boolean) => {
   return text;
 };
 
-const Header: React.FC<HeaderProps> = ({ subLine = ".net" }) => {
+const Header: React.FC<HeaderProps> = ({ subLine = ".net", link }) => {
   const { setSClicks, sClicks } = useSssState();
   const { warning, showWarning } = useTouchContext();
   const subText = subLineText(subLine, warning, showWarning);
@@ -43,11 +48,21 @@ const Header: React.FC<HeaderProps> = ({ subLine = ".net" }) => {
           <Logo />
         </LinkWrapper>
       </div>
-      {subText && (
-        <div className={styles.SubLine} data-text={subText}>
-          <span className="caps">{subText}</span>
-        </div>
-      )}
+      <div className={styles.SubLines}>
+        {subText && (
+          <div className={styles.SubLine} data-text={subText}>
+            <span className="caps">{subText}</span>
+          </div>
+        )}
+        {link && (
+          <LinkWrapper
+            linkProps={{ className: styles.SubLine, download: link.download }}
+            href={link.href}
+          >
+            <span className="caps">{link.text}</span>
+          </LinkWrapper>
+        )}
+      </div>
     </div>
   );
 };

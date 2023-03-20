@@ -41,12 +41,18 @@
   }
 }
 
+.SubLines {
+  display: flex;
+  gap: 1rem;
+}
+
 .SubLine {
   @include fontSize(40px);
   --padding: #{rem(10px)};
   color: var(--color-white);
   background-color: var(--color-black);
   padding: var(--padding);
+  text-decoration: none;
 
   &[data-text=".net"] {
     padding-left: calc(var(--padding) * (2 / 5));

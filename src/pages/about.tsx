@@ -10,7 +10,12 @@ const AboutPage: NextPage = () => {
     <>
       <HeadTag />
       <PageLayout
-        header={<Header subLine="About" />}
+        header={
+          <Header
+            subLine="About"
+            link={{ text: "Logo", href: "/promo/logo.png", download: true }}
+          />
+        }
         content={
           <Page
             content={
