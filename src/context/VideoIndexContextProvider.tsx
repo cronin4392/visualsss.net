@@ -10,15 +10,19 @@ type Video = { name: string; url: string };
 
 export const videos: Array<Video> = [
   {
-    name: "The Holy Mountain",
+    name: "Mad Max [Glitch]",
+    url: "https://visualsssssssss-site.s3.amazonaws.com/max-max-v.01/playlist.m3u8",
+  },
+  {
+    name: "The Holy Mountain [Pixelated]",
     url: "https://visualsssssssss-site.s3.amazonaws.com/holy-mountain/playlist.m3u8",
   },
   {
-    name: "Fantastic Planet",
+    name: "Fantastic Planet [Voronoi]",
     url: "https://visualsssssssss-site.s3.amazonaws.com/fantastic-planet/playlist.m3u8",
   },
   {
-    name: "Mad Max",
+    name: "Mad Max [Pixelated]",
     url: "https://visualsssssssss-site.s3.amazonaws.com/mad-max/playlist.m3u8",
   },
 ];
