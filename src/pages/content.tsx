@@ -7,7 +7,7 @@ import Videos from "@/components/Content";
 const ContentPage: NextPage = () => {
   return (
     <>
-      <HeadTag />
+      <HeadTag pageTitle="Content" />
       <PageLayout header={<Header subLine="Content" />} content={<Videos />} />
     </>
   );

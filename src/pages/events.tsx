@@ -7,7 +7,7 @@ import Events from "@/components/Events";
 const ContentPage: NextPage = () => {
   return (
     <>
-      <HeadTag />
+      <HeadTag pageTitle="Events" />
       <PageLayout header={<Header subLine="Events" />} content={<Events />} />
     </>
   );

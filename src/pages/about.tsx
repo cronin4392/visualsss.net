@@ -8,7 +8,7 @@ import LinkWrapper from "@/components/LinkWrapper";
 const AboutPage: NextPage = () => {
   return (
     <>
-      <HeadTag />
+      <HeadTag pageTitle="About" />
       <PageLayout
         header={
           <Header
