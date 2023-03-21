@@ -1,0 +1,23 @@
+.VideoContainer {
+  flex-grow: 1;
+
+  video {
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+    aspect-ratio: 16 / 9;
+  }
+
+  &[data-size="tall"] video,
+  &[data-size="long"] video {
+    aspect-ratio: 9 / 16;
+  }
+}
+
+.YoutubeContainer {
+  iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+  }
+}

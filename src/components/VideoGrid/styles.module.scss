@@ -17,7 +17,7 @@
   }
 }
 
-.Container {
+.Video {
   background-color: var(--color-black);
   color: var(--color-white);
   display: flex;
@@ -50,30 +50,6 @@
       grid-row: span 2;
       grid-column: span 9;
     }
-  }
-}
-
-.Video {
-  flex-grow: 1;
-
-  video {
-    width: 100%;
-    height: auto;
-    vertical-align: top;
-    aspect-ratio: 16 / 9;
-
-    .Container[data-size="tall"] &,
-    .Container[data-size="long"] & {
-      aspect-ratio: 9 / 16;
-    }
-  }
-}
-
-.IFrame {
-  iframe {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border: 0;
   }
 }
 

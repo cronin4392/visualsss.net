@@ -1,6 +1,10 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import content, { Youtube, Video } from "@/data/videos";
+import content, {
+  Youtube as YoutubeType,
+  Video as VideoType,
+} from "@/data/videos";
+import Video from "@/components/Video";
 import styles from "./styles.module.scss";
 
 const Content = () => {
@@ -8,89 +12,48 @@ const Content = () => {
 
   return (
     <div className={styles.Videos}>
-      {content.map((video, index) =>
-        video.__type === "video" ? (
-          <Video
-            {...video}
-            playing={playing}
-            setPlaying={setPlaying}
-            key={video.file}
-          />
-        ) : (
-          <Youtube {...video} key={video.id} />
-        )
-      )}
+      {content.map((video) => (
+        <VideoContent
+          {...video}
+          playing={playing}
+          setPlaying={setPlaying}
+          key={video.id}
+        />
+      ))}
     </div>
   );
 };
 
-const Video: React.FC<
-  Video & {
+const VideoContent: React.FC<
+  (VideoType | YoutubeType) & {
     playing: string | null;
     setPlaying: Dispatch<SetStateAction<string | null>>;
   }
-> = ({ file, caption, date, size, playing, setPlaying }) => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const muted = playing !== file;
+> = (video) => {
+  const { id, caption, date, size, playing, setPlaying } = video;
 
-  const [scrollRef, inView, entry] = useInView({
+  const [scrollRef, inView] = useInView({
     threshold: 0,
   });
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = muted;
-    }
-  }, [muted]);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      if (inView) {
-        videoRef.current.play();
-      } else {
-        videoRef.current.pause();
-        if (playing === file) {
-          setPlaying(null);
-        }
+    if (!inView) {
+      if (playing === id) {
+        setPlaying(null);
       }
     }
-  }, [inView]);
+  }, [inView, playing, id, setPlaying]);
 
   return (
     <div
-      className={styles.Container}
+      className={styles.Video}
       onClick={() => {
-        setPlaying(file !== playing ? file : null);
+        setPlaying(id !== playing ? id : null);
       }}
       data-size={size}
       ref={scrollRef}
     >
-      <div className={styles.Video}>
-        <video muted={muted} loop playsInline ref={videoRef}>
-          <source src={file} type="video/mp4"></source>
-        </video>
-      </div>
-      <div className={styles.Text}>
-        <span>{caption}</span>
-        <span>{date}</span>
-      </div>
-    </div>
-  );
-};
-
-const Youtube: React.FC<Youtube> = ({ id, caption, date, size }) => {
-  return (
-    <div className={styles.Container} data-size={size}>
-      <div className={styles.IFrame}>
-        <iframe
-          width="100%"
-          height="100%"
-          src={`https://www.youtube-nocookie.com/embed/${id}`}
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        />
-      </div>
+      <Video video={video} playing={inView} muted={playing !== id} />
       <div className={styles.Text}>
         <span>{caption}</span>
         <span>{date}</span>
