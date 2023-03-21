@@ -12,21 +12,21 @@ export type ShareProps = {
 };
 
 const getTitleSlideIndex = (index: number, text: string) => {
-  const length = 12;
-
   const titleIndexStart = index % text.length;
   const titleIndexEnd = (index + text.length - 1) % text.length;
 
-  console.log(titleIndexStart, titleIndexEnd);
-  const title = text.slice(titleIndexStart, titleIndexEnd);
+  if (titleIndexEnd < titleIndexStart) {
+    const titlePart1 = text.slice(titleIndexStart, text.length);
+    const titlePart2 = text.slice(0, titleIndexEnd);
+    return titlePart1 + titlePart2;
+  }
 
-  return title;
+  return text.slice(titleIndexStart, titleIndexEnd);
 };
 
 const HeadTag: React.FC<ShareProps> = (props) => {
   const router = useRouter();
-  const titleText =
-    "visualsssssssssssssssssssssssssssssssssssssssssssssssssssss.net";
+  const titleText = "visualssssssssssssssssss.net ";
   const [titleIndex, setTitleIndex] = useState(0);
   const title = getTitleSlideIndex(titleIndex, titleText);
 
@@ -37,8 +37,7 @@ const HeadTag: React.FC<ShareProps> = (props) => {
 
   useInterval(() => {
     setTitleIndex(titleIndex + 1);
-    console.log(title);
-  }, Math.round(1000 / 10));
+  }, Math.round(1000 / 5));
 
   return (
     <NextSeo
