@@ -22,7 +22,11 @@ type HeaderProps = {
   };
 };
 
-const subLineText = (text: string | false, count: number, warning: boolean) => {
+const subLineText = (
+  text: string | ReactElement | false,
+  count: number,
+  warning: boolean
+) => {
   if (text !== false && warning) {
     return warningMessages[count % warningMessages.length];
   }
