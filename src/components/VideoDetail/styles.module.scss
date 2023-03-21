@@ -1,0 +1,25 @@
+@import "@/styles/tools/main.scss";
+@import "@/styles/templates/maxWidth.scss";
+
+.Container {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: rem(16px);
+  display: grid;
+  gap: 1rem;
+
+  @include minWidth(desktop) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+.Text {
+  h1 {
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}

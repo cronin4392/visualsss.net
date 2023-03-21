@@ -1,11 +1,12 @@
-type Sizes = "tall" | "wide" | "long";
+type Sizes = "tall" | "wide" | "long" | null;
 
 export type Video = {
   __type: "video";
+  id: string;
   file: string;
   caption: string;
   date: string;
-  size?: Sizes;
+  size: Sizes;
 };
 
 export type Youtube = {
@@ -13,14 +14,14 @@ export type Youtube = {
   id: string;
   caption: string;
   date: string;
-  size?: Sizes;
+  size: Sizes;
 };
 
 const newVideo = (
   relFile: string,
   caption: string,
   date: string,
-  options?: { size?: Sizes }
+  options?: { size: Sizes }
 ): Video => {
   const useAws = true;
   const baseUrl = useAws
@@ -29,16 +30,23 @@ const newVideo = (
 
   const file = `${baseUrl}${relFile}`;
 
-  return { __type: "video", file, caption, date, size: options?.size };
+  return {
+    __type: "video",
+    id: relFile,
+    file,
+    caption,
+    date,
+    size: options?.size || null,
+  };
 };
 
 const newYoutube = (
   id: string,
   caption: string,
   date: string,
-  options?: { size?: Sizes }
+  options?: { size: Sizes }
 ): Youtube => {
-  return { __type: "youtube", id, caption, date, size: options?.size };
+  return { __type: "youtube", id, caption, date, size: options?.size || null };
 };
 
 const content: Array<Video | Youtube> = [
