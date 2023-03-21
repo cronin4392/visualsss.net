@@ -54,6 +54,10 @@
   padding: var(--padding);
   text-decoration: none;
 
+  a {
+    text-decoration: none;
+  }
+
   &[data-text=".net"] {
     padding-left: calc(var(--padding) * (2 / 5));
   }

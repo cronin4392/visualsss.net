@@ -1,8 +1,9 @@
+import { ReactElement } from "react";
 import Logo from "@/icons/dist/Logo";
 import { useSssState } from "@/context/SssContextProvider";
+import { useTouchContext } from "@/context/TouchContextProvider";
 import LinkWrapper from "@/components/LinkWrapper";
 import styles from "./styles.module.scss";
-import { useTouchContext } from "@/context/TouchContextProvider";
 
 const warningMessages = [
   "Don't do that",
@@ -13,7 +14,7 @@ const warningMessages = [
 ];
 
 type HeaderProps = {
-  subLine?: string | false;
+  subLine?: string | ReactElement | false;
   link?: {
     text: string;
     href: string;
