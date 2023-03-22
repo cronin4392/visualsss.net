@@ -10,7 +10,6 @@ import LinkWrapper from "@/components/LinkWrapper";
 const ContentPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   content,
 }) => {
-  console.log(content);
   return (
     <>
       <HeadTag />

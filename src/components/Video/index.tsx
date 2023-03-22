@@ -1,4 +1,11 @@
-import { useEffect, useRef } from "react";
+import {
+  useEffect,
+  useRef,
+  forwardRef,
+  RefObject,
+  useState,
+  useCallback,
+} from "react";
 import type { Youtube, Video as VideoType } from "@/data/videos";
 import styles from "./styles.module.scss";
 
@@ -9,17 +16,21 @@ type VideoElProps = {
   playing?: boolean;
 };
 
-const Video: React.FC<VideoProps> = ({ video, muted, playing }) => {
-  return (
-    <div className={styles.Container}>
-      {video.__type === "youtube" ? (
-        <Youtube {...video} />
-      ) : (
-        <VideoElement {...video} muted={muted} playing={playing} />
-      )}
-    </div>
-  );
-};
+const Video = forwardRef<HTMLVideoElement, VideoProps>(
+  ({ video, muted, playing }, ref) => {
+    console.log("PARENT", playing);
+    return (
+      <div className={styles.Container}>
+        {video.__type === "youtube" ? (
+          <Youtube {...video} />
+        ) : (
+          <VideoElement {...video} muted={muted} playing={playing} ref={ref} />
+        )}
+      </div>
+    );
+  }
+);
+Video.displayName = "Video";
 
 const Youtube: React.FC<Youtube> = ({ id, size }) => {
   return (
@@ -36,39 +47,52 @@ const Youtube: React.FC<Youtube> = ({ id, size }) => {
   );
 };
 
-const VideoElement: React.FC<VideoType & VideoElProps> = ({
-  file,
-  muted,
-  size,
-  playing,
-}) => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
+const VideoElement = forwardRef<HTMLVideoElement, VideoType & VideoElProps>(
+  ({ file, muted, size, playing: parentPlaying = true }, ref) => {
+    const videoRef = useRef<HTMLVideoElement | null>(null);
+    const [myPlaying, setMyPlaying] = useState(parentPlaying);
+    const playing = parentPlaying || myPlaying;
 
-  // Mute video
-  useEffect(() => {
-    if (videoRef.current && muted !== undefined) {
-      videoRef.current.muted = muted;
-    }
-  }, [muted]);
-
-  // Play/Pause video
-  useEffect(() => {
-    if (videoRef.current && playing !== undefined) {
-      if (playing) {
-        videoRef.current.play();
-      } else {
-        videoRef.current.pause();
+    // Update myPlaying on load in case video didn't autoplay
+    useEffect(() => {
+      if (videoRef.current) {
+        setMyPlaying(!videoRef.current.paused);
       }
-    }
-  }, [playing]);
+    }, []);
 
-  return (
-    <div className={styles.VideoContainer} data-size={size}>
-      <video muted={muted} loop playsInline ref={videoRef}>
-        <source src={file} type="video/mp4"></source>
-      </video>
-    </div>
-  );
-};
+    // Mute video
+    useEffect(() => {
+      if (videoRef.current && muted !== undefined) {
+        videoRef.current.muted = muted;
+      }
+    }, [muted]);
+
+    // Play/Pause video
+    useEffect(() => {
+      if (videoRef.current && playing) {
+        if (playing) {
+          videoRef.current.play();
+        } else {
+          videoRef.current.pause();
+        }
+      }
+    }, [playing]);
+
+    return (
+      <div
+        className={styles.VideoContainer}
+        data-size={size}
+        onClick={() => {
+          setMyPlaying(!myPlaying);
+        }}
+      >
+        <video muted={muted} loop playsInline ref={ref || videoRef}>
+          <source src={file} type="video/mp4"></source>
+        </video>
+      </div>
+    );
+  }
+);
+VideoElement.displayName = "VideoElement";
 
 export default Video;
