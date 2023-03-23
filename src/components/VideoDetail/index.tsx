@@ -9,12 +9,12 @@ type VideoDetailProps = {
 };
 
 const VideoDetail: React.FC<VideoDetailProps> = ({ video }) => {
-  const firstLoad = useFirstLoadState();
-  // console.log(firstLoad);
+  const { firstLoad } = useFirstLoadState();
+
   return (
     <div className={styles.Container}>
       <div>
-        <Video video={video} muted={true} />
+        <Video video={video} muted={firstLoad} />
       </div>
       <div className={styles.Text}>
         <h1>{video.caption}</h1>
