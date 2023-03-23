@@ -6,7 +6,7 @@ import VideoLayout from "@/layouts/VideoLayout";
 const VideoPage: NextPage = () => {
   return (
     <>
-      <HeadTag pageTitle="Video" />
+      <HeadTag pageTitle="video" />
       <VideoLayout header={<Header subLine="visssualizer" />} />
     </>
   );

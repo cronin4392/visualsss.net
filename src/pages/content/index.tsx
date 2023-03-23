@@ -7,7 +7,7 @@ import VideoGrid from "@/components/VideoGrid";
 const ContentPage: NextPage = () => {
   return (
     <>
-      <HeadTag pageTitle="Content" />
+      <HeadTag pageTitle="content" />
       <PageLayout
         header={<Header subLine="Content" />}
         content={<VideoGrid />}
