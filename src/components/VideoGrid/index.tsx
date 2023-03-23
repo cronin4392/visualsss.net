@@ -8,6 +8,8 @@ import Video from "@/components/Video";
 import LinkWrapper from "@/components/LinkWrapper";
 import styles from "./styles.module.scss";
 
+// https://naver.github.io/egjs-infinitegrid/
+
 const Content = () => {
   const [unmutedId, setUnmutedId] = useState<string | null>(null);
   const video = content[0];
