@@ -10,7 +10,7 @@ import styles from "./styles.module.scss";
 
 const Content = () => {
   const [unmutedId, setUnmutedId] = useState<string | null>(null);
-
+  const video = content[0];
   return (
     <div className={styles.Videos}>
       {content.map((video) => (
@@ -56,8 +56,8 @@ const VideoContent: React.FC<
     >
       <Video video={video} playing={inView} audioOn={unmutedId === id} />
       <div className={styles.Text}>
-        <span>{caption}</span>
-        <span>{date}</span>
+        <span className="caps">{caption}</span>
+        <span className="caps">{date}</span>
       </div>
     </LinkWrapper>
   );
