@@ -10,17 +10,28 @@ import styles from "./styles.module.scss";
 
 // https://naver.github.io/egjs-infinitegrid/
 
+function shuffleArray<T>(array: Array<T>): Array<T> {
+  return [...array].sort(() => 0.5 - Math.random());
+}
+
 const Content = () => {
   const [unmutedId, setUnmutedId] = useState<string | null>(null);
-  const video = content[0];
+  // const video = content[0];
+
+  const [shuffledContent, setShuffledContent] = useState(content);
+
+  useEffect(() => {
+    setShuffledContent(shuffleArray(shuffledContent));
+  }, []);
+
   return (
     <div className={styles.Videos}>
-      {content.map((video) => (
+      {shuffledContent.map((video, index) => (
         <VideoContent
           {...video}
           unmutedId={unmutedId}
           setUnmutedId={setUnmutedId}
-          key={video.id}
+          key={`${video.id}-${index}`}
         />
       ))}
     </div>
