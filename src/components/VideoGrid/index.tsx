@@ -9,15 +9,15 @@ import LinkWrapper from "@/components/LinkWrapper";
 import styles from "./styles.module.scss";
 
 const Content = () => {
-  const [playingId, setPlayingId] = useState<string | null>(null);
+  const [unmutedId, setUnmutedId] = useState<string | null>(null);
 
   return (
     <div className={styles.Videos}>
       {content.map((video) => (
         <VideoContent
           {...video}
-          playingId={playingId}
-          setPlayingId={setPlayingId}
+          unmutedId={unmutedId}
+          setUnmutedId={setUnmutedId}
           key={video.id}
         />
       ))}
@@ -27,11 +27,11 @@ const Content = () => {
 
 const VideoContent: React.FC<
   (VideoType | YoutubeType) & {
-    playingId: string | null;
-    setPlayingId: Dispatch<SetStateAction<string | null>>;
+    unmutedId: string | null;
+    setUnmutedId: Dispatch<SetStateAction<string | null>>;
   }
 > = (video) => {
-  const { id, caption, date, size, playingId, setPlayingId } = video;
+  const { id, caption, date, size, unmutedId, setUnmutedId } = video;
 
   const [scrollRef, inView] = useInView({
     threshold: 0,
@@ -39,11 +39,11 @@ const VideoContent: React.FC<
 
   useEffect(() => {
     if (!inView) {
-      if (playingId === id) {
-        setPlayingId(null);
+      if (unmutedId === id) {
+        setUnmutedId(null);
       }
     }
-  }, [inView, playingId, id, setPlayingId]);
+  }, [inView, unmutedId, id, setUnmutedId]);
 
   return (
     <LinkWrapper
@@ -54,7 +54,7 @@ const VideoContent: React.FC<
       }}
       href={`/content/${id}`}
     >
-      <Video video={video} playing={inView} muted={playingId !== id} />
+      <Video video={video} playing={inView} muted={unmutedId !== id} />
       <div className={styles.Text}>
         <span>{caption}</span>
         <span>{date}</span>
