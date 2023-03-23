@@ -19,6 +19,9 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
   }>({ x: null, y: null });
   const [triggered, setTriggered] = useState(false);
   const { height } = useWindowSize();
+  const heightStyles = {
+    "--window-height": height > 0 ? `${height}px` : null,
+  } as React.CSSProperties;
 
   const onTouchStart: React.TouchEventHandler<HTMLElement> = (event) => {
     const { pageX, pageY } = event.touches[0];
@@ -47,10 +50,7 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
 
   if (disableTouch(router)) {
     return (
-      <div
-        className={styles.Container}
-        style={{ "--window-height": `${height}px` } as React.CSSProperties}
-      >
+      <div className={styles.Container} style={heightStyles}>
         {children}
       </div>
     );
@@ -61,7 +61,7 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
       className={styles.Container}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
-      style={{ "--window-height": `${height}px` } as React.CSSProperties}
+      style={heightStyles}
     >
       {children}
     </div>
