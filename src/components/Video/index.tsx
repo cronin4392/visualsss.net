@@ -18,7 +18,6 @@ type VideoElProps = {
 
 const Video = forwardRef<HTMLVideoElement, VideoProps>(
   ({ video, muted, playing }, ref) => {
-    console.log("PARENT", playing);
     return (
       <div className={styles.Container}>
         {video.__type === "youtube" ? (
