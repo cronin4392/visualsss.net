@@ -45,18 +45,8 @@
   justify-content: center;
   width: rem(40px);
   height: rem(40px);
-  background: rgba(0, 0, 0, 255);
-  cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  background: rgba(0, 0, 0, 1);
   padding: 0.5rem;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.7);
-  }
-
-  &:active {
-    background: rgba(0, 0, 0, 0.9);
-  }
 
   svg {
     width: 100%;
