@@ -50,9 +50,10 @@ const newYoutube = (
 };
 
 const content: Array<Video | Youtube> = [
-  newVideo("HolyMountainNvidia.8.mp4", "The Holy Mountain", "v1.01", {
-    size: "long",
-  }),
+  newVideo("IMG_1380.mp4", "BCEE", "Mar 2023"),
+  // newVideo("HolyMountainNvidia.8.mp4", "The Holy Mountain", "v1.01", {
+  //   size: "long",
+  // }),
   newVideo("IMG_1292-2.mp4", "Aversion", "Mar 2023", {
     size: "long",
   }),
@@ -61,6 +62,9 @@ const content: Array<Video | Youtube> = [
   }),
   newVideo("IMG_1244.mp4", "Elements", "Feb 2023"),
   newVideo("IMG_1222.mp4", "Infra x Av_rsion", "Feb 2023"),
+  newVideo("IMG_0796.mp4", "Soundz Organic", "Nov 2022", {
+    size: "wide",
+  }),
   newVideo("IMG_1168.mp4", "Flavours Above Ground", "Nov 2022", {
     size: "tall",
   }),
