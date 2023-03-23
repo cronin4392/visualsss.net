@@ -1,29 +1,33 @@
+import { useEffect, useRef, forwardRef, useState } from "react";
 import {
-  useEffect,
-  useRef,
-  forwardRef,
-  RefObject,
-  useState,
-  useCallback,
-} from "react";
+  IoMdPause,
+  IoMdPlay,
+  IoMdVolumeHigh,
+  IoMdVolumeOff,
+} from "react-icons/io";
 import type { Youtube, Video as VideoType } from "@/data/videos";
 import styles from "./styles.module.scss";
 
 type VideoProps = { video: Youtube | VideoType } & VideoElProps;
 
 type VideoElProps = {
-  muted?: boolean;
+  audioOn?: boolean;
   playing?: boolean;
 };
 
 const Video = forwardRef<HTMLVideoElement, VideoProps>(
-  ({ video, muted, playing }, ref) => {
+  ({ video, audioOn, playing }, ref) => {
     return (
       <div className={styles.Container}>
         {video.__type === "youtube" ? (
           <Youtube {...video} />
         ) : (
-          <VideoElement {...video} muted={muted} playing={playing} ref={ref} />
+          <VideoElement
+            {...video}
+            audioOn={audioOn}
+            playing={playing}
+            ref={ref}
+          />
         )}
       </div>
     );
@@ -47,10 +51,18 @@ const Youtube: React.FC<Youtube> = ({ id, size }) => {
 };
 
 const VideoElement = forwardRef<HTMLVideoElement, VideoType & VideoElProps>(
-  ({ file, muted, size, playing: parentPlaying = true }, ref) => {
+  (
+    { file, audioOn: parentAudioOn, size, playing: parentPlaying = true },
+    ref
+  ) => {
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const [myPlaying, setMyPlaying] = useState(parentPlaying);
-    const playing = parentPlaying || myPlaying;
+    const [myAudioOn, setMyAudioOn] = useState<boolean | null>(null);
+    const playing = parentPlaying && myPlaying;
+    const audioOn = myAudioOn !== null ? myAudioOn : parentAudioOn;
+
+    // console.log({ parentPlaying, myPlaying, playing });
+    // console.log({ parentAudioOn, myAudioOn, audioOn });
 
     // Update myPlaying on load in case video didn't autoplay
     useEffect(() => {
@@ -59,16 +71,9 @@ const VideoElement = forwardRef<HTMLVideoElement, VideoType & VideoElProps>(
       }
     }, []);
 
-    // Mute video
-    useEffect(() => {
-      if (videoRef.current && muted !== undefined) {
-        videoRef.current.muted = muted;
-      }
-    }, [muted]);
-
     // Play/Pause video
     useEffect(() => {
-      if (videoRef.current && playing) {
+      if (videoRef.current) {
         if (playing) {
           videoRef.current.play();
         } else {
@@ -77,17 +82,43 @@ const VideoElement = forwardRef<HTMLVideoElement, VideoType & VideoElProps>(
       }
     }, [playing]);
 
+    useEffect(() => {
+      if (parentPlaying) {
+        setMyPlaying(true);
+      }
+    }, [parentPlaying]);
+
+    useEffect(() => {
+      if (parentAudioOn !== undefined) {
+        setMyAudioOn(parentAudioOn);
+      }
+    }, [parentAudioOn]);
+
     return (
-      <div
-        className={styles.VideoContainer}
-        data-size={size}
-        onClick={() => {
-          setMyPlaying(!myPlaying);
-        }}
-      >
-        <video muted={muted} loop playsInline ref={ref || videoRef}>
+      <div className={styles.VideoContainer} data-size={size}>
+        <video
+          muted={!audioOn}
+          loop
+          playsInline
+          ref={ref || videoRef}
+          onClick={() => setMyAudioOn(!myAudioOn)}
+        >
           <source src={file} type="video/mp4"></source>
         </video>
+        <div className={styles.Controls}>
+          <button
+            className={styles.ControlButton}
+            onClick={() => setMyPlaying(!myPlaying)}
+          >
+            {playing ? <IoMdPause /> : <IoMdPlay />}
+          </button>
+          <button
+            className={styles.ControlButton}
+            onClick={() => setMyAudioOn(!myAudioOn)}
+          >
+            {!audioOn ? <IoMdVolumeOff /> : <IoMdVolumeHigh />}
+          </button>
+        </div>
       </div>
     );
   }

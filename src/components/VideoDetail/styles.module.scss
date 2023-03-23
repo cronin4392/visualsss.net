@@ -7,9 +7,12 @@
   display: grid;
   gap: 1rem;
 
-  @include minWidth(desktop) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+  &[data-size="tall"],
+  &[data-size="long"] {
+    @include minWidth(desktop) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
   }
 }
 

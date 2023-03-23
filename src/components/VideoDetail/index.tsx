@@ -12,9 +12,9 @@ const VideoDetail: React.FC<VideoDetailProps> = ({ video }) => {
   const { firstLoad } = useFirstLoadState();
 
   return (
-    <div className={styles.Container}>
+    <div className={styles.Container} data-size={video.size}>
       <div>
-        <Video video={video} muted={firstLoad} />
+        <Video video={video} audioOn={!firstLoad} />
       </div>
       <div className={styles.Text}>
         <h1>{video.caption}</h1>

@@ -54,7 +54,7 @@ const VideoContent: React.FC<
       }}
       href={`/content/${id}`}
     >
-      <Video video={video} playing={inView} muted={unmutedId !== id} />
+      <Video video={video} playing={inView} audioOn={unmutedId === id} />
       <div className={styles.Text}>
         <span>{caption}</span>
         <span>{date}</span>
