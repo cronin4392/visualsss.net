@@ -14,7 +14,7 @@ const VideoDetail: React.FC<VideoDetailProps> = ({ video }) => {
   return (
     <div className={styles.Container} data-size={video.size}>
       <div>
-        <Video video={video} audioOn={!firstLoad} />
+        <Video video={video} audioOn={!firstLoad} controls={true} />
       </div>
       <div className={styles.Text}>
         <h1>{video.caption}</h1>

@@ -13,21 +13,17 @@ type VideoProps = { video: Youtube | VideoType } & VideoElProps;
 type VideoElProps = {
   audioOn?: boolean;
   playing?: boolean;
+  controls?: true;
 };
 
 const Video = forwardRef<HTMLVideoElement, VideoProps>(
-  ({ video, audioOn, playing }, ref) => {
+  ({ video, ...rest }, ref) => {
     return (
       <div className={styles.Container}>
         {video.__type === "youtube" ? (
           <Youtube {...video} />
         ) : (
-          <VideoElement
-            {...video}
-            audioOn={audioOn}
-            playing={playing}
-            ref={ref}
-          />
+          <VideoElement {...video} {...rest} ref={ref} />
         )}
       </div>
     );
@@ -52,7 +48,13 @@ const Youtube: React.FC<Youtube> = ({ id, size }) => {
 
 const VideoElement = forwardRef<HTMLVideoElement, VideoType & VideoElProps>(
   (
-    { file, audioOn: parentAudioOn, size, playing: parentPlaying = true },
+    {
+      file,
+      audioOn: parentAudioOn,
+      size,
+      playing: parentPlaying = true,
+      controls,
+    },
     ref
   ) => {
     const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -101,24 +103,29 @@ const VideoElement = forwardRef<HTMLVideoElement, VideoType & VideoElProps>(
           loop
           playsInline
           ref={ref || videoRef}
-          onClick={() => setMyAudioOn(!myAudioOn)}
+          onClick={() => {
+            console.log(controls);
+            return controls && setMyAudioOn(!myAudioOn);
+          }}
         >
           <source src={file} type="video/mp4"></source>
         </video>
-        <div className={styles.Controls}>
-          <button
-            className={styles.ControlButton}
-            onClick={() => setMyPlaying(!myPlaying)}
-          >
-            {playing ? <IoMdPause /> : <IoMdPlay />}
-          </button>
-          <button
-            className={styles.ControlButton}
-            onClick={() => setMyAudioOn(!myAudioOn)}
-          >
-            {!audioOn ? <IoMdVolumeOff /> : <IoMdVolumeHigh />}
-          </button>
-        </div>
+        {controls && (
+          <div className={styles.Controls}>
+            <button
+              className={styles.ControlButton}
+              onClick={() => setMyPlaying(!myPlaying)}
+            >
+              {playing ? <IoMdPause /> : <IoMdPlay />}
+            </button>
+            <button
+              className={styles.ControlButton}
+              onClick={() => setMyAudioOn(!myAudioOn)}
+            >
+              {!audioOn ? <IoMdVolumeOff /> : <IoMdVolumeHigh />}
+            </button>
+          </div>
+        )}
       </div>
     );
   }

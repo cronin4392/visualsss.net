@@ -9,6 +9,7 @@
     height: auto;
     vertical-align: top;
     aspect-ratio: 16 / 9;
+    object-fit: cover;
   }
 
   &[data-size="tall"] video,
