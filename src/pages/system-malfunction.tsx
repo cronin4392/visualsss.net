@@ -19,7 +19,7 @@ const SystemMalfunctionPage = () => {
 
   return (
     <>
-      <HeadTag pageTitle="Error" />
+      <HeadTag pageTitle="error" />
       <PageLayout
         header={<Header subLine={false} />}
         content={<SecretOverlay />}

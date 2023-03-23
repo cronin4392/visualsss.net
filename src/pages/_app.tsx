@@ -3,6 +3,7 @@ import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useRandomInt } from "@/hooks/useRandomItem";
 import { SssContext } from "@/context/SssContextProvider";
+import { FirstLoadContext } from "@/context/FirstLoadContextProvider";
 import { TouchContext } from "@/context/TouchContextProvider";
 import { VideoIndexContext, videos } from "@/context/VideoIndexContextProvider";
 import Background from "@/components/Background";
@@ -17,6 +18,7 @@ function App({ Component, pageProps }: AppProps): ReactNode {
   const [warning, setWarning] = useState(-1);
   const [showWarning, setShowWarning] = useState(false);
   const [warningTimeout, setWarningTimeout] = useState<NodeJS.Timeout | null>();
+  const [firstLoad, setFirstLoad] = useState(true);
 
   useEffect(() => {
     if (showWarning && !warningTimeout) {
@@ -37,6 +39,7 @@ function App({ Component, pageProps }: AppProps): ReactNode {
 
   useEffect(() => {
     const onRouteChange = (url: string) => {
+      setFirstLoad(false);
       setShowWarning(false);
 
       if (url === "/" && sClicks === 6) {
@@ -51,20 +54,22 @@ function App({ Component, pageProps }: AppProps): ReactNode {
   }, [router]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <SssContext.Provider
-      value={{ sss, setSss, sClicks, setSClicks, sLink: null }}
-    >
-      <VideoIndexContext.Provider value={{ videoIndex, setVideoIndex }}>
-        <TouchContext.Provider
-          value={{ warning, setWarning, showWarning, setShowWarning }}
-        >
-          <TouchWrapper>
-            <Component {...pageProps} />
-            <Background />
-          </TouchWrapper>
-        </TouchContext.Provider>
-      </VideoIndexContext.Provider>
-    </SssContext.Provider>
+    <FirstLoadContext.Provider value={{ firstLoad }}>
+      <SssContext.Provider
+        value={{ sss, setSss, sClicks, setSClicks, sLink: null }}
+      >
+        <VideoIndexContext.Provider value={{ videoIndex, setVideoIndex }}>
+          <TouchContext.Provider
+            value={{ warning, setWarning, showWarning, setShowWarning }}
+          >
+            <TouchWrapper>
+              <Component {...pageProps} />
+              <Background />
+            </TouchWrapper>
+          </TouchContext.Provider>
+        </VideoIndexContext.Provider>
+      </SssContext.Provider>
+    </FirstLoadContext.Provider>
   );
 }
 

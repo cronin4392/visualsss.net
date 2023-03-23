@@ -10,11 +10,20 @@ export type ShareProps = {
   image?: Maybe<string>;
 };
 
+function repeatStartLetters(text: string) {
+  const count = 3;
+  const firstLetter = text.slice(0, 1);
+  const repeated = new Array(count - 1).fill(firstLetter).join("");
+  return repeated + text;
+}
+
 const HeadTag: React.FC<ShareProps> = (props) => {
   const router = useRouter();
   const title = props.title || "visualsss.net";
-  const pageTitle = props.pageTitle || null;
-  const fullTitle = removeNulls([title, pageTitle]).join(" | ");
+  const pageTitle = props.pageTitle
+    ? repeatStartLetters(props.pageTitle)
+    : null;
+  const fullTitle = removeNulls([title, pageTitle]).join(" ");
   const description = props.description || "";
   const image = props.image;
 

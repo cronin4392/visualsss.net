@@ -8,7 +8,7 @@ type LinkWrapperProps = {
   children: React.ReactNode;
   href: LinkProps["href"] | undefined;
   linkProps?: {
-    [key: string]: string | boolean | (() => void) | undefined;
+    [key: string]: string | boolean | (() => void) | undefined | null;
   };
 };
 
