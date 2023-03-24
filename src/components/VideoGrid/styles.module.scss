@@ -25,34 +25,41 @@
   flex-direction: column;
   text-decoration: none;
   position: relative;
+  width: 25%;
+  height: 25%;
+  overflow: hidden;
 
   @include minWidth(tablet) {
     &[data-size="tall"] {
-      grid-row: span 3;
-    }
-
-    &[data-size="wide"] {
-      grid-column: span 2;
-    }
-  }
-
-  @include minWidth(desktop) {
-    grid-column: span 4;
-
-    &[data-size="tall"] {
-      grid-row: span 2;
-      grid-column: span 4;
+      height: 50%;
     }
 
     &[data-size="long"] {
-      grid-row: span 4;
+      height: 100%;
     }
 
     &[data-size="wide"] {
-      grid-row: span 2;
-      grid-column: span 8;
+      width: 50%;
     }
   }
+
+  // @include minWidth(desktop) {
+  //   // grid-column: span 4;
+
+  //   &[data-size="tall"] {
+  //     width: 50px;
+  //     height: 400px;
+  //   }
+
+  //   &[data-size="long"] {
+  //     grid-row: span 4;
+  //   }
+
+  //   &[data-size="wide"] {
+  //     grid-row: span 2;
+  //     grid-column: span 8;
+  //   }
+  // }
 }
 
 .Text {

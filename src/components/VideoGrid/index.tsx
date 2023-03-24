@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { PackingGrid } from "@egjs/react-grid";
 import content, {
   Youtube as YoutubeType,
   Video as VideoType,
@@ -25,16 +26,35 @@ const Content = () => {
   }, []);
 
   return (
-    <div className={styles.Videos}>
-      {shuffledContent.map((video, index) => (
+    <>
+      <PackingGrid
+        gap={16}
+        defaultDirection={"end"}
+        sizeWeight={1}
+        ratioWeight={1}
+        aspectRatio={1}
+        weightPriority={"custom"}
+      >
+        {content.map((video, index) => (
+          <VideoContent
+            {...video}
+            unmutedId={unmutedId}
+            setUnmutedId={setUnmutedId}
+            key={`${video.id}-${index}`}
+          />
+        ))}
+      </PackingGrid>
+      <div className={styles.Videos}>
+        {/* {shuffledContent.map((video, index) => (
         <VideoContent
-          {...video}
-          unmutedId={unmutedId}
-          setUnmutedId={setUnmutedId}
-          key={`${video.id}-${index}`}
+        {...video}
+        unmutedId={unmutedId}
+        setUnmutedId={setUnmutedId}
+        key={`${video.id}-${index}`}
         />
-      ))}
-    </div>
+      ))} */}
+      </div>
+    </>
   );
 };
 

@@ -12,6 +12,7 @@
     "svgr": "npx @svgr/cli --no-dimensions --typescript --svgo-config ./svgo.config.js -d ./src/icons/dist/ ./src/icons/src/"
   },
   "dependencies": {
+    "@egjs/react-grid": "^1.14.0",
     "next": "^13.1.6",
     "next-seo": "^5.4.0",
     "react": "^18.2.0",
