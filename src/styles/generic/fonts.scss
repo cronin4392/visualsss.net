@@ -29,3 +29,17 @@
   descent-override: 25%;
   line-gap-override: 0%;
 }
+
+@font-face {
+  font-family: "DIN";
+  src: url("/fonts/din/DIN Light.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DIN";
+  src: url("/fonts/din/DIN Medium.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
