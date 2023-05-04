@@ -50,6 +50,10 @@ const newYoutube = (
 };
 
 const content: Array<Video | Youtube> = [
+  newVideo("IMG_1565.mp4", "Hypnothesis", "Apr 2023"),
+  newVideo("IMG_1564.mp4", "Hypnothesis", "Apr 2023", {
+    size: "wide",
+  }),
   newVideo("IMG_1380.mp4", "BCEE", "Mar 2023"),
   newVideo("HolyMountainNvidia.8.mp4", "The Holy Mountain", "v1.01", {
     size: "long",
