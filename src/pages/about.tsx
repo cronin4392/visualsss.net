@@ -13,7 +13,10 @@ const AboutPage: NextPage = () => {
         header={
           <Header
             subLine="About"
-            link={{ text: "Logo", href: "/promo/logo.png", download: true }}
+            link={{
+              text: "Press Kit",
+              href: "https://drive.google.com/drive/folders/1MKpHQ67uDbJqUPu3f0FsD4PUJb-xvRVU?usp=share_link",
+            }}
           />
         }
         content={
