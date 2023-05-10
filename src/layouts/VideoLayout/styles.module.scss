@@ -46,6 +46,7 @@
   &[data-active="true"] {
     &:before {
       content: "▶ ";
+      font-family: "System85", monospace;
     }
   }
 }
