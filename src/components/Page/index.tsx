@@ -6,7 +6,9 @@ const SectionDepth = React.createContext(-1);
 const Page: React.FC<{ content: React.ReactNode }> = ({ content }) => {
   return (
     <div className={styles.Wrapper}>
-      <div className={styles.Container}>{content}</div>
+      <div className={styles.Container}>
+        <div className="caps">{content}</div>
+      </div>
     </div>
   );
 };

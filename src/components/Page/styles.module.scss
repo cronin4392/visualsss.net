@@ -1,14 +1,6 @@
 @import "@/styles/tools/main.scss";
 @import "@/styles/templates/maxWidth.scss";
 
-@mixin line($char, $dChar) {
-  content: $char;
-
-  @include minWidth(desktop) {
-    content: $dChar;
-  }
-}
-
 .Wrapper {
   @extend %MaxWidth;
   background-color: var(--color-black);
@@ -26,61 +18,5 @@
 }
 
 .Container {
-  line-height: 1.4;
-}
-
-.SectionTitle {
-  @include resetText;
-  font-weight: 700;
-  position: sticky;
-  top: 0;
-  background-color: var(--color-black);
-
-  &:before {
-    content: var(--lines);
-    font-weight: 400;
-  }
-}
-
-.Content {
-  display: flex;
-  min-height: 0;
-}
-
-.ContentLines {
-  display: flex;
-  flex-direction: column;
-}
-
-.Lines {
-  font-weight: 400;
-  white-space: pre;
-
-  .Content:last-child &:last-child {
-    display: none;
-  }
-}
-
-.LineStart:before {
-  @include line("│", "│  ");
-
-  .Content:last-child .Lines:nth-last-child(2) & {
-    @include line("└", "└──");
-  }
-}
-
-.LineEnd:before {
-  @include line("│", "│");
-
-  .Lines:nth-child(2) & {
-    @include line("├ ", "├─ ");
-  }
-
-  .Content .Lines:nth-last-child(2) & {
-    @include line("└ ", "└─ ");
-  }
-
-  .Content:last-child .Lines:nth-last-child(2) & {
-    @include line("┴ ", "┴─ ");
-  }
+  line-height: 1.6;
 }
