@@ -14,7 +14,7 @@ body,
 }
 
 body {
-  @include fontSize(20px, 20px);
+  @include fontSize(16px, 16px);
   margin: 0;
   background-color: var(--color-white);
   color: var(--color-black);
