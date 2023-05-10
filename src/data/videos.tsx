@@ -89,11 +89,10 @@ const content: Array<Video | Youtube> = [
     "Apr 2023",
     <>
       <p>
-        This is an interactive webcam installation I created for the
-        Hypnothesis. The installation switched between two different pieces. The
-        first is a tricolored feedback effect. The second is in a bright
-        gradient and uses the opencv library to detect and pixelate peoples
-        faces.
+        This is an interactive webcam installation I created for Hypnothesis.
+        The installation switched between two different pieces. The first is a
+        tricolored feedback effect. The second is in a bright gradient and uses
+        the opencv library to detect and pixelate peoples faces.
       </p>
       <p>
         Hypnothesis is the end of year show for the VJ class in the Berkley
