@@ -3,27 +3,11 @@
 .Container {
   padding: var(--site-padding);
   display: grid;
-  grid-template-areas: "header header" "menu video-controls";
-  column-gap: var(--site-padding);
   height: var(--window-height, 100%);
-  grid-template-columns: minmax(auto, 1320px) auto;
-}
-
-.Header {
-  grid-area: header;
 }
 
 .Menu {
-  grid-area: menu;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-}
-
-.PlayButton {
-  grid-area: video-controls;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   justify-content: flex-end;
 }

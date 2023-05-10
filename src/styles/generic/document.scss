@@ -23,6 +23,10 @@ body {
   font-smooth: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  @include minWidth(tablet) {
+    @include fontSize(28px);
+  }
+
   @include minWidth(desktop) {
     @include fontSize(28px);
   }

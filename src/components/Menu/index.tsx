@@ -41,9 +41,17 @@ type MenuProps = {};
 const Menu: React.FC<MenuProps> = () => {
   return (
     <div className={styles.Container}>
-      {menuItems.map((item, index) => (
-        <MenuItem {...item} key={index} />
-      ))}
+      {menuItems.map((item, index) => {
+        if (index === menuItems.length - 1) {
+          return (
+            <div key={index} className={styles.LastWrapper}>
+              <MenuItem {...item} />
+              <PlayButton />
+            </div>
+          );
+        }
+        return <MenuItem {...item} key={index} />;
+      })}
     </div>
   );
 };
@@ -55,5 +63,13 @@ const MenuItem: React.FC<MenuItem> = ({ text, link }) => (
     </span>
   </div>
 );
+
+const PlayButton: React.FC = () => {
+  return (
+    <LinkWrapper href="/video" linkProps={{ className: styles.PlayButton }}>
+      <span className="icon">▶</span>
+    </LinkWrapper>
+  );
+};
 
 export default Menu;

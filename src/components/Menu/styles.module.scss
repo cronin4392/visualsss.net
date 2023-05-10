@@ -1,8 +1,7 @@
 @import "@/styles/tools/main.scss";
 
-.Container {
+@mixin flex-styles {
   display: flex;
-  flex-wrap: wrap;
   gap: rem(6px);
 
   @include minWidth(desktop) {
@@ -10,8 +9,18 @@
   }
 }
 
+.Container {
+  @include flex-styles;
+  flex-wrap: wrap;
+}
+
+.LastWrapper {
+  @include flex-styles;
+  flex-grow: 1;
+}
+
 .MenuItem {
-  @include fontSize(38px);
+  @include fontSize(32px);
   font-weight: 700;
   color: var(--color-white);
   background-color: var(--color-black);
@@ -23,11 +32,36 @@
   }
 
   @include minWidth(desktop) {
-    @include fontSize(92px);
+    @include fontSize(80px);
     padding: rem(20px);
   }
 
   a {
     @include resetLink;
+  }
+}
+
+.PlayButton {
+  @include resetLink;
+  @include fontSize(32px, 32px);
+  --size: #{rem(47px)};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  width: var(--size);
+  height: var(--size);
+  margin-left: auto;
+  flex-shrink: 0;
+
+  @include minWidth(tablet) {
+    @include fontSize(40px);
+    --size: #{rem(86px)};
+  }
+
+  @include minWidth(desktop) {
+    @include fontSize(60px);
+    --size: #{rem(112px)};
   }
 }
