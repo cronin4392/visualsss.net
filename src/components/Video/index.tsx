@@ -77,7 +77,9 @@ const VideoElement = forwardRef<HTMLVideoElement, VideoType & VideoElProps>(
     useEffect(() => {
       if (videoRef.current) {
         if (playing) {
-          videoRef.current.play();
+          videoRef.current.play().catch(() => {
+            setMyPlaying(false);
+          });
         } else {
           videoRef.current.pause();
         }
@@ -104,8 +106,14 @@ const VideoElement = forwardRef<HTMLVideoElement, VideoType & VideoElProps>(
           playsInline
           ref={ref || videoRef}
           onClick={() => {
-            console.log(controls);
-            return controls && setMyAudioOn(!myAudioOn);
+            if (controls) {
+              if (myPlaying !== true) {
+                setMyPlaying(true);
+                setMyAudioOn(true);
+              } else {
+                setMyAudioOn(!myAudioOn);
+              }
+            }
           }}
         >
           <source src={file} type="video/mp4"></source>
