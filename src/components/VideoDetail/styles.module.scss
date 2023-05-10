@@ -17,11 +17,11 @@
 }
 
 .Text {
-  h1 {
-    margin: 0;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: rem(16px);
+}
 
-  p {
-    margin: 0;
-  }
+.Description {
+  max-width: 72ch;
 }

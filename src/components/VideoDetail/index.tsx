@@ -17,8 +17,14 @@ const VideoDetail: React.FC<VideoDetailProps> = ({ video }) => {
         <Video video={video} audioOn={!firstLoad} controls={true} />
       </div>
       <div className={styles.Text}>
-        <h1>{video.caption}</h1>
-        <p>{video.date}</p>
+        <div>
+          <h1>{video.caption}</h1>
+          <p>{video.date}</p>
+        </div>
+        <div
+          className={styles.Description}
+          dangerouslySetInnerHTML={{ __html: video.description }}
+        />
       </div>
     </div>
   );
