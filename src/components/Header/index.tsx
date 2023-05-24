@@ -45,8 +45,12 @@ const Header: React.FC<HeaderProps> = ({ subLine = ".net", link }) => {
         <LinkWrapper
           href={sClicks === 5 ? "/system-malfunction" : "/"}
           linkProps={{
-            onClick: () => {
+            onClick: (event) => {
               setSClicks(Math.min(sClicks + 1, 6));
+
+              if (sClicks === 6) {
+                event.preventDefault();
+              }
             },
           }}
         >
