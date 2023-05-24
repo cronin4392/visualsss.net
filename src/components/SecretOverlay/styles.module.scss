@@ -1,7 +1,7 @@
 @import "@/styles/tools/main.scss";
 
 .Container {
-  --spacing: #{rem(16px)};
+  --spacing: #{rem(12px)};
   background-color: var(--color-black);
   color: var(--color-white);
   padding: var(--spacing);
@@ -9,24 +9,23 @@
   max-width: rem(1120px);
 
   @include minWidth(desktop) {
-    --spacing: #{rem(30px)};
+    --spacing: #{rem(24px)};
     padding: var(--spacing) rem(40px);
   }
 }
 
 .Header {
-  @include fontSize(24px);
+  font-size: inherit;
+  font-weight: 700;
   margin: 0;
   margin-bottom: var(--spacing);
 
   @include minWidth(desktop) {
-    @include fontSize(38px);
     text-align: center;
   }
 }
 
 .Text {
-  @include fontSize(24px);
   margin: 0;
   margin-bottom: var(--spacing);
 }
