@@ -24,8 +24,10 @@ const HeadTag: React.FC<ShareProps> = (props) => {
     ? repeatStartLetters(props.pageTitle)
     : null;
   const fullTitle = removeNulls([title, pageTitle]).join(" ");
-  const description = props.description || "";
-  const image = props.image;
+  const description =
+    props.description ||
+    "VISUALSSS is a VJ and digital artist who creates real-time experiences for events spanning from live music acts to art installations.";
+  const image = props.image || "/promo/share.jpg";
 
   return (
     <NextSeo
