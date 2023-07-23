@@ -6,7 +6,9 @@ import { isLocalUrl } from "@/utils/urls";
 type LinkWrapperProps = {
   children: React.ReactNode;
   href: LinkProps["href"] | undefined;
-  linkProps?: React.AnchorHTMLAttributes<HTMLAnchorElement>;
+  linkProps?: React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    [key: string]: any;
+  }; // Had issue with types, used work around
 };
 
 const LinkWrapper: React.FC<LinkWrapperProps> = ({
