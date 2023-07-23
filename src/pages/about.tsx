@@ -30,8 +30,8 @@ const AboutPage: NextPage = () => {
                   </LinkWrapper>{" "}
                   and digital artist who creates real-time experiences for
                   events spanning from live music acts to art installations. By
-                  seamlessly mixing typography and real-time inputs, like
-                  cameras and microphones, they create dynamic responsive
+                  seamlessly mixing typography and real-time inputs, including
+                  cameras and microphones, they create dynamic, real-time
                   visuals that react spontaneously to the event.
                 </p>
                 <p>
