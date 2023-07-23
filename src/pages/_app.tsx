@@ -56,18 +56,22 @@ function App({ Component, pageProps }: AppProps): ReactNode {
 
   return (
     <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-      />
-      <Script id="google-analytics">
-        {`
+      {process.env.NODE_ENV === "production" && (
+        <>
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
+          />
+          <Script id="google-analytics">
+            {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
  
           gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
         `}
-      </Script>
+          </Script>
+        </>
+      )}
       <FirstLoadContext.Provider value={{ firstLoad }}>
         <SssContext.Provider
           value={{ sss, setSss, sClicks, setSClicks, sLink: null }}
