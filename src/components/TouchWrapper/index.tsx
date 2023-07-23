@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { NextRouter, useRouter } from "next/router";
-import { useTouchContext } from "@/context/TouchContextProvider";
 import { useWindowSize } from "usehooks-ts";
+import { useTouchContext } from "@/context/TouchContextProvider";
 import styles from "./styles.module.scss";
 
-const disableTouch = (router: NextRouter) => {
-  return !["/"].includes(router.asPath);
-};
+// Disable swiping on the homepage
+const disableSwiping = (router: NextRouter) => ["/"].includes(router.asPath);
 
 const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const router = useRouter();
+  const containerRef = useRef<HTMLDivElement>(null);
   const { warning, setWarning, setShowWarning } = useTouchContext();
   const [touchStart, setTouchStart] = useState<{
     x: number | null;
@@ -24,16 +24,20 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
   } as React.CSSProperties;
 
   const onTouchStart: React.TouchEventHandler<HTMLElement> = (event) => {
+    if (!disableSwiping(router)) {
+      return;
+    }
     const { pageX, pageY } = event.touches[0];
     setTouchStart({ x: pageX, y: pageY });
     setTriggered(false);
   };
 
   const onTouchMove: React.TouchEventHandler<HTMLElement> = (event) => {
-    if (disableTouch(router)) {
+    if (!disableSwiping(router)) {
       return;
     }
 
+    // event.preventDefault();
     const { pageX, pageY } = event.touches[0];
     const { x, y } = touchStart;
     if (!x || !y) {
@@ -41,6 +45,7 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
       return;
     }
     const delta = Math.abs(x - pageX) + Math.abs(y - pageY);
+
     if (delta > 20 && !triggered) {
       setTriggered(true);
       setWarning(warning + 1);
@@ -48,20 +53,22 @@ const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  if (disableTouch(router)) {
-    return (
-      <div className={styles.Container} style={heightStyles}>
-        {children}
-      </div>
-    );
-  }
+  const onTouchEnd = () => {
+    if (!disableSwiping(router)) {
+      return;
+    }
+    setTouchStart({ x: null, y: null });
+  };
 
   return (
     <div
       className={styles.Container}
+      ref={containerRef}
+      data-disable-swiping={disableSwiping(router)}
+      style={heightStyles}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
-      style={heightStyles}
+      onTouchEnd={onTouchEnd}
     >
       {children}
     </div>

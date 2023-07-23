@@ -7,10 +7,12 @@ import styles from "./styles.module.scss";
 
 const warningMessages = [
   "Don't do that",
+  "Not on this page",
   "No scroll zone",
   "Please stop",
   "ok...",
   "Getting out of hand",
+  "Listen here bucko",
 ];
 
 type HeaderProps = {

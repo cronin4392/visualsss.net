@@ -1,5 +1,3 @@
-.Container {
-  // width: 100%;
-  // height: var(--window-height, 100%);
-  // touch-action: pan-x pan-y;
+.Container[data-disable-swiping="true"] {
+  touch-action: none;
 }
