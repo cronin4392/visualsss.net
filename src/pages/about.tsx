@@ -22,30 +22,36 @@ const AboutPage: NextPage = () => {
         content={
           <Page
             content={
-              <p>
-                I am a{" "}
-                <LinkWrapper href="https://en.wikipedia.org/wiki/VJing">
-                  VJ
-                </LinkWrapper>{" "}
-                that goes by the name visualsss. My interest in VJing started
-                back in 2017 after attending a music festival. I had no idea
-                VJing even existed and I was blown away by what I saw. I shortly
-                thereafter discovered the real-time software{" "}
-                <LinkWrapper href="https://derivative.ca/">
-                  Touchdesigner
-                </LinkWrapper>{" "}
-                and became enthralled in it. Using my experience in software
-                development and graphic design I began to make original content
-                in it centered around typography. Check out my{" "}
-                <LinkWrapper href="https://www.youtube.com/c/Visualsss">
-                  Youtube
-                </LinkWrapper>{" "}
-                to see some tutorials I&rsquo;ve made for Touchdesigner and see
-                some of my work on my{" "}
-                <LinkWrapper href="https://www.instagram.com/visualsssssssss/">
-                  Instagram
-                </LinkWrapper>
-              </p>
+              <>
+                <p>
+                  VISUALSSS is a{" "}
+                  <LinkWrapper href="https://en.wikipedia.org/wiki/VJing">
+                    VJ
+                  </LinkWrapper>{" "}
+                  and digital artist who creates real-time experiences for
+                  events spanning from live music acts to art installations. By
+                  seamlessly mixing typography and real-time inputs, like
+                  cameras and microphones, they create dynamic responsive
+                  visuals that react spontaneously to the event.
+                </p>
+                <p>
+                  I have played for a variety of electronic music genres
+                  including Drum and Bass, Dubstep, Techno, Bass, Hip-hop,
+                  House, and Disco among others.
+                </p>
+                <p>
+                  My interest in VJing started back in 2017 after attending a
+                  music festival. I had no idea VJing even existed and I was
+                  blown away by what I saw. I shortly thereafter discovered the
+                  real-time software{" "}
+                  <LinkWrapper href="https://derivative.ca/">
+                    Touchdesigner
+                  </LinkWrapper>{" "}
+                  and became enthralled in it. Using my experience in software
+                  development and graphic design I began to make original
+                  content.
+                </p>
+              </>
             }
           />
         }
