@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useVideo, videos } from "@/context/VideoIndexContextProvider";
 import styles from "./styles.module.scss";
 
@@ -12,18 +13,20 @@ const VideoLayout: React.FC<VideoLayoutProps> = ({ header }) => {
     <main className={styles.Container}>
       <div className={styles.Header}>{header}</div>
       <div className={styles.Menu}>
-        <div className={styles.VideoLinks}>
+        <div className={styles.VideoLinks} suppressHydrationWarning>
           {videos.map((video, index) => (
-            <button
+            <Link
               key={video.name}
               className={styles.VideoLink}
               data-active={index === videoIndex}
-              onClick={() => {
+              href={`/video?v=${index}`}
+              onClick={(event) => {
+                event.preventDefault();
                 setVideoIndex(index);
               }}
             >
               {video.name}
-            </button>
+            </Link>
           ))}
         </div>
       </div>

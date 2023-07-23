@@ -22,6 +22,15 @@ function App({ Component, pageProps }: AppProps): ReactNode {
   const [firstLoad, setFirstLoad] = useState(true);
 
   useEffect(() => {
+    const videoIndexUrl = router.query.v
+      ? parseInt(router.query.v as string)
+      : undefined;
+    if (videoIndexUrl !== undefined) {
+      setVideoIndex(videoIndexUrl);
+    }
+  }, [router.query.v]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
     if (showWarning && !warningTimeout) {
       const timeout = setTimeout(() => {
         setShowWarning(false);
