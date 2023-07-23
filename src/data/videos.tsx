@@ -1,4 +1,3 @@
-import LinkWrapper from "@/components/LinkWrapper";
 import { renderToString } from "react-dom/server";
 
 type Sizes = "tall" | "wide" | "long" | null;
@@ -75,6 +74,25 @@ const newYoutube = (
 };
 
 const content: Array<Video | Youtube> = [
+  newVideo(
+    "IMG_1639.mp4",
+    "Transit x Infra @ The Grand",
+    "May 2023",
+    <>
+      blktrmlne and I handled creating and mapping immersive visuals for the
+      Transit x Infra event at The Grand Boston. Visuals incorporated live
+      camera feeds of the audience and DJ.
+    </>
+  ),
+  newVideo(
+    "IMG_1734.mp4",
+    "Aversion BCCO",
+    "May 2023",
+    <>
+      I ran visuals for the Aversion BCCO event at Lower Level. I projection
+      mapped the back wall and the DJ was in the center of the room.
+    </>
+  ),
   ...newVideoGroup(
     [
       ["IMG_1565.mp4"],
