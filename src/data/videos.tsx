@@ -75,7 +75,7 @@ const newYoutube = (
 
 const content: Array<Video | Youtube> = [
   newVideo(
-    "IMG_1639.mp4",
+    "IMG_1734.mp4",
     "Transit x Infra @ The Grand",
     "May 2023",
     <>
@@ -85,7 +85,7 @@ const content: Array<Video | Youtube> = [
     </>
   ),
   newVideo(
-    "IMG_1734.mp4",
+    "IMG_1639.mp4",
     "Aversion BCCO",
     "May 2023",
     <>
@@ -118,6 +118,13 @@ const content: Array<Video | Youtube> = [
         own AV sets. The event takes place at Sonia.
       </p>
     </>
+  ),
+  newVideo(
+    "DNA-DNB.mp4",
+    "DnB",
+    "Mar 2023",
+    <>Video I made with typographic scenes that say Drum n Bass (DnB).</>,
+    { size: "long" }
   ),
   newVideo(
     "IMG_1380.mp4",
