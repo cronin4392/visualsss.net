@@ -5,7 +5,8 @@ import { useTouchContext } from "@/context/TouchContextProvider";
 import styles from "./styles.module.scss";
 
 // Disable swiping on the homepage
-const disableSwiping = (router: NextRouter) => ["/"].includes(router.asPath);
+const disableSwiping = (router: NextRouter) =>
+  ["/", "/video"].includes(router.asPath);
 
 const TouchWrapper: React.FC<{ children: React.ReactNode }> = ({
   children,
