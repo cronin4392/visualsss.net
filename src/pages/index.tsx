@@ -1,14 +1,12 @@
-import { GetStaticProps, NextPage } from "next";
-import HomeLayout from "@/layouts/HomeLayout";
+import { NextPage } from "next";
+import HomePage from "@/layouts/HomePage";
 import HeadTag from "@/components/HeadTag";
-import Header from "@/components/Header";
-import Menu from "@/components/Menu";
 
 const Page: NextPage = () => {
   return (
     <>
       <HeadTag />
-      <HomeLayout header={<Header />} menu={<Menu />} />
+      <HomePage />
     </>
   );
 };

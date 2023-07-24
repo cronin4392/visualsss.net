@@ -1,15 +1,14 @@
 import { NextPage } from "next";
+import VideoPage from "@/layouts/VideoPage";
 import HeadTag from "@/components/HeadTag";
-import Header from "@/components/Header";
-import VideoLayout from "@/layouts/VideoLayout";
 
-const VideoPage: NextPage = () => {
+const VideoRoute: NextPage = () => {
   return (
     <>
       <HeadTag pageTitle="video" />
-      <VideoLayout header={<Header subLine="visssualizer" />} />
+      <VideoPage />
     </>
   );
 };
 
-export default VideoPage;
+export default VideoRoute;

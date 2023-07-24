@@ -2,13 +2,10 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { useCountdown } from "usehooks-ts";
 import { useVideo, videos } from "@/context/VideoIndexContextProvider";
+import Header from "@/components/Header";
 import styles from "./styles.module.scss";
 
-type VideoLayoutProps = {
-  header: React.ReactNode;
-};
-
-const VideoLayout: React.FC<VideoLayoutProps> = ({ header }) => {
+const VideoPage: React.FC = () => {
   const { videoIndex, setVideoIndex } = useVideo();
   const [count, { startCountdown, resetCountdown }] = useCountdown({
     countStart: 2,
@@ -34,7 +31,9 @@ const VideoLayout: React.FC<VideoLayoutProps> = ({ header }) => {
       onMouseDown={resetFadeout}
       data-hide-ui={hideUi}
     >
-      <div className={styles.Header}>{header}</div>
+      <div className={styles.Header}>
+        <Header subLine="visssualizer" />
+      </div>
       <div className={styles.Menu}>
         <div className={styles.VideoLinks} suppressHydrationWarning>
           {videos.map((video, index) => (
@@ -60,4 +59,4 @@ const VideoLayout: React.FC<VideoLayoutProps> = ({ header }) => {
   );
 };
 
-export default VideoLayout;
+export default VideoPage;
