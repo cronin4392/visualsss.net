@@ -1,0 +1,21 @@
+@import "@/styles/tools/main.scss";
+
+.Container {
+  padding: var(--site-padding);
+  display: flex;
+  flex-direction: column;
+  gap: rem(12px);
+  min-height: var(--window-height, 100vh);
+  overflow: auto;
+
+  @include minWidth(desktop) {
+    gap: rem(32px);
+  }
+}
+
+.Content {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
