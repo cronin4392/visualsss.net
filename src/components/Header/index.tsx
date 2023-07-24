@@ -4,6 +4,7 @@ import { useSssState } from "@/context/SssContextProvider";
 import { useTouchContext } from "@/context/TouchContextProvider";
 import LinkWrapper from "@/components/LinkWrapper";
 import styles from "./styles.module.scss";
+import { useRouter } from "next/router";
 
 const warningMessages = [
   "Don't do that",
@@ -13,6 +14,13 @@ const warningMessages = [
   "ok...",
   "Getting out of hand",
   "Listen here bucko",
+];
+
+const thanksMessages = [
+  "What do you think?",
+  "Thanks for visiting!",
+  "Staying here all day?",
+  "Come back soon!",
 ];
 
 type HeaderProps = {
@@ -26,20 +34,25 @@ type HeaderProps = {
 
 const subLineText = (
   text: string | ReactElement | false,
+  messages: Array<string>,
   count: number,
   warning: boolean
 ) => {
   if (text !== false && warning) {
-    return warningMessages[count % warningMessages.length];
+    return messages[count % messages.length];
   }
 
   return text;
 };
 
 const Header: React.FC<HeaderProps> = ({ subLine = ".net", link }) => {
+  const router = useRouter();
+  const messages = ["/"].includes(router.asPath)
+    ? warningMessages
+    : thanksMessages;
   const { setSClicks, sClicks } = useSssState();
-  const { warning, showWarning } = useTouchContext();
-  const subText = subLineText(subLine, warning, showWarning);
+  const { warning: warningCount, showWarning } = useTouchContext();
+  const subText = subLineText(subLine, messages, warningCount, showWarning);
 
   return (
     <div className={styles.Container}>

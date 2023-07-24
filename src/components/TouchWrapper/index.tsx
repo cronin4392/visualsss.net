@@ -4,7 +4,7 @@ import { useWindowSize } from "usehooks-ts";
 import { useTouchContext } from "@/context/TouchContextProvider";
 import styles from "./styles.module.scss";
 
-// Disable swiping on the homepage
+// Disable swiping on the homepage and video page
 const disableSwiping = (router: NextRouter) =>
   ["/", "/video"].includes(router.asPath);
 
