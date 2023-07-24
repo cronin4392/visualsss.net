@@ -7,7 +7,7 @@
   align-items: flex-start;
   gap: rem(6px);
   opacity: var(--ui-opacity);
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity var(--ui-opacity-timing) ease-in-out;
 
   @include minWidth(desktop) {
     gap: rem(16px);

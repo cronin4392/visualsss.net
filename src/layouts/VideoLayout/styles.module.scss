@@ -3,20 +3,18 @@
 .Container {
   padding: var(--site-padding);
   display: grid;
-  grid-template-areas: "header header" "menu video-controls";
   height: var(--window-height, 100vh);
+
+  --ui-opacity: 1;
+  --ui-opacity-timing: 0.3s;
 
   &[data-hide-ui="true"] {
     --ui-opacity: 0;
+    --ui-opacity-timing: 2.4s;
   }
 }
 
-.Header {
-  grid-area: header;
-}
-
 .Menu {
-  grid-area: menu;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -24,11 +22,11 @@
 
 .VideoLinks {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   gap: rem(6px);
   opacity: var(--ui-opacity);
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity var(--ui-opacity-timing) ease-in-out;
 
   @include minWidth(desktop) {
     gap: rem(16px);
@@ -37,7 +35,7 @@
 
 .VideoLink {
   @include resetButton;
-  @include fontSize(20px);
+  @include fontSize(24px);
   font-smooth: auto;
   -moz-osx-font-smoothing: auto;
   color: var(--color-white);
@@ -45,7 +43,7 @@
   padding: rem(9px);
 
   @include minWidth(desktop) {
-    @include fontSize(38px);
+    @include fontSize(40px);
     padding: rem(16px);
   }
 
@@ -55,4 +53,8 @@
       font-family: "System85", monospace;
     }
   }
+}
+
+.VideoLinkType {
+  font-size: 0.5em;
 }

@@ -6,23 +6,27 @@ type VideoIndexContextType = {
   setVideoIndex: (index: number) => void;
 };
 
-type Video = { name: string; url: string };
+type Video = { name: string; type: string; url: string };
 
 export const videos: Array<Video> = [
   {
-    name: "Mad Max [Glitch]",
+    name: "Mad Max",
+    type: "Glitch",
     url: "https://visualsssssssss-site.s3.amazonaws.com/max-max-v.01/playlist.m3u8",
   },
   {
-    name: "The Holy Mountain [Pixelated]",
+    name: "The Holy Mountain",
+    type: "Pixelated",
     url: "https://visualsssssssss-site.s3.amazonaws.com/holy-mountain/playlist.m3u8",
   },
   {
-    name: "Fantastic Planet [Voronoi]",
+    name: "Fantastic Planet",
+    type: "Voronoi",
     url: "https://visualsssssssss-site.s3.amazonaws.com/fantastic-planet/playlist.m3u8",
   },
   {
-    name: "Mad Max [Pixelated]",
+    name: "Mad Max",
+    type: "Pixelated",
     url: "https://visualsssssssss-site.s3.amazonaws.com/mad-max/playlist.m3u8",
   },
 ];

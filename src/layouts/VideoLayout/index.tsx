@@ -48,7 +48,10 @@ const VideoLayout: React.FC<VideoLayoutProps> = ({ header }) => {
                 setVideoIndex(index);
               }}
             >
-              {video.name}
+              {video.name}{" "}
+              <span className={styles.VideoLinkType}>
+                &#x5b;{video.type}&#x5d;
+              </span>
             </Link>
           ))}
         </div>
