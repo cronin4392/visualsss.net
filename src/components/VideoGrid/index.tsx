@@ -15,7 +15,7 @@ const Content = () => {
 
   return (
     <div className={styles.Videos}>
-      <h1>HEY THERE!</h1>
+      <h1>HEY THERE YO!</h1>
       {content.map((video, index) => (
         <VideoContent
           {...video}
