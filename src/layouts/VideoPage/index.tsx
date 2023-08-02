@@ -38,7 +38,7 @@ const VideoPage: React.FC = () => {
         <div className={styles.VideoLinks} suppressHydrationWarning>
           {videos.map((video, index) => (
             <Link
-              key={video.name}
+              key={`${video.name}${video.type}`}
               className={styles.VideoLink}
               data-active={index === videoIndex}
               href={`/video?v=${index}`}
