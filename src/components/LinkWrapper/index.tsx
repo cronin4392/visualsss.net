@@ -1,5 +1,5 @@
 import Link, { LinkProps } from "next/link";
-import { resolveHref } from "next/dist/shared/lib/router/router";
+import { resolveHref } from "next/dist/shared/lib/router/utils/resolve-href";
 import { useRouter } from "next/router";
 import { isLocalUrl } from "@/utils/urls";
 
