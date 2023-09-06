@@ -12,7 +12,7 @@
     "svgr": "npx @svgr/cli --no-dimensions --typescript --svgo-config ./svgo.config.js -d ./src/icons/dist/ ./src/icons/src/"
   },
   "dependencies": {
-    "@ducanh2912/react-hls-player": "^3.3.5",
+    "react-hls-player": "^3.0.7",
     "hls.js": "^1.4.10",
     "next": "^13.4.12",
     "next-seo": "^6.1.0",

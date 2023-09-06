@@ -5,7 +5,7 @@ import { scale } from "@/utils/math";
 import { useVideo } from "@/context/VideoIndexContextProvider";
 import styles from "./styles.module.scss";
 
-const ReactHlsPlayer = dynamic(() => import("@ducanh2912/react-hls-player"), {
+const ReactHlsPlayer = dynamic(() => import("react-hls-player"), {
   ssr: false,
 });
 
