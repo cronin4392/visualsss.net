@@ -32,7 +32,7 @@ const menuItems: MenuItems = [
   },
   {
     text: "Contact",
-    link: "mailto:visualsss@gmail.com",
+    link: "mailto:visualsssssssss@gmail.com",
   },
 ];
 
