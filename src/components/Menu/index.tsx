@@ -11,7 +11,7 @@ type MenuItems = Array<MenuItem>;
 
 const menuItems: MenuItems = [
   {
-    text: "Content",
+    text: "My Work",
     link: "/content",
   },
   {
