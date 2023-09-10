@@ -73,6 +73,11 @@ const VideoElement = forwardRef<HTMLVideoElement, VideoType & VideoElProps>(
       }
     }, []);
 
+    useEffect(() => {
+      videoRef.current?.load();
+      videoRef.current?.play();
+    }, [file]);
+
     // Play/Pause video
     useEffect(() => {
       if (videoRef.current) {
