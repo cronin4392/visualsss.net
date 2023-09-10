@@ -1,11 +1,18 @@
 @import "@/styles/tools/main.scss";
+@import "@/styles/templates/maxWidth.scss";
 
 .Container {
+  @extend %MaxWidth;
   background-color: var(--color-black);
   color: var(--color-white);
   padding: rem(16px);
+  padding-bottom: rem(24px);
   display: grid;
   gap: 1rem;
+
+  @include minWidth(desktop) {
+    padding: rem(32px);
+  }
 
   &[data-size="tall"],
   &[data-size="long"] {
@@ -16,12 +23,84 @@
   }
 }
 
-.Text {
+.Info {
   display: flex;
   flex-direction: column;
   gap: rem(16px);
 }
 
+.Details {
+  display: grid;
+  gap: rem(16px);
+
+  @include minWidth(tablet) {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  @include minWidth(desktop) {
+    grid-template-columns: 3fr 1fr;
+  }
+
+  .Container[data-size="tall"] &,
+  .Container[data-size="long"] & {
+    grid-template-columns: 1fr;
+  }
+}
+
 .Description {
   max-width: 72ch;
+  text-transform: none;
+}
+
+.ProjectVideos {
+  display: flex;
+  gap: rem(16px);
+
+  .Container[data-size="tall"] &,
+  .Container[data-size="long"] & {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include maxWidth(tablet) {
+    overflow: auto;
+  }
+
+  @include minWidth(tablet) {
+    flex-direction: column;
+    order: 2;
+  }
+}
+
+.ProjectVideo {
+  position: relative;
+  border: 1px solid white;
+
+  @include maxWidth(tablet) {
+    flex-shrink: 0;
+    width: 66%;
+    max-width: 280px;
+    min-width: 160px;
+  }
+}
+
+.PlayIcon {
+  @include resetButton;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(40px);
+  height: rem(40px);
+  background: white;
+  color: black;
+  padding: 0.5rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+
+  svg {
+    width: 100%;
+    vertical-align: top;
+  }
 }
