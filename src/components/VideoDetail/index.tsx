@@ -12,39 +12,46 @@ type VideoDetailProps = {
 
 const VideoDetail: React.FC<VideoDetailProps> = ({ video, projectVideos }) => {
   const { firstLoad } = useFirstLoadState();
+  const hasProjectVideos = projectVideos.length > 0;
 
   return (
-    <div className={styles.Container} data-size={video.size}>
+    <div
+      className={styles.Container}
+      data-size={video.size}
+      data-has-project-videos={hasProjectVideos}
+    >
       <div className={styles.Video}>
-        <Video video={video} audioOn={false} controls={true} />
+        <Video video={video} audioOn={!firstLoad} controls={true} />
       </div>
       <div className={styles.Title}>
         <h1>{video.caption}</h1>
         <p>{video.date}</p>
       </div>
-      <div className={styles.ProjectVideos}>
-        {projectVideos.map((v) => (
-          <LinkWrapper
-            key={v.id}
-            linkProps={{
-              className: styles.ProjectVideo,
-              scroll: false,
-              replace: true,
-            }}
-            href={`/content/${v.id}`}
-          >
-            <Video
-              videoClassname={styles.ProjectVideoElement}
-              video={v}
-              playing={true}
-              audioOn={false}
-            />
-            <div className={styles.PlayIcon}>
-              <IoMdPlay />
-            </div>
-          </LinkWrapper>
-        ))}
-      </div>
+      {hasProjectVideos && (
+        <div className={styles.ProjectVideos}>
+          {projectVideos.map((v) => (
+            <LinkWrapper
+              key={v.id}
+              linkProps={{
+                className: styles.ProjectVideo,
+                scroll: false,
+                replace: true,
+              }}
+              href={`/content/${v.id}`}
+            >
+              <Video
+                videoClassname={styles.ProjectVideoElement}
+                video={v}
+                playing={true}
+                audioOn={false}
+              />
+              <div className={styles.PlayIcon}>
+                <IoMdPlay />
+              </div>
+            </LinkWrapper>
+          ))}
+        </div>
+      )}
       <div
         className={styles.Description}
         dangerouslySetInnerHTML={{ __html: video.description }}

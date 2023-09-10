@@ -9,7 +9,11 @@
   padding-bottom: rem(24px);
   display: grid;
   gap: 1rem;
-  grid-template-areas: "video" "title" "project-videos" "description";
+  grid-template-areas: "video" "title" "description";
+
+  &[data-has-project-videos="true"] {
+    grid-template-areas: "video" "title" "project-videos" "description";
+  }
 
   @include minWidth(tablet) {
     grid-template-columns: 2fr 1fr;
@@ -26,10 +30,14 @@
     @include minWidth(tablet) {
       align-items: flex-start;
       justify-content: flex-start;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: "video title" "video description";
       grid-template-rows: min-content 1fr;
       grid-auto-rows: min-content;
-      grid-template-areas: "video title" "video description" "project-videos description";
+
+      &[data-has-project-videos="true"] {
+        grid-template-areas: "video title" "video description" "project-videos description";
+      }
     }
   }
 }
