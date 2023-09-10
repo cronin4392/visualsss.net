@@ -10,7 +10,11 @@ export type Video = {
   description: string;
   date: string;
   size: Sizes;
+  project: string | null;
 };
+
+export const isVideo = (video: Video | Youtube): video is Video =>
+  video.__type === "video";
 
 export type Youtube = {
   __type: "youtube";
@@ -26,7 +30,8 @@ const newVideo = (
   caption: string,
   date: string,
   description: React.ReactElement,
-  options?: { size: Sizes }
+  options?: { size: Sizes },
+  project?: string
 ): Video => {
   const useAws = true;
   const baseUrl = useAws
@@ -43,17 +48,19 @@ const newVideo = (
     description: renderToString(description),
     date,
     size: options?.size || null,
+    project: project || null,
   };
 };
 
 const newVideoGroup = (
   videos: Array<[string] | [string, { size: Sizes }]>,
+  project: string,
   caption: string,
   date: string,
   description: React.ReactElement
 ): Array<Video> =>
   videos.map(([relFile, options]) =>
-    newVideo(relFile, caption, date, description, options)
+    newVideo(relFile, caption, date, description, options, project)
   );
 
 const newYoutube = (
@@ -62,16 +69,24 @@ const newYoutube = (
   date: string,
   description: React.ReactElement,
   options?: { size: Sizes }
-): Youtube => {
-  return {
-    __type: "youtube",
-    id,
-    caption,
-    description: renderToString(description),
-    date,
-    size: options?.size || null,
-  };
-};
+): Youtube => ({
+  __type: "youtube",
+  id,
+  caption,
+  description: renderToString(description),
+  date,
+  size: options?.size || null,
+});
+
+const ElementsDescription = () => (
+  <p>
+    I am one of the resident VJs for Elements Drum and Bass which is a weekly
+    Drum &amp; Bass event held every Thursday at the Phoenix Landing in
+    Cambridge, Massachusetts. Elements has hosted many of the biggest names in
+    Drum &amp; Bass while at the same time supporting the local scene by
+    featuring top local DJs.
+  </p>
+);
 
 const content: Array<Video | Youtube> = [
   newVideo(
@@ -88,10 +103,10 @@ const content: Array<Video | Youtube> = [
     "IMG_1639.mp4",
     "Aversion BCCO",
     "May 2023",
-    <>
+    <p>
       I ran visuals for the Aversion BCCO event at Lower Level. I projection
       mapped the back wall and the DJ was in the center of the room.
-    </>
+    </p>
   ),
   ...newVideoGroup(
     [
@@ -103,6 +118,7 @@ const content: Array<Video | Youtube> = [
         },
       ],
     ],
+    "hypnothesis",
     "Hypnothesis",
     "Apr 2023",
     <>
@@ -123,7 +139,7 @@ const content: Array<Video | Youtube> = [
     "DNA-DNB.mp4",
     "DnB",
     "Mar 2023",
-    <>Video I made with typographic scenes that say Drum n Bass (DnB).</>,
+    <p>Video I made with typographic scenes that say Drum n Bass (DnB).</p>,
     { size: "long" }
   ),
   newVideo(
@@ -139,12 +155,13 @@ const content: Array<Video | Youtube> = [
         are run through an kolaidascope effect and a reaction diffusion effect.
       </p>
       <p>
-        --
-        <br /> An artist who has touched the heart of every dnb lover with his
+        An artist who has touched the heart of every dnb lover with his
         unparalleled dancefloor rollers touches down for his long awaited first
         USA tour in Boston.
       </p>
-    </>
+    </>,
+    undefined,
+    "elements"
   ),
   newVideo(
     "HolyMountainNvidia.8.mp4",
@@ -173,8 +190,6 @@ const content: Array<Video | Youtube> = [
         projection is against the stained glass windows at ZuZu.
       </p>
       <p>
-        ---
-        <br />
         Having regularly performed amongst some at the best in NYC over the last
         few years, most recently with the likes of Volvox, Anthony Parasole ,
         Justin Cudmore and more at Basement NYC, ANAB promises to bring a
@@ -186,10 +201,24 @@ const content: Array<Video | Youtube> = [
       size: "long",
     }
   ),
-  newVideo("IMG_1242.mp4", "Elements", "Feb 2023", <></>, {
-    size: "wide",
-  }),
-  newVideo("IMG_1244.mp4", "Elements", "Feb 2023", <></>),
+  newVideo(
+    "IMG_1242.mp4",
+    "Elements",
+    "Feb 2023",
+    <ElementsDescription />,
+    {
+      size: "wide",
+    },
+    "elements"
+  ),
+  newVideo(
+    "IMG_1244.mp4",
+    "Elements",
+    "Feb 2023",
+    <ElementsDescription />,
+    undefined,
+    "elements"
+  ),
   newVideo("IMG_1222.mp4", "Infra x Av_rsion", "Feb 2023", <></>),
   newVideo("IMG_0796.mp4", "Soundz Organic", "Nov 2022", <></>, {
     size: "wide",
@@ -204,6 +233,7 @@ const content: Array<Video | Youtube> = [
       ],
       ["IMG_0885.mp4"],
     ],
+    "flavours",
     "Flavours Above Ground",
     "Nov 2022",
     <></>
@@ -225,8 +255,22 @@ const content: Array<Video | Youtube> = [
   newVideo("IMG_0534.mp4", "Fraktal Fest", "Aug 2022", <></>, {
     size: "long",
   }),
-  newVideo("IMG_0262.mp4", "Elements", "Jul 2022", <></>),
-  newVideo("IMG_9810.mp4", "Elements", "Apr 2022", <></>),
+  newVideo(
+    "IMG_0262.mp4",
+    "Elements",
+    "Jul 2022",
+    <ElementsDescription />,
+    undefined,
+    "elements"
+  ),
+  newVideo(
+    "IMG_9810.mp4",
+    "Elements",
+    "Apr 2022",
+    <ElementsDescription />,
+    undefined,
+    "elements"
+  ),
   newVideo(
     "IMG_9544.mp4",
     "AFH x Kitauna Parker",
@@ -267,12 +311,13 @@ const content: Array<Video | Youtube> = [
         },
       ],
     ],
+    "halloween-ipad",
     "House Party",
     "Oct 2021",
     <p>
       This is an art installation I created for a halloween house party that had
       a room with DJs playing throughout the night. The stage was made of
-      foamcore and created by another party-goer. The installtion I made
+      foamcore and created by another party-goer. The installation I made
       utilized Procreate on the iPad, streamed to Touchdesigner, where it was
       run through some animating filters. Party-goers had an outline of the
       stage design in Procreate that they could color in through the night. The
@@ -294,6 +339,7 @@ const content: Array<Video | Youtube> = [
         },
       ],
     ],
+    "nokia-snake",
     "Nokia Snake",
     "Oct 2021",
     <>
@@ -304,8 +350,6 @@ const content: Array<Video | Youtube> = [
         with the 3D studio to cut a Nokia Phone out of wood.
       </p>
       <p>
-        ---
-        <br />
         Artists For Humanity (AFH) provides under-resourced teens the keys to
         self-sufficiency through paid employment in art and design.
       </p>

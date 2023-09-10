@@ -14,17 +14,18 @@ body,
 }
 
 body {
-  @include fontSize(16px, 16px);
+  @include fontSize(18px, 18px);
   margin: 0;
   background-color: var(--color-white);
   color: var(--color-black);
   font-family: "DIN", monospace;
   text-transform: uppercase;
   font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   @include minWidth(tablet) {
-    @include fontSize(28px);
+    @include fontSize(22px);
   }
 
   @include minWidth(desktop) {
