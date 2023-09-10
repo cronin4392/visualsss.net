@@ -155,8 +155,7 @@ const content: Array<Video | Youtube> = [
         are run through an kolaidascope effect and a reaction diffusion effect.
       </p>
       <p>
-        --
-        <br /> An artist who has touched the heart of every dnb lover with his
+        An artist who has touched the heart of every dnb lover with his
         unparalleled dancefloor rollers touches down for his long awaited first
         USA tour in Boston.
       </p>
