@@ -25,9 +25,6 @@ export type Youtube = {
   size: Sizes;
 };
 
-// export const isYoutube = (video: Video | Youtube): video is Youtube =>
-//   video.__type === "youtube";
-
 const newVideo = (
   relFile: string,
   caption: string,
@@ -80,6 +77,16 @@ const newYoutube = (
   date,
   size: options?.size || null,
 });
+
+const ElementsDescription = () => (
+  <p>
+    I am one of the resident VJs for Elements Drum and Bass which is a weekly
+    Drum &amp; Bass event held every Thursday at the Phoenix Landing in
+    Cambridge, Massachusetts. Elements has hosted many of the biggest names in
+    Drum &amp; Bass while at the same time supporting the local scene by
+    featuring top local DJs.
+  </p>
+);
 
 const content: Array<Video | Youtube> = [
   newVideo(
@@ -153,7 +160,9 @@ const content: Array<Video | Youtube> = [
         unparalleled dancefloor rollers touches down for his long awaited first
         USA tour in Boston.
       </p>
-    </>
+    </>,
+    undefined,
+    "elements"
   ),
   newVideo(
     "HolyMountainNvidia.8.mp4",
@@ -195,10 +204,24 @@ const content: Array<Video | Youtube> = [
       size: "long",
     }
   ),
-  newVideo("IMG_1242.mp4", "Elements", "Feb 2023", <></>, {
-    size: "wide",
-  }),
-  newVideo("IMG_1244.mp4", "Elements", "Feb 2023", <></>),
+  newVideo(
+    "IMG_1242.mp4",
+    "Elements",
+    "Feb 2023",
+    <ElementsDescription />,
+    {
+      size: "wide",
+    },
+    "elements"
+  ),
+  newVideo(
+    "IMG_1244.mp4",
+    "Elements",
+    "Feb 2023",
+    <ElementsDescription />,
+    undefined,
+    "elements"
+  ),
   newVideo("IMG_1222.mp4", "Infra x Av_rsion", "Feb 2023", <></>),
   newVideo("IMG_0796.mp4", "Soundz Organic", "Nov 2022", <></>, {
     size: "wide",
@@ -235,8 +258,22 @@ const content: Array<Video | Youtube> = [
   newVideo("IMG_0534.mp4", "Fraktal Fest", "Aug 2022", <></>, {
     size: "long",
   }),
-  newVideo("IMG_0262.mp4", "Elements", "Jul 2022", <></>),
-  newVideo("IMG_9810.mp4", "Elements", "Apr 2022", <></>),
+  newVideo(
+    "IMG_0262.mp4",
+    "Elements",
+    "Jul 2022",
+    <ElementsDescription />,
+    undefined,
+    "elements"
+  ),
+  newVideo(
+    "IMG_9810.mp4",
+    "Elements",
+    "Apr 2022",
+    <ElementsDescription />,
+    undefined,
+    "elements"
+  ),
   newVideo(
     "IMG_9544.mp4",
     "AFH x Kitauna Parker",

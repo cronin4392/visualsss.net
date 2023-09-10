@@ -21,10 +21,11 @@ body {
   font-family: "DIN", monospace;
   text-transform: uppercase;
   font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   @include minWidth(tablet) {
-    @include fontSize(28px);
+    @include fontSize(22px);
   }
 
   @include minWidth(desktop) {

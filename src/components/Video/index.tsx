@@ -1,4 +1,6 @@
 import { useEffect, useRef, forwardRef, useState } from "react";
+import classnames from "classnames";
+import { useUpdateEffect } from "usehooks-ts";
 import {
   IoMdPause,
   IoMdPlay,
@@ -14,6 +16,7 @@ type VideoElProps = {
   audioOn?: boolean;
   playing?: boolean;
   controls?: true;
+  videoClassname?: string;
 };
 
 const Video = forwardRef<HTMLVideoElement, VideoProps>(
@@ -54,6 +57,7 @@ const VideoElement = forwardRef<HTMLVideoElement, VideoType & VideoElProps>(
       size,
       playing: parentPlaying = true,
       controls,
+      videoClassname,
     },
     ref
   ) => {
@@ -73,7 +77,7 @@ const VideoElement = forwardRef<HTMLVideoElement, VideoType & VideoElProps>(
       }
     }, []);
 
-    useEffect(() => {
+    useUpdateEffect(() => {
       videoRef.current?.load();
       videoRef.current?.play();
     }, [file]);
@@ -104,7 +108,10 @@ const VideoElement = forwardRef<HTMLVideoElement, VideoType & VideoElProps>(
     }, [parentAudioOn]);
 
     return (
-      <div className={styles.VideoContainer} data-size={size}>
+      <div
+        className={classnames([styles.VideoContainer, videoClassname])}
+        data-size={size}
+      >
         <video
           muted={!audioOn}
           loop

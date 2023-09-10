@@ -14,73 +14,76 @@
     padding: rem(32px);
   }
 
+  grid-template-areas: "video" "title" "project-videos" "description";
+
+  @include minWidth(tablet) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "video video" "title title" "description project-videos";
+  }
+
   &[data-size="tall"],
   &[data-size="long"] {
-    @include minWidth(desktop) {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+    @include minWidth(tablet) {
+      align-items: flex-start;
+      justify-content: flex-start;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: min-content 1fr;
+      grid-auto-rows: min-content;
+      grid-template-areas: "video title" "video description" "project-videos description";
     }
   }
 }
 
-.Info {
-  display: flex;
-  flex-direction: column;
-  gap: rem(16px);
+.Video {
+  grid-area: video;
 }
 
-.Details {
-  display: grid;
-  gap: rem(16px);
-
-  @include minWidth(tablet) {
-    grid-template-columns: 2fr 1fr;
-  }
-
-  @include minWidth(desktop) {
-    grid-template-columns: 3fr 1fr;
-  }
-
-  .Container[data-size="tall"] &,
-  .Container[data-size="long"] & {
-    grid-template-columns: 1fr;
-  }
+.Title {
+  grid-area: title;
 }
 
 .Description {
   max-width: 72ch;
   text-transform: none;
+  grid-area: description;
 }
 
 .ProjectVideos {
   display: flex;
   gap: rem(16px);
-
-  .Container[data-size="tall"] &,
-  .Container[data-size="long"] & {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
+  grid-area: project-videos;
 
   @include maxWidth(tablet) {
     overflow: auto;
   }
 
   @include minWidth(tablet) {
-    flex-direction: column;
-    order: 2;
+    .Container:not([data-size="tall"], [data-size="long"]) & {
+      flex-direction: column;
+    }
   }
 }
 
 .ProjectVideo {
   position: relative;
   border: 1px solid white;
+  flex-shrink: 0;
+  width: 66%;
+  max-width: 280px;
+  min-width: 160px;
 
-  @include maxWidth(tablet) {
-    flex-shrink: 0;
-    width: 66%;
-    max-width: 280px;
-    min-width: 160px;
+  @include minWidth(tablet) {
+    .Container:not([data-size="tall"], [data-size="long"]) & {
+      width: 100%;
+      max-width: none;
+      min-width: none;
+    }
+  }
+}
+
+.ProjectVideoElement.ProjectVideoElement {
+  video {
+    aspect-ratio: 16 / 9;
   }
 }
 

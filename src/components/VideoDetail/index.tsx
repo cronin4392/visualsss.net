@@ -18,36 +18,37 @@ const VideoDetail: React.FC<VideoDetailProps> = ({ video, projectVideos }) => {
       <div className={styles.Video}>
         <Video video={video} audioOn={false} controls={true} />
       </div>
-      <div className={styles.Info}>
-        <div className={styles.Title}>
-          <h1>{video.caption}</h1>
-          <p>{video.date}</p>
-        </div>
-        <div className={styles.Details}>
-          <div className={styles.ProjectVideos}>
-            {projectVideos.map((v) => (
-              <LinkWrapper
-                key={v.id}
-                linkProps={{
-                  className: styles.ProjectVideo,
-                  scroll: false,
-                  replace: true,
-                }}
-                href={`/content/${v.id}`}
-              >
-                <Video video={v} playing={true} audioOn={false} />
-                <div className={styles.PlayIcon}>
-                  <IoMdPlay />
-                </div>
-              </LinkWrapper>
-            ))}
-          </div>
-          <div
-            className={styles.Description}
-            dangerouslySetInnerHTML={{ __html: video.description }}
-          />
-        </div>
+      <div className={styles.Title}>
+        <h1>{video.caption}</h1>
+        <p>{video.date}</p>
       </div>
+      <div className={styles.ProjectVideos}>
+        {projectVideos.map((v) => (
+          <LinkWrapper
+            key={v.id}
+            linkProps={{
+              className: styles.ProjectVideo,
+              scroll: false,
+              replace: true,
+            }}
+            href={`/content/${v.id}`}
+          >
+            <Video
+              videoClassname={styles.ProjectVideoElement}
+              video={v}
+              playing={true}
+              audioOn={false}
+            />
+            <div className={styles.PlayIcon}>
+              <IoMdPlay />
+            </div>
+          </LinkWrapper>
+        ))}
+      </div>
+      <div
+        className={styles.Description}
+        dangerouslySetInnerHTML={{ __html: video.description }}
+      />
     </div>
   );
 };
