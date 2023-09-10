@@ -103,10 +103,10 @@ const content: Array<Video | Youtube> = [
     "IMG_1639.mp4",
     "Aversion BCCO",
     "May 2023",
-    <>
+    <p>
       I ran visuals for the Aversion BCCO event at Lower Level. I projection
       mapped the back wall and the DJ was in the center of the room.
-    </>
+    </p>
   ),
   ...newVideoGroup(
     [
@@ -139,7 +139,7 @@ const content: Array<Video | Youtube> = [
     "DNA-DNB.mp4",
     "DnB",
     "Mar 2023",
-    <>Video I made with typographic scenes that say Drum n Bass (DnB).</>,
+    <p>Video I made with typographic scenes that say Drum n Bass (DnB).</p>,
     { size: "long" }
   ),
   newVideo(
@@ -191,8 +191,6 @@ const content: Array<Video | Youtube> = [
         projection is against the stained glass windows at ZuZu.
       </p>
       <p>
-        ---
-        <br />
         Having regularly performed amongst some at the best in NYC over the last
         few years, most recently with the likes of Volvox, Anthony Parasole ,
         Justin Cudmore and more at Basement NYC, ANAB promises to bring a
@@ -353,8 +351,6 @@ const content: Array<Video | Youtube> = [
         with the 3D studio to cut a Nokia Phone out of wood.
       </p>
       <p>
-        ---
-        <br />
         Artists For Humanity (AFH) provides under-resourced teens the keys to
         self-sufficiency through paid employment in art and design.
       </p>
