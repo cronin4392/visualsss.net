@@ -10,7 +10,11 @@ export type Video = {
   description: string;
   date: string;
   size: Sizes;
+  project: string | null;
 };
+
+export const isVideo = (video: Video | Youtube): video is Video =>
+  video.__type === "video";
 
 export type Youtube = {
   __type: "youtube";
@@ -21,12 +25,16 @@ export type Youtube = {
   size: Sizes;
 };
 
+// export const isYoutube = (video: Video | Youtube): video is Youtube =>
+//   video.__type === "youtube";
+
 const newVideo = (
   relFile: string,
   caption: string,
   date: string,
   description: React.ReactElement,
-  options?: { size: Sizes }
+  options?: { size: Sizes },
+  project?: string
 ): Video => {
   const useAws = true;
   const baseUrl = useAws
@@ -43,17 +51,19 @@ const newVideo = (
     description: renderToString(description),
     date,
     size: options?.size || null,
+    project: project || null,
   };
 };
 
 const newVideoGroup = (
   videos: Array<[string] | [string, { size: Sizes }]>,
+  project: string,
   caption: string,
   date: string,
   description: React.ReactElement
 ): Array<Video> =>
   videos.map(([relFile, options]) =>
-    newVideo(relFile, caption, date, description, options)
+    newVideo(relFile, caption, date, description, options, project)
   );
 
 const newYoutube = (
@@ -62,16 +72,14 @@ const newYoutube = (
   date: string,
   description: React.ReactElement,
   options?: { size: Sizes }
-): Youtube => {
-  return {
-    __type: "youtube",
-    id,
-    caption,
-    description: renderToString(description),
-    date,
-    size: options?.size || null,
-  };
-};
+): Youtube => ({
+  __type: "youtube",
+  id,
+  caption,
+  description: renderToString(description),
+  date,
+  size: options?.size || null,
+});
 
 const content: Array<Video | Youtube> = [
   newVideo(
@@ -103,6 +111,7 @@ const content: Array<Video | Youtube> = [
         },
       ],
     ],
+    "hypnothesis",
     "Hypnothesis",
     "Apr 2023",
     <>
@@ -204,6 +213,7 @@ const content: Array<Video | Youtube> = [
       ],
       ["IMG_0885.mp4"],
     ],
+    "flavours",
     "Flavours Above Ground",
     "Nov 2022",
     <></>
@@ -267,12 +277,13 @@ const content: Array<Video | Youtube> = [
         },
       ],
     ],
+    "halloween-ipad",
     "House Party",
     "Oct 2021",
     <p>
       This is an art installation I created for a halloween house party that had
       a room with DJs playing throughout the night. The stage was made of
-      foamcore and created by another party-goer. The installtion I made
+      foamcore and created by another party-goer. The installation I made
       utilized Procreate on the iPad, streamed to Touchdesigner, where it was
       run through some animating filters. Party-goers had an outline of the
       stage design in Procreate that they could color in through the night. The
@@ -294,6 +305,7 @@ const content: Array<Video | Youtube> = [
         },
       ],
     ],
+    "nokia-snake",
     "Nokia Snake",
     "Oct 2021",
     <>
