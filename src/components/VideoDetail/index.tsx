@@ -21,7 +21,7 @@ const VideoDetail: React.FC<VideoDetailProps> = ({ video, projectVideos }) => {
       data-has-project-videos={hasProjectVideos}
     >
       <div className={styles.Video}>
-        <Video video={video} audioOn={!firstLoad} controls={true} />
+        <Video video={video} audioOn={false} controls={true} />
       </div>
       <div className={styles.Title}>
         <h1>{video.caption}</h1>
