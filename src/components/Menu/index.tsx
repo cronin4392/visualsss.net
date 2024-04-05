@@ -15,10 +15,6 @@ const menuItems: MenuItems = [
     link: "/content",
   },
   {
-    text: "Shows",
-    link: "/events",
-  },
-  {
     text: "About",
     link: "/about",
   },
