@@ -27,7 +27,7 @@ const HeadTag: React.FC<ShareProps> = (props) => {
   const description =
     props.description ||
     "VISUALSSS is a VJ and digital artist who creates real-time experiences for events spanning from live music acts to art installations.";
-  const image = props.image || "/promo/share.jpg";
+  const image = props.image || "/promo/share.png";
 
   return (
     <NextSeo
