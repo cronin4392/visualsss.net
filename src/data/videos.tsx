@@ -89,6 +89,26 @@ const ElementsDescription = () => (
 );
 
 const content: Array<Video | Youtube> = [
+  ...newVideoGroup(
+    [["IMG_2390.mp4", { size: "wide" }], ["IMG_2387.mp4"]],
+    "ag-jeep",
+    "Above Ground",
+    "Sep 2023",
+    <>
+      <p>I ran projections for an event at Middle East upstairs.</p>
+    </>
+  ),
+  ...newVideoGroup(
+    [["IMG_2218.mp4"], ["IMG_2241.mp4"]],
+    "homie-campout",
+    "The Homie Collective Campout",
+    "Aug 2023",
+    <>
+      Music festival in Central Mass. I was the video tech and performed VJ sets
+      for acts including Jason Leech. I also ran a few pop up projections around
+      the grounds.
+    </>
+  ),
   newVideo(
     "IMG_1734.mp4",
     "Transit x Infra @ The Grand",
