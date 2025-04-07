@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps<{
   const id = getParam(params, "id");
   const video = content.find((v) => v.id === id);
 
-  if (!video) {
+  if (!video || video.__type === "instagram") {
     return {
       notFound: true,
     };

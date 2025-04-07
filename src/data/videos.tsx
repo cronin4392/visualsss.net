@@ -13,7 +13,7 @@ export type Video = {
   project: string | null;
 };
 
-export const isVideo = (video: Video | Youtube): video is Video =>
+export const isVideo = (video: Video | Youtube | Instagram): video is Video =>
   video.__type === "video";
 
 export type Youtube = {
