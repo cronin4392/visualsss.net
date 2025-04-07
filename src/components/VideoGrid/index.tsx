@@ -3,6 +3,7 @@ import { useInView } from "react-intersection-observer";
 import content, {
   Youtube as YoutubeType,
   Video as VideoType,
+  Instagram as InstagramType,
 } from "@/data/videos";
 import Video from "@/components/Video";
 import LinkWrapper from "@/components/LinkWrapper";
@@ -28,12 +29,12 @@ const Content = () => {
 };
 
 const VideoContent: React.FC<
-  (VideoType | YoutubeType) & {
+  (VideoType | YoutubeType | InstagramType) & {
     unmutedId: string | null;
     setUnmutedId: Dispatch<SetStateAction<string | null>>;
   }
 > = (video) => {
-  const { id, caption, date, size, unmutedId, setUnmutedId } = video;
+  const { id, size, unmutedId, setUnmutedId } = video;
 
   const [scrollRef, inView] = useInView({
     threshold: 0,
@@ -46,6 +47,16 @@ const VideoContent: React.FC<
       }
     }
   }, [inView, unmutedId, id, setUnmutedId]);
+
+  if (video.__type === "instagram") {
+    return (
+      <div className={styles.Video} data-size={size}>
+        <Video video={video} />
+      </div>
+    );
+  }
+
+  const { caption, date } = video;
 
   return (
     <LinkWrapper

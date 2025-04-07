@@ -1,5 +1,6 @@
 import { useEffect, useRef, forwardRef, useState } from "react";
 import classnames from "classnames";
+import { InstagramEmbed } from "react-social-media-embed";
 import { useUpdateEffect } from "usehooks-ts";
 import {
   IoMdPause,
@@ -7,10 +8,14 @@ import {
   IoMdVolumeHigh,
   IoMdVolumeOff,
 } from "react-icons/io";
-import type { Youtube, Video as VideoType } from "@/data/videos";
+import type {
+  Youtube,
+  Video as VideoType,
+  Instagram as InstagramType,
+} from "@/data/videos";
 import styles from "./styles.module.scss";
 
-type VideoProps = { video: Youtube | VideoType } & VideoElProps;
+type VideoProps = { video: Youtube | VideoType | InstagramType } & VideoElProps;
 
 type VideoElProps = {
   audioOn?: boolean;
@@ -23,9 +28,9 @@ const Video = forwardRef<HTMLVideoElement, VideoProps>(
   ({ video, ...rest }, ref) => {
     return (
       <div className={styles.Container}>
-        {video.__type === "youtube" ? (
-          <Youtube {...video} />
-        ) : (
+        {video.__type === "youtube" && <Youtube {...video} />}
+        {video.__type === "instagram" && <Instagram {...video} />}
+        {video.__type === "video" && (
           <VideoElement {...video} {...rest} ref={ref} />
         )}
       </div>
@@ -45,6 +50,14 @@ const Youtube: React.FC<Youtube> = ({ id, size }) => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
       />
+    </div>
+  );
+};
+
+const Instagram: React.FC<InstagramType> = ({ id, url, size }) => {
+  return (
+    <div className={styles.YoutubeContainer} data-size={size}>
+      <InstagramEmbed url={url} />
     </div>
   );
 };

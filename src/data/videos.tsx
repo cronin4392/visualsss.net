@@ -25,6 +25,13 @@ export type Youtube = {
   size: Sizes;
 };
 
+export type Instagram = {
+  __type: "instagram";
+  id: string;
+  url: string;
+  size: Sizes;
+};
+
 const newVideo = (
   relFile: string,
   caption: string,
@@ -78,6 +85,17 @@ const newYoutube = (
   size: options?.size || null,
 });
 
+const newInstagram = (
+  id: string,
+  url: string,
+  options?: { size: Sizes }
+): Instagram => ({
+  __type: "instagram",
+  id,
+  url,
+  size: options?.size || null,
+});
+
 const ElementsDescription = () => (
   <p>
     I am one of the resident VJs for Elements Drum and Bass which is a weekly
@@ -88,7 +106,24 @@ const ElementsDescription = () => (
   </p>
 );
 
-const content: Array<Video | Youtube> = [
+const content: Array<Video | Youtube | Instagram> = [
+  newInstagram(
+    "insta",
+    "https://www.instagram.com/p/DHUnTFHPM2q/?img_index=1",
+    {
+      size: "wide",
+    }
+  ),
+  newInstagram("insta", "https://www.instagram.com/p/DHE9SCBvQTK/", {
+    size: "tall",
+  }),
+  newInstagram("insta", "https://www.instagram.com/p/DCrq9QnKjZy/"),
+  newInstagram("insta", "https://www.instagram.com/p/DAgubk2PGX8/", {
+    size: "tall",
+  }),
+  newInstagram("insta", "https://www.instagram.com/p/C_ZRdPuPz1h/", {
+    size: "wide",
+  }),
   ...newVideoGroup(
     [["IMG_2390.mp4", { size: "wide" }], ["IMG_2387.mp4"]],
     "ag-jeep",

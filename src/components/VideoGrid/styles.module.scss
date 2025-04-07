@@ -26,6 +26,10 @@
   text-decoration: none;
   position: relative;
 
+  iframe {
+    margin: 0 !important;
+  }
+
   @include minWidth(tablet) {
     &[data-size="tall"] {
       grid-row: span 3;
